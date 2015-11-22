@@ -4,9 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
-
 public class LoginActivity extends ActionBarActivity {
 
     private LoginInteractor loginInteractor;
@@ -15,9 +12,9 @@ public class LoginActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        loginInteractor = new LoginInteractor(queue);
-        loginInteractor.login("login", "password", new InteractorStandardResponseHandler() {
+        RequestSender requestSender = new RequestSender(getApplicationContext());
+        loginInteractor = new LoginInteractor(requestSender);
+        loginInteractor.login("login", "password", new StandardResponseHandler() {
             void onSuccess() {
                 makeToast("login success");
             }
