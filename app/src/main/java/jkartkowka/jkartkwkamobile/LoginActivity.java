@@ -14,12 +14,14 @@ public class LoginActivity extends ActionBarActivity {
         setContentView(R.layout.activity_login);
         RequestSender requestSender = new RequestSender(getApplicationContext());
         loginInteractor = new LoginInteractor(requestSender);
-        loginInteractor.login("login", "password", new StandardResponseHandler() {
-            void onSuccess() {
+        loginInteractor.login("login", "password", new StandardGenericResponseHandler<User>() {
+            @Override
+            void onSuccess(User responseObject) {
                 makeToast("login success");
             }
 
-            void onFailure() {
+            @Override
+            void onFailure(ErrorHandler error) {
                 makeToast("login failed");
             }
         });

@@ -8,7 +8,7 @@ public abstract class StandardResponseHandler {
 
     }
 
-    void onFailure() {
+    void onFailure(ErrorHandler error) {
 
     }
 }

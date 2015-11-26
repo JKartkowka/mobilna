@@ -16,6 +16,6 @@ public class RequestSender {
     }
 
     public void sendRequest(LoginRequest request) {
-        request.responseHandler.onSuccess();
+        request.responseHandler.onSuccess(new User());
     }
 }
