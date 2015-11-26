@@ -15,7 +15,11 @@ public class RequestSender {
         queue = Volley.newRequestQueue(applicationContext);
     }
 
-    public void sendRequest(LoginRequest request) {
-        request.responseHandler.onSuccess(new User());
+    public void sendRequest(StandardRequest request) {
+        System.out.println("Params: " + request.params().toString());
+        System.out.println("Method: " + request.apiMethod());
+
+        request.parseSuccessResponse(null);
+
     }
 }
