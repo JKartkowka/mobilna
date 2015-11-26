@@ -9,7 +9,6 @@ public class LoginRequest extends StandardRequest {
     public final String login;
     public final String password;
     public final StandardGenericResponseHandler<User> responseHandler;
-    public final String APImethod = "login";
 
     public LoginRequest(String login, String password, StandardGenericResponseHandler<User> standardResponseHandler) {
         this.login = login;
