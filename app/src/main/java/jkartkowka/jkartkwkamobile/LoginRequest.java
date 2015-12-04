@@ -6,7 +6,7 @@ import java.util.HashMap;
 /**
  * Created by marian on 22.11.15.
  */
-public class LoginRequest extends StandardRequest {
+public class LoginRequest implements StandardRequest {
     public final String login;
     public final String password;
     public final StandardGenericResponseHandler<User> responseHandler;

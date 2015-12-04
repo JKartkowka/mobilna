@@ -15,11 +15,10 @@ public class RequestSender {
         queue = Volley.newRequestQueue(applicationContext);
     }
 
-    public void sendRequest(StandardRequest request) {
+    public void sendRequest(JKRequest request) {
         System.out.println("Params: " + request.params().toString());
         System.out.println("Method: " + request.apiMethod());
 
-//        request.parseSuccessResponse(null);
         request.mockedResponse();
     }
 }
