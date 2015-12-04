@@ -1,5 +1,6 @@
 package jkartkowka.jkartkwkamobile;
 
+import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -30,15 +31,22 @@ public class LoginRequest extends StandardRequest {
     }
 
     public void parseSuccessResponse(HashMap<String, Object> params) {
-        User user = new User();
-
-        responseHandler.onSuccess(user);
     }
 
     public void parseErrorResponse(HashMap<String, Object> params) {
         ErrorHandler error = new ErrorHandler();
 
         responseHandler.onFailure(error);
+    }
+
+    @Override
+    public void mockedResponse() {
+        String accessToken = "accessToken";
+        String refreshToken = "refreshToken";
+        Date accessTokenExpirationDate = new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000);
+        User user = new User(accessToken, refreshToken, accessTokenExpirationDate);
+
+        responseHandler.onSuccess(user);
     }
 
 }

@@ -19,7 +19,7 @@ public class RequestSender {
         System.out.println("Params: " + request.params().toString());
         System.out.println("Method: " + request.apiMethod());
 
-        request.parseSuccessResponse(null);
-
+//        request.parseSuccessResponse(null);
+        request.mockedResponse();
     }
 }

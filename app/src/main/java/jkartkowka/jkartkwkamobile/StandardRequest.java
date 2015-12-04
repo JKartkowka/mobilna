@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  * Created by marian on 26.11.15.
  */
-public abstract class StandardRequest {
+public abstract class StandardRequest  {
 
     public abstract String apiMethod();
 
@@ -15,4 +15,5 @@ public abstract class StandardRequest {
 
     public abstract void parseErrorResponse(HashMap<String, Object> params);
 
+    public abstract void mockedResponse();
 }
