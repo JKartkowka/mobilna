@@ -17,4 +17,8 @@ public class User {
         this.accessTokenExpirationDate = accessTokenExpirationDate;
         this.type = type;
     }
+
+    public UserType getType() {
+        return type;
+    }
 }

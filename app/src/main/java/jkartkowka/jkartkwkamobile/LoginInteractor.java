@@ -11,11 +11,11 @@ public class LoginInteractor {
         this.requestSender = requestSender;
     }
 
-    public void login(String login, String password, final StandardGenericResponseHandler<User> standardResponseHandler) {
+    public void login(String login, String password, final StandardGenericResponseHandler<UserType> standardResponseHandler) {
         LoginRequest request = new LoginRequest(login, password, new StandardGenericResponseHandler<User>() {
             @Override
             void onSuccess(User responseObject) {
-                standardResponseHandler.onSuccess(responseObject);
+                standardResponseHandler.onSuccess(responseObject.getType());
             }
 
             @Override
