@@ -9,4 +9,5 @@ public interface StandardRequest extends JKRequest {
 
     void parseSuccessResponse(HashMap<String, Object> params);
 
+    void mockedResponse();
 }

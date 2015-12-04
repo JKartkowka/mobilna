@@ -6,7 +6,7 @@ import java.util.HashMap;
 /**
  * Created by marian on 22.11.15.
  */
-public class LoginRequest implements StandardRequest {
+public class LoginRequest implements AuthenticationRequest {
     public final String login;
     public final String password;
     public final StandardGenericResponseHandler<User> responseHandler;
@@ -40,12 +40,17 @@ public class LoginRequest implements StandardRequest {
     }
 
     @Override
-    public void mockedResponse() {
+    public User mockedResponse() {
         String accessToken = "accessToken";
         String refreshToken = "refreshToken";
         Date accessTokenExpirationDate = new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000);
         User user = new User(accessToken, refreshToken, accessTokenExpirationDate);
 
+        return user;
+    }
+
+    @Override
+    public void onSuccess(User user) {
         responseHandler.onSuccess(user);
     }
 

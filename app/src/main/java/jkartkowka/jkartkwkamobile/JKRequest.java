@@ -13,5 +13,4 @@ public interface JKRequest {
 
     void parseErrorResponse(HashMap<String, Object> params);
 
-    void mockedResponse();
 }
