@@ -9,10 +9,12 @@ public class User {
     private final String accessToken;
     private final String refreshToken;
     private final Date accessTokenExpirationDate;
+    private final UserType type;
 
-    public User(String accessToken, String refreshToken, Date accessTokenExpirationDate) {
+    public User(String accessToken, String refreshToken, Date accessTokenExpirationDate, UserType type) {
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
         this.accessTokenExpirationDate = accessTokenExpirationDate;
+        this.type = type;
     }
 }
