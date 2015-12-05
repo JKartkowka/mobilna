@@ -10,16 +10,29 @@ import com.android.volley.toolbox.Volley;
  */
 public class RequestSender {
     private final RequestQueue queue;
+    private User user;
 
     public RequestSender(Context applicationContext) {
         queue = Volley.newRequestQueue(applicationContext);
     }
 
-    public void sendRequest(StandardRequest request) {
+    public void sendRequest(JKRequest request) {
         System.out.println("Params: " + request.params().toString());
         System.out.println("Method: " + request.apiMethod());
 
-        request.parseSuccessResponse(null);
+        if (request instanceof AuthenticationRequest) {
+            sendAuthenticationRequest((AuthenticationRequest) request);
+        } else if (request instanceof StandardRequest) {
+            sendStandardRequest((StandardRequest) request);
+        }
+    }
 
+    private void sendStandardRequest(StandardRequest request) {
+        request.mockedResponse();
+    }
+
+    private void sendAuthenticationRequest(AuthenticationRequest request) {
+        user = request.mockedResponse();
+        request.onSuccess(user);
     }
 }

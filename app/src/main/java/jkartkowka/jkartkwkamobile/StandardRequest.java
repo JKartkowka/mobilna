@@ -3,16 +3,11 @@ package jkartkowka.jkartkwkamobile;
 import java.util.HashMap;
 
 /**
- * Created by marian on 26.11.15.
+ * Created by marian on 04.12.15.
  */
-public abstract class StandardRequest {
+public interface StandardRequest extends JKRequest {
 
-    public abstract String apiMethod();
+    void parseSuccessResponse(HashMap<String, Object> params);
 
-    public abstract HashMap<String, Object> params();
-
-    public abstract void parseSuccessResponse(HashMap<String, Object> params);
-
-    public abstract void parseErrorResponse(HashMap<String, Object> params);
-
+    void mockedResponse();
 }
