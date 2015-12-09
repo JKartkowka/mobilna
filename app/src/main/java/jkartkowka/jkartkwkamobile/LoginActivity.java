@@ -38,7 +38,7 @@ public class LoginActivity extends ActionBarActivity {
                 @Override
                 void onSuccess(UserType responseObject) {
                     makeToast("Logged as: " + responseObject.toString());
-                    //TODO start new activity for logged in user
+                    navigateToMenu();
                 }
 
                 @Override
@@ -47,6 +47,11 @@ public class LoginActivity extends ActionBarActivity {
                 }
             });
         }
+    }
+
+    private void navigateToMenu() {
+        Intent intent = new Intent(this, MainMenuActivity.class); //stating with intent 'cause it's possible to attach additional values to it
+        startActivity(intent);
     }
 
 
