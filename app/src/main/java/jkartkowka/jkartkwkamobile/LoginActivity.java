@@ -19,7 +19,7 @@ public class LoginActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        buttonLogin = (ImageButton) findViewById(R.id.buttonZaloguj);
+        buttonLogin = (ImageButton) findViewById(R.id.buttonLogIn);
         inputLogin = (EditText) findViewById(R.id.inputLogin);
         inputPassword = (EditText) findViewById(R.id.inputPassword);
     }
@@ -28,16 +28,16 @@ public class LoginActivity extends ActionBarActivity {
         Toast.makeText(this, text, Toast.LENGTH_LONG).show();
     }
 
-    public void onClick(View v) {
+    public void onLogIn(View v) {
         if (inputLogin.getText().toString().length() == 0 || inputPassword.getText().toString().length() == 0) {
-            makeToast("Wprowadź dane logowania");
+            makeToast("Input your login and password");
         } else {
             RequestSender requestSender = new RequestSender(getApplicationContext());
             loginInteractor = new LoginInteractor(requestSender);
             loginInteractor.login(inputLogin.getText().toString(), inputPassword.getText().toString(), new StandardGenericResponseHandler<UserType>() {
                 @Override
                 void onSuccess(UserType responseObject) {
-                    makeToast("Zalogowany jako: " + responseObject.toString());
+                    makeToast("Logged in as: " + responseObject.toString());
                     navigateToMenu();
                 }
 
