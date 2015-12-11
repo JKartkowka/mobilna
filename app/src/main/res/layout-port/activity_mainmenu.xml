@@ -7,55 +7,23 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="jkartkowka.jkartkwkamobile.LoginActivity"
-    android:background="@drawable/background">
+    tools:context="jkartkowka.jkartkwkamobile.MainMenuActivity">
 
-    <ImageView
+    <Button
         android:layout_width="wrap_content"
-        android:layout_height="120dp"
-        android:id="@+id/logop"
-        android:background="@drawable/logop"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_height="wrap_content"
+        android:text="Oceny"
+        android:id="@+id/buttonGrades"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="onButtonGrades"/>
 
-    <ImageButton
+    <Button
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:id="@+id/buttonKartkowka"
-        android:background="@drawable/kartkowka"
-        android:clickable="true"
-        android:layout_above="@+id/buttonGrupy"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:onClick="onButtonKartkowka"/>
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:id="@+id/buttonGrupy"
-        android:background="@drawable/grupy"
-        android:layout_above="@+id/buttonWyloguj"
-        android:layout_alignParentStart="true"
-        android:clickable="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:onClick="onButtonGrupy"/>
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:id="@+id/buttonWyloguj"
-        android:background="@drawable/wyloguj"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="44dp"
-        android:clickable="true"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:onClick="onButtonWyloguj"/>
+        android:layout_height="wrap_content"
+        android:text="Kartkówka"
+        android:id="@+id/buttonTest"
+        android:layout_below="@+id/buttonGrades"
+        android:layout_centerHorizontal="true"
+        android:onClick="onButtonTest"/>
 </RelativeLayout>
