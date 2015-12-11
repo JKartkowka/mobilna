@@ -44,7 +44,7 @@ public class LoginRequest implements AuthenticationRequest {
         String accessToken = "accessToken";
         String refreshToken = "refreshToken";
         Date accessTokenExpirationDate = new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000);
-        UserType type = UserType.UTProwadzący;
+        UserType type = UserType.UTStudent;
         User user = new User(accessToken, refreshToken, accessTokenExpirationDate, type);
 
         return user;

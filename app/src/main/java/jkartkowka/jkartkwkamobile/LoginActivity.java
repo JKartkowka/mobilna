@@ -4,14 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class LoginActivity extends ActionBarActivity {
 
     private LoginInteractor loginInteractor;
-    private ImageButton buttonLogin;
+    private Button buttonLogin;
     private EditText inputLogin;
     private EditText inputPassword;
 
@@ -19,7 +19,7 @@ public class LoginActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        buttonLogin = (ImageButton) findViewById(R.id.buttonZaloguj);
+        buttonLogin = (Button) findViewById(R.id.buttonLogin);
         inputLogin = (EditText) findViewById(R.id.inputLogin);
         inputPassword = (EditText) findViewById(R.id.inputPassword);
     }
@@ -37,7 +37,7 @@ public class LoginActivity extends ActionBarActivity {
             loginInteractor.login(inputLogin.getText().toString(), inputPassword.getText().toString(), new StandardGenericResponseHandler<UserType>() {
                 @Override
                 void onSuccess(UserType responseObject) {
-                    makeToast("Zalogowany jako: " + responseObject.toString());
+                    makeToast("Logged as: " + responseObject.toString());
                     navigateToMenu();
                 }
 
