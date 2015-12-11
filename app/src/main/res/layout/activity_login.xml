@@ -7,18 +7,21 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="jkartkowka.jkartkwkamobile.LoginActivity">
+    tools:context="jkartkowka.jkartkwkamobile.LoginActivity"
+    android:background="@drawable/background">
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inputLogin"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/inputPassword"
-        android:layout_alignStart="@+id/inputPassword"
-        android:layout_alignRight="@+id/inputPassword"
-        android:layout_alignEnd="@+id/inputPassword"
-        android:hint="login" />
+        android:hint="login"
+        android:layout_marginTop="63dp"
+        android:minHeight="60dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_below="@+id/logo"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -26,16 +29,36 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/inputPassword"
+        android:hint="hasło"
+        android:height="60dp"
+        android:minHeight="60dp"
         android:layout_below="@+id/inputLogin"
-        android:layout_centerHorizontal="true"
-        android:hint="hasło" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_alignParentEnd="true" />
 
-    <Button
+    <ImageButton
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Zaloguj"
-        android:id="@+id/buttonLogin"
+        android:layout_height="80dp"
+        android:id="@+id/buttonZaloguj"
+        android:background="@drawable/logowanie"
+        android:clickable="true"
+        android:onClick="onClick"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
         android:layout_below="@+id/inputPassword"
         android:layout_centerHorizontal="true"
-        android:onClick="onClick"/>
+        android:layout_marginTop="10dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:id="@+id/logo"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/logo"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
 </RelativeLayout>
