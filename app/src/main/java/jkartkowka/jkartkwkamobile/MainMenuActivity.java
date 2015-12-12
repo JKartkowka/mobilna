@@ -23,15 +23,15 @@ public class MainMenuActivity extends ActionBarActivity {
         buttonLogOut = (ImageButton) findViewById(R.id.buttonLogOut);
     }
 
-    public void onButtonPopQuiz(View v){
+    public void onPopQuizClick(View v){
         Toast.makeText(this, "Pop Quiz", Toast.LENGTH_SHORT).show();
     }
 
-    public void onButtonGroups(View v){
+    public void onGroupsClick(View v){
         Toast.makeText(this, "Groups", Toast.LENGTH_SHORT).show();
     }
 
-    public void onButtonLogOut(View v) {
+    public void onLogOutClick(View v) {
         Toast.makeText(this, "Log out", Toast.LENGTH_SHORT).show();
     }
 

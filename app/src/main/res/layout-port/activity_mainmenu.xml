@@ -33,7 +33,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:onClick="onButtonPopQuiz"/>
+        android:onClick="onPopQuizClick"/>
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:onClick="onButtonGroups"/>
+        android:onClick="onGroupsClick"/>
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -61,5 +61,5 @@
         android:clickable="true"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:onClick="onButtonLogOut"/>
+        android:onClick="onLogOutClick"/>
 </RelativeLayout>

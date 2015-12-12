@@ -48,7 +48,7 @@
         android:id="@+id/buttonLogIn"
         android:background="@drawable/logowanie"
         android:clickable="true"
-        android:onClick="onLogIn"
+        android:onClick="onLogInClick"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:layout_below="@+id/inputPassword"

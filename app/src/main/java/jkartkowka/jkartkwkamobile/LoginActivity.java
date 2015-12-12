@@ -28,9 +28,9 @@ public class LoginActivity extends ActionBarActivity {
         Toast.makeText(this, text, Toast.LENGTH_LONG).show();
     }
 
-    public void onLogIn(View v) {
+    public void onLogInClick(View v) {
         if (inputLogin.getText().toString().length() == 0 || inputPassword.getText().toString().length() == 0) {
-            makeToast("Input your login and password");
+            makeToast("Wprowadź dane logowania");
         } else {
             RequestSender requestSender = new RequestSender(getApplicationContext());
             loginInteractor = new LoginInteractor(requestSender);
