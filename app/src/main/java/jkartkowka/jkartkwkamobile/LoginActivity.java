@@ -2,13 +2,12 @@ package jkartkowka.jkartkwkamobile;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-public class LoginActivity extends ActionBarActivity {
+public class LoginActivity extends JKActivity {
 
     private LoginInteractor loginInteractor;
     private ImageButton buttonLogin;
@@ -22,6 +21,7 @@ public class LoginActivity extends ActionBarActivity {
         buttonLogin = (ImageButton) findViewById(R.id.buttonLogIn);
         inputLogin = (EditText) findViewById(R.id.inputLogin);
         inputPassword = (EditText) findViewById(R.id.inputPassword);
+        setupAutodismissingKeyboard(findViewById(R.id.ALparentview));
     }
 
     void makeToast(String text) {
