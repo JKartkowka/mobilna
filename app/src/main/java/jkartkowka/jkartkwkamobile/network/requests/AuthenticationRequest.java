@@ -1,4 +1,4 @@
-package jkartkowka.jkartkwkamobile;
+package jkartkowka.jkartkwkamobile.network.requests;
 
 import jkartkowka.jkartkwkamobile.model.User;
 

@@ -3,6 +3,8 @@ package jkartkowka.jkartkwkamobile;
 import java.util.ArrayList;
 
 import jkartkowka.jkartkwkamobile.model.JKTest;
+import jkartkowka.jkartkwkamobile.network.RequestSender;
+import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 
 /**
  * Created by marian on 19.12.2015.

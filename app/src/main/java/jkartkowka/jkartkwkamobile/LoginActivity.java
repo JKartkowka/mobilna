@@ -6,6 +6,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import jkartkowka.jkartkwkamobile.model.UserType;
+import jkartkowka.jkartkwkamobile.network.ErrorHandler;
+import jkartkowka.jkartkwkamobile.network.RequestSender;
+import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 
 public class LoginActivity extends JKActivity {
 
@@ -34,13 +37,13 @@ public class LoginActivity extends JKActivity {
             loginInteractor = new LoginInteractor(requestSender);
             loginInteractor.login(inputLogin.getText().toString(), inputPassword.getText().toString(), new StandardGenericResponseHandler<UserType>() {
                 @Override
-                void onSuccess(UserType responseObject) {
+                public void onSuccess(UserType responseObject) {
                     makeToast("Logged in as: " + responseObject.toString());
                     wireframe.navigateToMenu();
                 }
 
                 @Override
-                void onFailure(ErrorHandler error) {
+                public void onFailure(ErrorHandler error) {
                     super.onFailure(error);
                 }
             });

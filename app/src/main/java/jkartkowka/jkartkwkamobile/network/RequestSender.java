@@ -1,4 +1,4 @@
-package jkartkowka.jkartkwkamobile;
+package jkartkowka.jkartkwkamobile.network;
 
 import android.content.Context;
 
@@ -6,6 +6,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
 import jkartkowka.jkartkwkamobile.model.User;
+import jkartkowka.jkartkwkamobile.network.requests.AuthenticationRequest;
+import jkartkowka.jkartkwkamobile.network.requests.JKRequest;
 
 /**
  * Created by marian on 22.11.15.

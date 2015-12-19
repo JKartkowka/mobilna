@@ -5,6 +5,9 @@ import android.os.Bundle;
 import java.util.ArrayList;
 
 import jkartkowka.jkartkwkamobile.model.JKTest;
+import jkartkowka.jkartkwkamobile.network.ErrorHandler;
+import jkartkowka.jkartkwkamobile.network.RequestSender;
+import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 
 public class TestsListActivity extends JKActivity {
 
@@ -25,12 +28,12 @@ public class TestsListActivity extends JKActivity {
         super.onResume();
         interactor.testsList(new StandardGenericResponseHandler<ArrayList<JKTest>>() {
             @Override
-            void onSuccess(ArrayList<JKTest> responseObject) {
+            public void onSuccess(ArrayList<JKTest> responseObject) {
                 super.onSuccess(responseObject);
             }
 
             @Override
-            void onFailure(ErrorHandler error) {
+            public void onFailure(ErrorHandler error) {
                 super.onFailure(error);
             }
         });
