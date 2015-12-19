@@ -1,4 +1,4 @@
-package jkartkowka.jkartkwkamobile;
+package jkartkowka.jkartkwkamobile.model;
 
 /**
  * Created by marian on 04.12.15.

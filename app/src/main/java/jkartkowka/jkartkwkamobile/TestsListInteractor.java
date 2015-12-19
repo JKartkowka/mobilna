@@ -2,6 +2,8 @@ package jkartkowka.jkartkwkamobile;
 
 import java.util.ArrayList;
 
+import jkartkowka.jkartkwkamobile.model.JKTest;
+
 /**
  * Created by marian on 19.12.2015.
  */

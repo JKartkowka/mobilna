@@ -1,5 +1,7 @@
 package jkartkowka.jkartkwkamobile;
 
+import jkartkowka.jkartkwkamobile.model.User;
+
 /**
  * Created by marian on 04.12.15.
  */

@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import jkartkowka.jkartkwkamobile.model.UserType;
+
 public class LoginActivity extends JKActivity {
 
     private LoginInteractor loginInteractor;

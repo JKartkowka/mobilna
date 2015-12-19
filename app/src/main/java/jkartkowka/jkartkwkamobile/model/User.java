@@ -1,4 +1,4 @@
-package jkartkowka.jkartkwkamobile;
+package jkartkowka.jkartkwkamobile.model;
 
 import java.util.Date;
 

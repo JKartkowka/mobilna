@@ -5,6 +5,8 @@ import android.content.Context;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
+import jkartkowka.jkartkwkamobile.model.User;
+
 /**
  * Created by marian on 22.11.15.
  */

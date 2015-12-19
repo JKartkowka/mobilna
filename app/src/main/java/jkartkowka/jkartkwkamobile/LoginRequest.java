@@ -3,6 +3,9 @@ package jkartkowka.jkartkwkamobile;
 import java.util.Date;
 import java.util.HashMap;
 
+import jkartkowka.jkartkwkamobile.model.User;
+import jkartkowka.jkartkwkamobile.model.UserType;
+
 /**
  * Created by marian on 22.11.15.
  */

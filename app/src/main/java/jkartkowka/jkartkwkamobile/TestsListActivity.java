@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
+import jkartkowka.jkartkwkamobile.model.JKTest;
+
 public class TestsListActivity extends JKActivity {
 
     private TestsListWireframe wireframe;
