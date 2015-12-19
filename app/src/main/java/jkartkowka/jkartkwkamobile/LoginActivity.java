@@ -1,6 +1,5 @@
 package jkartkowka.jkartkwkamobile;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -13,6 +12,7 @@ public class LoginActivity extends JKActivity {
     private ImageButton buttonLogin;
     private EditText inputLogin;
     private EditText inputPassword;
+    private LoginWireframe wireframe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,7 @@ public class LoginActivity extends JKActivity {
         inputLogin = (EditText) findViewById(R.id.inputLogin);
         inputPassword = (EditText) findViewById(R.id.inputPassword);
         setupAutodismissingKeyboard(findViewById(R.id.ALparentview));
+        wireframe = new LoginWireframe(this);
     }
 
     void makeToast(String text) {
@@ -38,7 +39,7 @@ public class LoginActivity extends JKActivity {
                 @Override
                 void onSuccess(UserType responseObject) {
                     makeToast("Logged in as: " + responseObject.toString());
-                    navigateToMenu();
+                    wireframe.navigateToMenu();
                 }
 
                 @Override
@@ -47,11 +48,6 @@ public class LoginActivity extends JKActivity {
                 }
             });
         }
-    }
-
-    private void navigateToMenu() {
-        Intent intent = new Intent(this, MainMenuActivity.class); //stating with intent 'cause it's possible to attach additional values to it
-        startActivity(intent);
     }
 
 
