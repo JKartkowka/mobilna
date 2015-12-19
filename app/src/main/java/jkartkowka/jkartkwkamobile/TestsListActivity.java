@@ -1,6 +1,8 @@
 package jkartkowka.jkartkwkamobile;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -22,6 +24,14 @@ public class TestsListActivity extends JKActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tests_list);
         listView = (ListView) findViewById(R.id.listView);
+        listView.setClickable(true);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object element = listView.getItemAtPosition(position);
+                makeToast(element.toString());
+            }
+        });
         wireframe = new TestsListWireframe(this);
         RequestSender requestSender = new RequestSender(getApplicationContext());
         interactor = new TestsListInteractor(requestSender);
@@ -47,6 +57,5 @@ public class TestsListActivity extends JKActivity {
         ArrayAdapter<JKTest> adapter = new ArrayAdapter<JKTest>(this, R.layout.layout_row, testsList);
         listView.setAdapter(adapter);
     }
-
 
 }
