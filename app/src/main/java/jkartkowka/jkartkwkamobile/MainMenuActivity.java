@@ -12,6 +12,7 @@ public class MainMenuActivity extends JKActivity {
     private ImageButton buttonPopQuiz;
     private ImageButton buttonGroups;
     private ImageButton buttonLogOut;
+    private MainMenuWireframe wireframe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +21,11 @@ public class MainMenuActivity extends JKActivity {
         buttonPopQuiz = (ImageButton) findViewById(R.id.buttonPopQuiz);
         buttonGroups = (ImageButton) findViewById(R.id.buttonGroups);
         buttonLogOut = (ImageButton) findViewById(R.id.buttonLogOut);
+        wireframe = new MainMenuWireframe(this);
     }
 
     public void onPopQuizClick(View v) {
-        Toast.makeText(this, "Pop Quiz", Toast.LENGTH_SHORT).show();
+        wireframe.navigateToTestsList();
     }
 
     public void onGroupsClick(View v) {
