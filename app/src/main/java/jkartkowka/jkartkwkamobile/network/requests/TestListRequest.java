@@ -40,8 +40,8 @@ public class TestListRequest implements StandardRequest {
     @Override
     public void mockedResponse() {
         ArrayList<JKTest> testsList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            JKTest test = new JKTest(i, "Kartkówka " + 1);
+        for (int i = 1; i <= 50; i++) {
+            JKTest test = new JKTest(i, "Kartkówka " + i);
             testsList.add(test);
         }
 
