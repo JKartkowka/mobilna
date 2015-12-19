@@ -23,8 +23,8 @@ public class TestsListActivity extends JKListActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Object element = listView.getItemAtPosition(position);
-                makeToast(element.toString());
+                JKTest test = (JKTest) listView.getItemAtPosition(position);
+                wireframe.navigateToGroupsWithTest(test);
             }
         });
         titleLabel.setText("Wybierz kartkówkę, którą chcesz przeprowadzić");
