@@ -3,12 +3,11 @@ package jkartkowka.jkartkwkamobile;
 /**
  * Created by marian on 22.11.15.
  */
-public class LoginInteractor {
+public class LoginInteractor extends JKInteractor {
 
-    private final RequestSender requestSender;
 
     public LoginInteractor(RequestSender requestSender) {
-        this.requestSender = requestSender;
+        super(requestSender);
     }
 
     public void login(String login, String password, final StandardGenericResponseHandler<UserType> standardResponseHandler) {

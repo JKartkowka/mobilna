@@ -1,0 +1,10 @@
+package jkartkowka.jkartkwkamobile;
+
+/**
+ * Created by marian on 19.12.2015.
+ */
+public class TestsListWireframe extends JKWireframe {
+    public TestsListWireframe(JKActivity activity) {
+        super(activity);
+    }
+}

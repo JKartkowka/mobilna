@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 public class LoginActivity extends JKActivity {
 
@@ -23,10 +22,6 @@ public class LoginActivity extends JKActivity {
         inputPassword = (EditText) findViewById(R.id.inputPassword);
         setupAutodismissingKeyboard(findViewById(R.id.ALparentview));
         wireframe = new LoginWireframe(this);
-    }
-
-    void makeToast(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
     }
 
     public void onLogInClick(View v) {
