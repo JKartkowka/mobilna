@@ -29,12 +29,11 @@ public class TestsListActivity extends JKActivity {
         interactor.testsList(new StandardGenericResponseHandler<ArrayList<JKTest>>() {
             @Override
             public void onSuccess(ArrayList<JKTest> responseObject) {
-                super.onSuccess(responseObject);
             }
 
             @Override
             public void onFailure(ErrorHandler error) {
-                super.onFailure(error);
+                makeToast(error.toString());
             }
         });
     }
