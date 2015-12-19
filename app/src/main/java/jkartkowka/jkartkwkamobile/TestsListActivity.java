@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -13,18 +12,14 @@ import jkartkowka.jkartkwkamobile.network.ErrorHandler;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 
-public class TestsListActivity extends JKActivity {
+public class TestsListActivity extends JKListActivity {
 
     private TestsListWireframe wireframe;
     private TestsListInteractor interactor;
-    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tests_list);
-        listView = (ListView) findViewById(R.id.listView);
-        listView.setClickable(true);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -32,6 +27,7 @@ public class TestsListActivity extends JKActivity {
                 makeToast(element.toString());
             }
         });
+        titleLabel.setText("Wybierz kartkówkę, którą chcesz przeprowadzić");
         wireframe = new TestsListWireframe(this);
         RequestSender requestSender = new RequestSender(getApplicationContext());
         interactor = new TestsListInteractor(requestSender);
