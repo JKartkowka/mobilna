@@ -40,7 +40,7 @@ public class GroupListRequest implements StandardRequest {
     @Override
     public void mockedResponse() {
         ArrayList<JKGroup> testsList = new ArrayList<>();
-        for (int i = 1; i <= 50; i++) {
+        for (int i = 1; i <= 5; i++) {
             JKGroup group = new JKGroup(i, "Grupa " + i);
             testsList.add(group);
         }

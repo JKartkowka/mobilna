@@ -2,6 +2,9 @@ package jkartkowka.jkartkwkamobile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
@@ -22,6 +25,13 @@ public class GroupsListActivity extends JKListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                JKGroup group = (JKGroup) listView.getItemAtPosition(position);
+                makeToast(group.toString());
+            }
+        });
         titleLabel.setText("Wybierz grupę zajęciową, dla której chcesz przeprowadzić kartkówkę:");
         Intent intent = getIntent();
         testId = intent.getIntExtra("testID", -1);
@@ -45,7 +55,8 @@ public class GroupsListActivity extends JKListActivity {
         });
     }
 
-    private void reloadData(ArrayList<JKGroup> responseObject) {
-
+    private void reloadData(ArrayList<JKGroup> groupsList) {
+        ArrayAdapter<JKGroup> adapter = new ArrayAdapter<JKGroup>(this, R.layout.layout_row, groupsList);
+        listView.setAdapter(adapter);
     }
 }
