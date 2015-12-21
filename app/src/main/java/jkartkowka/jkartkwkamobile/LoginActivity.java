@@ -1,11 +1,14 @@
 package jkartkowka.jkartkwkamobile;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
+
+import jkartkowka.jkartkwkamobile.model.UserType;
+import jkartkowka.jkartkwkamobile.network.ErrorHandler;
+import jkartkowka.jkartkwkamobile.network.RequestSender;
+import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 
 public class LoginActivity extends JKActivity {
 
@@ -13,6 +16,7 @@ public class LoginActivity extends JKActivity {
     private ImageButton buttonLogin;
     private EditText inputLogin;
     private EditText inputPassword;
+    private LoginWireframe wireframe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +26,7 @@ public class LoginActivity extends JKActivity {
         inputLogin = (EditText) findViewById(R.id.inputLogin);
         inputPassword = (EditText) findViewById(R.id.inputPassword);
         setupAutodismissingKeyboard(findViewById(R.id.ALparentview));
-    }
-
-    void makeToast(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+        wireframe = new LoginWireframe(this);
     }
 
     public void onLogInClick(View v) {
@@ -36,22 +37,17 @@ public class LoginActivity extends JKActivity {
             loginInteractor = new LoginInteractor(requestSender);
             loginInteractor.login(inputLogin.getText().toString(), inputPassword.getText().toString(), new StandardGenericResponseHandler<UserType>() {
                 @Override
-                void onSuccess(UserType responseObject) {
+                public void onSuccess(UserType responseObject) {
                     makeToast("Logged in as: " + responseObject.toString());
-                    navigateToMenu();
+                    wireframe.navigateToMenu();
                 }
 
                 @Override
-                void onFailure(ErrorHandler error) {
+                public void onFailure(ErrorHandler error) {
                     super.onFailure(error);
                 }
             });
         }
-    }
-
-    private void navigateToMenu() {
-        Intent intent = new Intent(this, MainMenuActivity.class); //stating with intent 'cause it's possible to attach additional values to it
-        startActivity(intent);
     }
 
 
