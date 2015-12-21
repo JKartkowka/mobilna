@@ -27,7 +27,7 @@ public class TestsListActivity extends JKListActivity {
                 wireframe.navigateToGroupsWithTest(test);
             }
         });
-        titleLabel.setText("Wybierz kartkówkę, którą chcesz przeprowadzić");
+        titleLabel.setText("Wybierz kartkówkę, którą chcesz przeprowadzić:");
         wireframe = new TestsListWireframe(this);
         RequestSender requestSender = new RequestSender(getApplicationContext());
         interactor = new TestsListInteractor(requestSender);
