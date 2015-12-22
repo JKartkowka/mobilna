@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import jkartkowka.jkartkwkamobile.model.UserType;
 import jkartkowka.jkartkwkamobile.network.ErrorHandler;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
@@ -21,6 +23,7 @@ public class LoginActivity extends JKActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_login);
         buttonLogin = (ImageButton) findViewById(R.id.buttonLogIn);
         inputLogin = (EditText) findViewById(R.id.inputLogin);
