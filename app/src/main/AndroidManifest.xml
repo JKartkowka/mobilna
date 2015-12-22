@@ -36,6 +36,9 @@
         <activity
             android:name=".CheckGroupsListActivity"
             android:label="@string/title_activity_check_groups_list"/>
+        <activity
+            android:name=".GroupMembersListActivity"
+            android:label="@string/title_activity_group_details_list"/>
     </application>
 
 

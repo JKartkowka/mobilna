@@ -3,4 +3,5 @@
     <string name="title_activity_tests_list">TestsListActivity</string>
     <string name="title_activity_groups_list">GroupsListActivity</string>
     <string name="title_activity_check_groups_list">CheckGroupsList</string>
+    <string name="title_activity_group_details_list">GroupDetailsList</string>
 </resources>

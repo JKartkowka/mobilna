@@ -16,11 +16,10 @@ import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 /**
  * Created by maciej on 22.12.15.
  */
-public class CheckGroupsListActivity extends JKListActivity {
-
-    private CheckGroupsListWireframe wireframe;
+public class GroupMembersListActivity extends JKListActivity {
+    private GroupMembersListWireframe wireframe;
     private int groupID;
-    private CheckGroupsListInteractor interactor;
+    private GroupMembersListInteractor interactor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,21 +28,20 @@ public class CheckGroupsListActivity extends JKListActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 JKGroup group = (JKGroup) listView.getItemAtPosition(position);
-                wireframe.navigateToGroupMembersList(group);
                 makeToast(group.toString());
             }
         });
-        titleLabel.setText("Wybierz grupę zajęciową, którą chcesz przejrzeć:");
+        titleLabel.setText("Lista osób w grupie zajęciowej");
         Intent intent = getIntent();
-        groupID = intent.getIntExtra("gruopID", -1);
-        wireframe = new CheckGroupsListWireframe(this);
-        interactor = new CheckGroupsListInteractor(new RequestSender(getApplicationContext()));
+        groupID = intent.getIntExtra("groupID", -1);
+        wireframe = new GroupMembersListWireframe(this);
+        interactor = new GroupMembersListInteractor(new RequestSender(getApplicationContext()));
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        interactor.groupsList(new StandardGenericResponseHandler<ArrayList<JKGroup>>() {
+        interactor.groupMembers(new StandardGenericResponseHandler<ArrayList<JKGroup>>() {
             @Override
             public void onSuccess(ArrayList<JKGroup> responseObject) {
                 reloadData(responseObject);
