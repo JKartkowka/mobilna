@@ -39,7 +39,11 @@
         <activity
             android:name=".GroupMembersListActivity"
             android:label="@string/title_activity_group_details_list"/>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="4f873f6ee95ad4d7d3ae9e3704481e62cd04ed76" />
     </application>
 
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
