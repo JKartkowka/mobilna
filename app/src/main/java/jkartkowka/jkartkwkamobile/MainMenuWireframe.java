@@ -13,4 +13,5 @@ public class MainMenuWireframe extends JKWireframe {
         makeIntent(TestsListActivity.class);
     }
 
+    public void navigateToCheckGroupsList() { makeIntent(CheckGroupsListActivity.class);}
 }

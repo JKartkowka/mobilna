@@ -29,7 +29,7 @@ public class MainMenuActivity extends JKActivity {
     }
 
     public void onGroupsClick(View v) {
-        Toast.makeText(this, "Groups", Toast.LENGTH_SHORT).show();
+        wireframe.navigateToCheckGroupsList();
     }
 
     public void onLogOutClick(View v) {

@@ -4,7 +4,7 @@ package jkartkowka.jkartkwkamobile.model;
  * Created by marian on 21.12.2015.
  */
 public class JKGroup {
-    private final int id;
+    public final int id;
     private final String name;
 
     public JKGroup(int id, String name) {
