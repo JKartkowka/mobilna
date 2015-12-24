@@ -29,7 +29,7 @@ public class GroupsListActivity extends JKListActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 JKGroup group = (JKGroup) listView.getItemAtPosition(position);
-                makeToast(group.toString());
+                wireframe.navigateToAuthentication(testId, group.id);
             }
         });
         titleLabel.setText("Wybierz grupę zajęciową, dla której chcesz przeprowadzić kartkówkę:");

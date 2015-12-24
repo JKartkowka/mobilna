@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="jkartkowka.jkartkwkamobile">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -29,21 +31,23 @@
         </activity>
         <activity
             android:name=".TestsListActivity"
-            android:label="@string/title_activity_tests_list"/>
+            android:label="@string/title_activity_tests_list" />
         <activity
             android:name=".GroupsListActivity"
-            android:label="@string/title_activity_groups_list"/>
+            android:label="@string/title_activity_groups_list" />
         <activity
             android:name=".CheckGroupsListActivity"
-            android:label="@string/title_activity_check_groups_list"/>
+            android:label="@string/title_activity_check_groups_list" />
         <activity
             android:name=".GroupMembersListActivity"
-            android:label="@string/title_activity_group_details_list"/>
+            android:label="@string/title_activity_group_details_list" />
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="4f873f6ee95ad4d7d3ae9e3704481e62cd04ed76" />
-    </application>
 
+        <activity android:name=".LecturerAuthenticationActivity"></activity>
+    </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
