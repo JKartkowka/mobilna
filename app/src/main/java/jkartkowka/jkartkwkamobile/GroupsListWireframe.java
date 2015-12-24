@@ -11,7 +11,7 @@ public class GroupsListWireframe extends JKWireframe {
     }
 
     public void navigateToAuthentication(int testId, int groupId) {
-        Intent intent = new Intent(activity, AuthenticationActivity.class);
+        Intent intent = new Intent(activity, LecturerAuthenticationActivity.class);
         intent.putExtra("testID", testId);
         intent.putExtra("groupID", groupId);
         activity.startActivity(intent);
