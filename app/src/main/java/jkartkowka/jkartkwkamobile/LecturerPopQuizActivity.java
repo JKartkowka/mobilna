@@ -1,6 +1,7 @@
 package jkartkowka.jkartkwkamobile;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 
@@ -8,13 +9,23 @@ public class LecturerPopQuizActivity extends JKActivity {
 
     private LecturerPopQuizWireframe wireframe;
     private LecturerPopQuizInteractor interactor;
+    private TextView popQuizNameLabel;
+    private TextView groupNameLabel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lecturer_pop_quiz);
         wireframe = new LecturerPopQuizWireframe(this);
-        interactor = new LecturerPopQuizInteractor(new RequestSender(getApplicationContext()));
+        interactor = new LecturerPopQuizInteractor(new RequestSender(getApplicationContext()), getIntent());
+        popQuizNameLabel = (TextView) findViewById(R.id.textView5);
+        groupNameLabel = (TextView) findViewById(R.id.textView7);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        popQuizNameLabel.setText(interactor.popQuizName);
+        groupNameLabel.setText(interactor.groupName);
+    }
 }
