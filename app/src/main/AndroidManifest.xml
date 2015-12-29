@@ -58,9 +58,12 @@
             android:name="io.fabric.ApiKey"
             android:value="4f873f6ee95ad4d7d3ae9e3704481e62cd04ed76" />
 
-        <activity android:name=".LecturerAuthenticationActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".LecturerAuthenticationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LecturerPopQuizActivity"
+            android:label="@string/title_activity_lecturer_pop_quiz"></activity>
     </application>
-
 
 </manifest>
