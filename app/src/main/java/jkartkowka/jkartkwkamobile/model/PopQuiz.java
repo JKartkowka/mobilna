@@ -1,13 +1,13 @@
 package jkartkowka.jkartkwkamobile.model;
 
-public class JKTest {
+public class PopQuiz {
     public final int id;
     private final String name;
     private int questionCount;
     private int correctAnswers;
     private float grade;
 
-    public JKTest(int id, String name, int questionCount, int correctAnswers, float grade) {
+    public PopQuiz(int id, String name, int questionCount, int correctAnswers, float grade) {
         this.id = id;
         this.name = name;
         this.questionCount = questionCount;

@@ -9,9 +9,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-/**
- * Created by marian on 19.12.2015.
- */
 public class JKActivity extends ActionBarActivity {
 
     public void setupAutodismissingKeyboard(View view) {

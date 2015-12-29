@@ -8,9 +8,6 @@ import jkartkowka.jkartkwkamobile.model.UserType;
 import jkartkowka.jkartkwkamobile.network.ErrorHandler;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 
-/**
- * Created by marian on 22.11.15.
- */
 public class LoginRequest implements AuthenticationRequest {
     public final String login;
     public final String password;
@@ -55,9 +52,7 @@ public class LoginRequest implements AuthenticationRequest {
         else
             type = UserType.UTStudent;
 
-        User user = new User(accessToken, refreshToken, accessTokenExpirationDate, type);
-
-        return user;
+        return new User(accessToken, refreshToken, accessTokenExpirationDate, type);
     }
 
     @Override

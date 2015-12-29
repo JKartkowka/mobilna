@@ -3,17 +3,14 @@ package jkartkowka.jkartkwkamobile.network.requests;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import jkartkowka.jkartkwkamobile.model.JKGroup;
+import jkartkowka.jkartkwkamobile.model.Group;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 import jkartkowka.jkartkwkamobile.network.StandardRequest;
 
-/**
- * Created by marian on 21.12.2015.
- */
 public class GroupListRequest implements StandardRequest {
-    private final StandardGenericResponseHandler<ArrayList<JKGroup>> responseHandler;
+    private final StandardGenericResponseHandler<ArrayList<Group>> responseHandler;
 
-    public GroupListRequest(StandardGenericResponseHandler<ArrayList<JKGroup>> responseHandler) {
+    public GroupListRequest(StandardGenericResponseHandler<ArrayList<Group>> responseHandler) {
         this.responseHandler = responseHandler;
     }
 
@@ -39,12 +36,12 @@ public class GroupListRequest implements StandardRequest {
 
     @Override
     public void mockedResponse() {
-        ArrayList<JKGroup> testsList = new ArrayList<>();
+        ArrayList<Group> popQuizList = new ArrayList<>();
         for (int i = 1; i <= 5; i++) {
-            JKGroup group = new JKGroup(i, "Grupa " + i);
-            testsList.add(group);
+            Group group = new Group(i, "Grupa " + i);
+            popQuizList.add(group);
         }
 
-        responseHandler.onSuccess(testsList);
+        responseHandler.onSuccess(popQuizList);
     }
 }

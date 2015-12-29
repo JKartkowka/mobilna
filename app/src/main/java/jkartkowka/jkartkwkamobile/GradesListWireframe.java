@@ -4,14 +4,14 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
-import jkartkowka.jkartkwkamobile.model.JKTest;
+import jkartkowka.jkartkwkamobile.model.PopQuiz;
 
 public class GradesListWireframe extends JKWireframe {
     public GradesListWireframe(JKActivity activity) {
         super(activity);
     }
 
-    public void showTestResult(JKTest chosenPopQuiz, Context applicationContext) {
+    public void showPopQuizResult(PopQuiz chosenPopQuiz, Context applicationContext) {
         AlertDialog.Builder alert = new AlertDialog.Builder(applicationContext);
         alert.setTitle("Wyniki kartkówki\n" + "(" + chosenPopQuiz.getName() + ")");
         alert.setMessage("Zdobyłeś " + chosenPopQuiz.getResult() + " punktów.\nTwoja ocena to: " + chosenPopQuiz.getGrade());

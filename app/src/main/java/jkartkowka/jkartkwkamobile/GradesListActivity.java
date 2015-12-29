@@ -7,7 +7,7 @@ import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
-import jkartkowka.jkartkwkamobile.model.JKTest;
+import jkartkowka.jkartkwkamobile.model.PopQuiz;
 import jkartkowka.jkartkwkamobile.network.ErrorHandler;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
@@ -23,8 +23,8 @@ public class GradesListActivity extends JKListActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                JKTest test = (JKTest) listView.getItemAtPosition(position);
-                wireframe.showTestResult(test, GradesListActivity.this);
+                PopQuiz popQuiz = (PopQuiz) listView.getItemAtPosition(position);
+                wireframe.showPopQuizResult(popQuiz, GradesListActivity.this);
             }
         });
         titleLabel.setText("Wybierz kartkówkę, której wynik chcesz zobaczyć:");
@@ -36,9 +36,9 @@ public class GradesListActivity extends JKListActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        interactor.gradesList(new StandardGenericResponseHandler<ArrayList<JKTest>>() {
+        interactor.gradesList(new StandardGenericResponseHandler<ArrayList<PopQuiz>>() {
             @Override
-            public void onSuccess(ArrayList<JKTest> responseObject) {
+            public void onSuccess(ArrayList<PopQuiz> responseObject) {
                 reloadData(responseObject);
             }
 
@@ -49,8 +49,8 @@ public class GradesListActivity extends JKListActivity {
         });
     }
 
-    private void reloadData(ArrayList<JKTest> gradesList) {
-        ArrayAdapter<JKTest> adapter = new ArrayAdapter<JKTest>(this, R.layout.layout_row, gradesList);
+    private void reloadData(ArrayList<PopQuiz> gradesList) {
+        ArrayAdapter<PopQuiz> adapter = new ArrayAdapter<PopQuiz>(this, R.layout.layout_row, gradesList);
         listView.setAdapter(adapter);
     }
 

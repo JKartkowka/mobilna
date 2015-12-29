@@ -39,8 +39,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TestsListActivity"
-            android:label="@string/title_activity_tests_list" />
+            android:name=".PopQuizListActivity"
+            android:label="@string/title_activity_popQuiz_list" />
         <activity
             android:name=".GroupsListActivity"
             android:label="@string/title_activity_groups_list" />

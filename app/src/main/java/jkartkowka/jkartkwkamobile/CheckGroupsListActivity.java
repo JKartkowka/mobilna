@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
-import jkartkowka.jkartkwkamobile.model.JKGroup;
+import jkartkowka.jkartkwkamobile.model.Group;
 import jkartkowka.jkartkwkamobile.network.ErrorHandler;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
@@ -25,7 +25,7 @@ public class CheckGroupsListActivity extends JKListActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                JKGroup group = (JKGroup) listView.getItemAtPosition(position);
+                Group group = (Group) listView.getItemAtPosition(position);
                 wireframe.navigateToGroupMembersList(group);
                 makeToast(group.toString());
             }
@@ -40,9 +40,9 @@ public class CheckGroupsListActivity extends JKListActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        interactor.groupsList(new StandardGenericResponseHandler<ArrayList<JKGroup>>() {
+        interactor.groupsList(new StandardGenericResponseHandler<ArrayList<Group>>() {
             @Override
-            public void onSuccess(ArrayList<JKGroup> responseObject) {
+            public void onSuccess(ArrayList<Group> responseObject) {
                 reloadData(responseObject);
             }
 
@@ -53,8 +53,8 @@ public class CheckGroupsListActivity extends JKListActivity {
         });
     }
 
-    private void reloadData(ArrayList<JKGroup> groupsList) {
-        ArrayAdapter<JKGroup> adapter = new ArrayAdapter<JKGroup>(this, R.layout.layout_row, groupsList);
+    private void reloadData(ArrayList<Group> groupsList) {
+        ArrayAdapter<Group> adapter = new ArrayAdapter<Group>(this, R.layout.layout_row, groupsList);
         listView.setAdapter(adapter);
     }
 }

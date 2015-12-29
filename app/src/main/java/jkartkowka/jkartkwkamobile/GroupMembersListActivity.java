@@ -8,14 +8,11 @@ import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
-import jkartkowka.jkartkwkamobile.model.JKGroup;
+import jkartkowka.jkartkwkamobile.model.Group;
 import jkartkowka.jkartkwkamobile.network.ErrorHandler;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 
-/**
- * Created by maciej on 22.12.15.
- */
 public class GroupMembersListActivity extends JKListActivity {
     private GroupMembersListWireframe wireframe;
     private int groupID;
@@ -27,7 +24,7 @@ public class GroupMembersListActivity extends JKListActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                JKGroup group = (JKGroup) listView.getItemAtPosition(position);
+                Group group = (Group) listView.getItemAtPosition(position);
                 makeToast(group.toString());
             }
         });
@@ -41,9 +38,9 @@ public class GroupMembersListActivity extends JKListActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        interactor.groupMembers(new StandardGenericResponseHandler<ArrayList<JKGroup>>() {
+        interactor.groupMembers(new StandardGenericResponseHandler<ArrayList<Group>>() {
             @Override
-            public void onSuccess(ArrayList<JKGroup> responseObject) {
+            public void onSuccess(ArrayList<Group> responseObject) {
                 reloadData(responseObject);
             }
 
@@ -54,8 +51,8 @@ public class GroupMembersListActivity extends JKListActivity {
         });
     }
 
-    private void reloadData(ArrayList<JKGroup> groupsList) {
-        ArrayAdapter<JKGroup> adapter = new ArrayAdapter<JKGroup>(this, R.layout.layout_row, groupsList);
+    private void reloadData(ArrayList<Group> groupsList) {
+        ArrayAdapter<Group> adapter = new ArrayAdapter<Group>(this, R.layout.layout_row, groupsList);
         listView.setAdapter(adapter);
     }
 }

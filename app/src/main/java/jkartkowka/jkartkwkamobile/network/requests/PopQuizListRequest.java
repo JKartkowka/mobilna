@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-import jkartkowka.jkartkwkamobile.model.JKTest;
+import jkartkowka.jkartkwkamobile.model.PopQuiz;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 import jkartkowka.jkartkwkamobile.network.StandardRequest;
 
-public class TestListRequest implements StandardRequest {
-    private final StandardGenericResponseHandler<ArrayList<JKTest>> responseHandler;
+public class PopQuizListRequest implements StandardRequest {
+    private final StandardGenericResponseHandler<ArrayList<PopQuiz>> responseHandler;
 
-    public TestListRequest(StandardGenericResponseHandler<ArrayList<JKTest>> responseHandler) {
+    public PopQuizListRequest(StandardGenericResponseHandler<ArrayList<PopQuiz>> responseHandler) {
         this.responseHandler = responseHandler;
     }
 
@@ -37,15 +37,15 @@ public class TestListRequest implements StandardRequest {
 
     @Override
     public void mockedResponse() {
-        ArrayList<JKTest> testsList = new ArrayList<>();
+        ArrayList<PopQuiz> popQuizList = new ArrayList<>();
         Random randomGenerator = new Random();
         for (int i = 1; i <= 10; i++) {
             int questionCount = randomGenerator.nextInt(20) + 10;
             int correctAnswers = randomGenerator.nextInt(questionCount);
-            JKTest test = new JKTest(i, "Kartkówka " + i, questionCount, correctAnswers, 2.0f);
-            testsList.add(test);
+            PopQuiz popQuiz = new PopQuiz(i, "Kartkówka " + i, questionCount, correctAnswers, 2.0f);
+            popQuizList.add(popQuiz);
         }
 
-        responseHandler.onSuccess(testsList);
+        responseHandler.onSuccess(popQuizList);
     }
 }

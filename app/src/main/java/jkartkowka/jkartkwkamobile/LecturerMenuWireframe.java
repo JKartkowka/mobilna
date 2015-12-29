@@ -6,8 +6,8 @@ public class LecturerMenuWireframe extends JKWireframe {
         super(lecturerMenuActivity);
     }
 
-    public void navigateToTestsList() {
-        makeIntent(TestsListActivity.class);
+    public void navigateToPopQuizList() {
+        makeIntent(PopQuizListActivity.class);
     }
 
     public void navigateToCheckGroupsList() { makeIntent(CheckGroupsListActivity.class);}

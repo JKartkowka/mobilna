@@ -22,7 +22,7 @@ public class LecturerMenuActivity extends JKActivity {
     }
 
     public void onPopQuizClick(View v) {
-        wireframe.navigateToTestsList();
+        wireframe.navigateToPopQuizList();
     }
 
     public void onGroupsClick(View v) {
