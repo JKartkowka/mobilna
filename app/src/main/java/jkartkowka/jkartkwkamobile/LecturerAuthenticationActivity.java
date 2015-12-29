@@ -1,6 +1,7 @@
 package jkartkowka.jkartkwkamobile;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 import jkartkowka.jkartkwkamobile.network.ErrorHandler;
@@ -36,5 +37,9 @@ public class LecturerAuthenticationActivity extends JKActivity {
                 super.onFailure(error);
             }
         });
+    }
+
+    public void onConfirmationClick(View v) {
+        wireframe.navigateToPopQuiz();
     }
 }
