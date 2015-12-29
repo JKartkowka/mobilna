@@ -1,6 +1,7 @@
 package jkartkowka.jkartkwkamobile;
 
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -40,6 +41,16 @@ public class LecturerAuthenticationActivity extends JKActivity {
     }
 
     public void onConfirmationClick(View v) {
-        wireframe.navigateToPopQuiz();
+        interactor.activatePopQuiz(new StandardGenericResponseHandler<Pair<String, String>>() {
+            @Override
+            public void onSuccess(Pair<String, String> responseObject) {
+                wireframe.navigateToPopQuiz(responseObject.first, responseObject.second);
+            }
+
+            @Override
+            public void onFailure(ErrorHandler error) {
+                super.onFailure(error);
+            }
+        });
     }
 }

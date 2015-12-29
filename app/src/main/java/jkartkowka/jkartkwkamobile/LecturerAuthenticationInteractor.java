@@ -2,10 +2,12 @@ package jkartkowka.jkartkwkamobile;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Pair;
 
 import jkartkowka.jkartkwkamobile.network.ErrorHandler;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
+import jkartkowka.jkartkwkamobile.network.requests.ChangePopQuizStateRequest;
 import jkartkowka.jkartkwkamobile.network.requests.SecretRequest;
 
 public class LecturerAuthenticationInteractor extends JKInteractor {
@@ -42,4 +44,9 @@ public class LecturerAuthenticationInteractor extends JKInteractor {
         return currentActivity.getResources().getIdentifier("symbol" + secretId, "drawable", currentActivity.getPackageName());
     }
 
+    public void activatePopQuiz(StandardGenericResponseHandler<Pair<String, String>> responseHandler) {
+        ChangePopQuizStateRequest request = new ChangePopQuizStateRequest(groupId, popQuizId, responseHandler);
+
+        requestSender.sendRequest(request);
+    }
 }
