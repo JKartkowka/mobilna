@@ -8,14 +8,11 @@ import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
-import jkartkowka.jkartkwkamobile.model.JKGroup;
+import jkartkowka.jkartkwkamobile.model.Group;
 import jkartkowka.jkartkwkamobile.network.ErrorHandler;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 
-/**
- * Created by maciej on 22.12.15.
- */
 public class CheckGroupsListActivity extends JKListActivity {
 
     private CheckGroupsListWireframe wireframe;
@@ -28,14 +25,14 @@ public class CheckGroupsListActivity extends JKListActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                JKGroup group = (JKGroup) listView.getItemAtPosition(position);
+                Group group = (Group) listView.getItemAtPosition(position);
                 wireframe.navigateToGroupMembersList(group);
                 makeToast(group.toString());
             }
         });
         titleLabel.setText("Wybierz grupę zajęciową, którą chcesz przejrzeć:");
         Intent intent = getIntent();
-        groupID = intent.getIntExtra("gruopID", -1);
+        groupID = intent.getIntExtra("groupID", -1);
         wireframe = new CheckGroupsListWireframe(this);
         interactor = new CheckGroupsListInteractor(new RequestSender(getApplicationContext()));
     }
@@ -43,9 +40,9 @@ public class CheckGroupsListActivity extends JKListActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        interactor.groupsList(new StandardGenericResponseHandler<ArrayList<JKGroup>>() {
+        interactor.groupsList(new StandardGenericResponseHandler<ArrayList<Group>>() {
             @Override
-            public void onSuccess(ArrayList<JKGroup> responseObject) {
+            public void onSuccess(ArrayList<Group> responseObject) {
                 reloadData(responseObject);
             }
 
@@ -56,8 +53,8 @@ public class CheckGroupsListActivity extends JKListActivity {
         });
     }
 
-    private void reloadData(ArrayList<JKGroup> groupsList) {
-        ArrayAdapter<JKGroup> adapter = new ArrayAdapter<JKGroup>(this, R.layout.layout_row, groupsList);
+    private void reloadData(ArrayList<Group> groupsList) {
+        ArrayAdapter<Group> adapter = new ArrayAdapter<Group>(this, R.layout.layout_row, groupsList);
         listView.setAdapter(adapter);
     }
 }

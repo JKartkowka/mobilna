@@ -7,11 +7,7 @@ import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 import jkartkowka.jkartkwkamobile.network.requests.LoginRequest;
 
-/**
- * Created by marian on 22.11.15.
- */
 public class LoginInteractor extends JKInteractor {
-
 
     public LoginInteractor(RequestSender requestSender) {
         super(requestSender);

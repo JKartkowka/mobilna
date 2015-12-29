@@ -4,9 +4,6 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
 
-/**
- * Created by marian on 19.12.2015.
- */
 public class JKListActivity extends JKActivity {
 
     protected ListView listView;

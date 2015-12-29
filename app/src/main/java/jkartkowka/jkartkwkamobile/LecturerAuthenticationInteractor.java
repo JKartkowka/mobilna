@@ -8,24 +8,21 @@ import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 import jkartkowka.jkartkwkamobile.network.requests.SecretRequest;
 
-/**
- * Created by marian on 24.12.2015.
- */
 public class LecturerAuthenticationInteractor extends JKInteractor {
 
     private final int groupId;
-    private final int testId;
+    private final int popQuizId;
     private final Activity currentActivity;
 
     public LecturerAuthenticationInteractor(RequestSender requestSender, Intent intent, Activity activity) {
         super(requestSender);
         groupId = intent.getIntExtra("groupID", -1);
-        testId = intent.getIntExtra("testID", -1);
+        popQuizId = intent.getIntExtra("popQuizID", -1);
         currentActivity = activity;
     }
 
     public void getSecret(final StandardGenericResponseHandler<Integer> responseHandler) {
-        SecretRequest request = new SecretRequest(groupId, testId, new StandardGenericResponseHandler<Integer>() {
+        SecretRequest request = new SecretRequest(groupId, popQuizId, new StandardGenericResponseHandler<Integer>() {
             @Override
             public void onSuccess(Integer secretId) {
                 Integer drawableId = getDrawableId(secretId);

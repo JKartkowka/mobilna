@@ -9,9 +9,6 @@ import jkartkowka.jkartkwkamobile.model.User;
 import jkartkowka.jkartkwkamobile.network.requests.AuthenticationRequest;
 import jkartkowka.jkartkwkamobile.network.requests.JKRequest;
 
-/**
- * Created by marian on 22.11.15.
- */
 public class RequestSender {
     private final RequestQueue queue;
     private User user;

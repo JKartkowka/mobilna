@@ -5,31 +5,28 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-/**
- * Created by maciej on 09.12.15.
- */
-public class MainMenuActivity extends JKActivity {
+public class StudentMenuActivity extends JKActivity {
     private ImageButton buttonPopQuiz;
-    private ImageButton buttonGroups;
+    private ImageButton buttonGrades;
     private ImageButton buttonLogOut;
-    private MainMenuWireframe wireframe;
+    private StudentMenuWireframe wireframe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mainmenu);
+        setContentView(R.layout.activity_studentmenu);
         buttonPopQuiz = (ImageButton) findViewById(R.id.buttonPopQuiz);
-        buttonGroups = (ImageButton) findViewById(R.id.buttonGroups);
+        buttonGrades = (ImageButton) findViewById(R.id.buttonGrades);
         buttonLogOut = (ImageButton) findViewById(R.id.buttonLogOut);
-        wireframe = new MainMenuWireframe(this);
+        wireframe = new StudentMenuWireframe(this);
     }
 
     public void onPopQuizClick(View v) {
-        wireframe.navigateToTestsList();
+        Toast.makeText(this, "Proceed to student authentication", Toast.LENGTH_SHORT).show();
     }
 
-    public void onGroupsClick(View v) {
-        wireframe.navigateToCheckGroupsList();
+    public void onGradesClick(View v) {
+        wireframe.navigateToGradesList();
     }
 
     public void onLogOutClick(View v) {

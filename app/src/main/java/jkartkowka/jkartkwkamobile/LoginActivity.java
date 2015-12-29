@@ -40,9 +40,9 @@ public class LoginActivity extends JKActivity {
             loginInteractor = new LoginInteractor(requestSender);
             loginInteractor.login(inputLogin.getText().toString(), inputPassword.getText().toString(), new StandardGenericResponseHandler<UserType>() {
                 @Override
-                public void onSuccess(UserType responseObject) {
-                    makeToast("Logged in as: " + responseObject.toString());
-                    wireframe.navigateToMenu();
+                public void onSuccess(UserType receivedUserType) {
+                    makeToast("Logged in as: " + receivedUserType.toString());
+                    wireframe.navigateToMenu(receivedUserType);
                 }
 
                 @Override

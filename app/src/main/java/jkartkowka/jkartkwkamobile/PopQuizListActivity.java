@@ -1,6 +1,5 @@
 package jkartkowka.jkartkwkamobile;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -8,15 +7,15 @@ import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
-import jkartkowka.jkartkwkamobile.model.Group;
+import jkartkowka.jkartkwkamobile.model.PopQuiz;
 import jkartkowka.jkartkwkamobile.network.ErrorHandler;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 
-public class GroupMembersListActivity extends JKListActivity {
-    private GroupMembersListWireframe wireframe;
-    private int groupID;
-    private GroupMembersListInteractor interactor;
+public class PopQuizListActivity extends JKListActivity {
+
+    private PopQuizListWireframe wireframe;
+    private PopQuizListInteractor interactor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,23 +23,22 @@ public class GroupMembersListActivity extends JKListActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Group group = (Group) listView.getItemAtPosition(position);
-                makeToast(group.toString());
+                PopQuiz popQuiz = (PopQuiz) listView.getItemAtPosition(position);
+                wireframe.navigateToGroupsWithPopQuiz(popQuiz);
             }
         });
-        titleLabel.setText("Lista osób w grupie zajęciowej");
-        Intent intent = getIntent();
-        groupID = intent.getIntExtra("groupID", -1);
-        wireframe = new GroupMembersListWireframe(this);
-        interactor = new GroupMembersListInteractor(new RequestSender(getApplicationContext()));
+        titleLabel.setText("Wybierz kartkówkę, którą chcesz przeprowadzić:");
+        wireframe = new PopQuizListWireframe(this);
+        RequestSender requestSender = new RequestSender(getApplicationContext());
+        interactor = new PopQuizListInteractor(requestSender);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        interactor.groupMembers(new StandardGenericResponseHandler<ArrayList<Group>>() {
+        interactor.popQuizList(new StandardGenericResponseHandler<ArrayList<PopQuiz>>() {
             @Override
-            public void onSuccess(ArrayList<Group> responseObject) {
+            public void onSuccess(ArrayList<PopQuiz> responseObject) {
                 reloadData(responseObject);
             }
 
@@ -51,8 +49,9 @@ public class GroupMembersListActivity extends JKListActivity {
         });
     }
 
-    private void reloadData(ArrayList<Group> groupsList) {
-        ArrayAdapter<Group> adapter = new ArrayAdapter<Group>(this, R.layout.layout_row, groupsList);
+    private void reloadData(ArrayList<PopQuiz> popQuizList) {
+        ArrayAdapter<PopQuiz> adapter = new ArrayAdapter<PopQuiz>(this, R.layout.layout_row, popQuizList);
         listView.setAdapter(adapter);
     }
+
 }

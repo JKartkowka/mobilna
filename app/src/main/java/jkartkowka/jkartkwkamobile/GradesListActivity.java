@@ -7,15 +7,15 @@ import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
-import jkartkowka.jkartkwkamobile.model.JKTest;
+import jkartkowka.jkartkwkamobile.model.PopQuiz;
 import jkartkowka.jkartkwkamobile.network.ErrorHandler;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 
-public class TestsListActivity extends JKListActivity {
+public class GradesListActivity extends JKListActivity {
 
-    private TestsListWireframe wireframe;
-    private TestsListInteractor interactor;
+    private GradesListWireframe wireframe;
+    private GradesListInteractor interactor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,22 +23,22 @@ public class TestsListActivity extends JKListActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                JKTest test = (JKTest) listView.getItemAtPosition(position);
-                wireframe.navigateToGroupsWithTest(test);
+                PopQuiz popQuiz = (PopQuiz) listView.getItemAtPosition(position);
+                wireframe.showPopQuizResult(popQuiz, GradesListActivity.this);
             }
         });
-        titleLabel.setText("Wybierz kartkówkę, którą chcesz przeprowadzić:");
-        wireframe = new TestsListWireframe(this);
+        titleLabel.setText("Wybierz kartkówkę, której wynik chcesz zobaczyć:");
+        wireframe = new GradesListWireframe(this);
         RequestSender requestSender = new RequestSender(getApplicationContext());
-        interactor = new TestsListInteractor(requestSender);
+        interactor = new GradesListInteractor(requestSender);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        interactor.testsList(new StandardGenericResponseHandler<ArrayList<JKTest>>() {
+        interactor.gradesList(new StandardGenericResponseHandler<ArrayList<PopQuiz>>() {
             @Override
-            public void onSuccess(ArrayList<JKTest> responseObject) {
+            public void onSuccess(ArrayList<PopQuiz> responseObject) {
                 reloadData(responseObject);
             }
 
@@ -49,8 +49,8 @@ public class TestsListActivity extends JKListActivity {
         });
     }
 
-    private void reloadData(ArrayList<JKTest> testsList) {
-        ArrayAdapter<JKTest> adapter = new ArrayAdapter<JKTest>(this, R.layout.layout_row, testsList);
+    private void reloadData(ArrayList<PopQuiz> gradesList) {
+        ArrayAdapter<PopQuiz> adapter = new ArrayAdapter<PopQuiz>(this, R.layout.layout_row, gradesList);
         listView.setAdapter(adapter);
     }
 

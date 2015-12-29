@@ -2,9 +2,6 @@ package jkartkowka.jkartkwkamobile.network.requests;
 
 import jkartkowka.jkartkwkamobile.model.User;
 
-/**
- * Created by marian on 04.12.15.
- */
 public interface AuthenticationRequest extends JKRequest {
     User mockedResponse();
 

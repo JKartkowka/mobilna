@@ -6,17 +6,14 @@ import java.util.Random;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 import jkartkowka.jkartkwkamobile.network.StandardRequest;
 
-/**
- * Created by marian on 24.12.2015.
- */
 public class SecretRequest implements StandardRequest {
     private final StandardGenericResponseHandler<Integer> responseHandler;
     private final int groupId;
-    private final int testId;
+    private final int popQuizId;
 
-    public SecretRequest(int groupId, int testId, StandardGenericResponseHandler<Integer> responseHandler) {
+    public SecretRequest(int groupId, int popQuizId, StandardGenericResponseHandler<Integer> responseHandler) {
         this.groupId = groupId;
-        this.testId = testId;
+        this.popQuizId = popQuizId;
         this.responseHandler = responseHandler;
     }
 
@@ -40,7 +37,7 @@ public class SecretRequest implements StandardRequest {
     @Override
     public HashMap<String, Object> params() {
         HashMap<String, Object> params = new HashMap<>();
-        params.put("test_id", testId);
+        params.put("test_id", popQuizId);
         params.put("group_id", groupId);
 
         return params;

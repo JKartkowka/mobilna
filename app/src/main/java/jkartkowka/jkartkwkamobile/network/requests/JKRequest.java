@@ -2,9 +2,6 @@ package jkartkowka.jkartkwkamobile.network.requests;
 
 import java.util.HashMap;
 
-/**
- * Created by marian on 04.12.15.
- */
 public interface JKRequest {
 
     String apiMethod();
