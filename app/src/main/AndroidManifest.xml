@@ -21,10 +21,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainMenuActivity"
+            android:name=".LecturerMenuActivity"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="jkartkowka.jkartkwkamobile.MainMenuActivity" />
+                <action android:name="jkartkowka.jkartkwkamobile.LecturerMenuActivity" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".StudentMenuActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="jkartkowka.jkartkwkamobile.StudentMenuActivity" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -41,6 +50,9 @@
         <activity
             android:name=".GroupMembersListActivity"
             android:label="@string/title_activity_group_details_list" />
+        <activity
+            android:name=".GradesListActivity"
+            android:label="@string/title_activity_grades_list" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
@@ -49,5 +61,5 @@
         <activity android:name=".LecturerAuthenticationActivity"></activity>
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>

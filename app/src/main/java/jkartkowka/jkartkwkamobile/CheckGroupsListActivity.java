@@ -13,9 +13,6 @@ import jkartkowka.jkartkwkamobile.network.ErrorHandler;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 
-/**
- * Created by maciej on 22.12.15.
- */
 public class CheckGroupsListActivity extends JKListActivity {
 
     private CheckGroupsListWireframe wireframe;
@@ -35,7 +32,7 @@ public class CheckGroupsListActivity extends JKListActivity {
         });
         titleLabel.setText("Wybierz grupę zajęciową, którą chcesz przejrzeć:");
         Intent intent = getIntent();
-        groupID = intent.getIntExtra("gruopID", -1);
+        groupID = intent.getIntExtra("groupID", -1);
         wireframe = new CheckGroupsListWireframe(this);
         interactor = new CheckGroupsListInteractor(new RequestSender(getApplicationContext()));
     }

@@ -2,14 +2,12 @@ package jkartkowka.jkartkwkamobile.network.requests;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 import jkartkowka.jkartkwkamobile.model.JKTest;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 import jkartkowka.jkartkwkamobile.network.StandardRequest;
 
-/**
- * Created by marian on 19.12.2015.
- */
 public class TestListRequest implements StandardRequest {
     private final StandardGenericResponseHandler<ArrayList<JKTest>> responseHandler;
 
@@ -40,8 +38,11 @@ public class TestListRequest implements StandardRequest {
     @Override
     public void mockedResponse() {
         ArrayList<JKTest> testsList = new ArrayList<>();
-        for (int i = 1; i <= 50; i++) {
-            JKTest test = new JKTest(i, "Kartkówka " + i);
+        Random randomGenerator = new Random();
+        for (int i = 1; i <= 10; i++) {
+            int questionCount = randomGenerator.nextInt(20) + 10;
+            int correctAnswers = randomGenerator.nextInt(questionCount);
+            JKTest test = new JKTest(i, "Kartkówka " + i, questionCount, correctAnswers, 2.0f);
             testsList.add(test);
         }
 

@@ -1,12 +1,9 @@
 package jkartkowka.jkartkwkamobile;
 
-/**
- * Created by marian on 19.12.2015.
- */
-public class MainMenuWireframe extends JKWireframe {
+public class LecturerMenuWireframe extends JKWireframe {
 
-    public MainMenuWireframe(MainMenuActivity mainMenuActivity) {
-        super(mainMenuActivity);
+    public LecturerMenuWireframe(LecturerMenuActivity lecturerMenuActivity) {
+        super(lecturerMenuActivity);
     }
 
     public void navigateToTestsList() {
