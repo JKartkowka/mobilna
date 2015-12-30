@@ -44,7 +44,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"/>
+        android:layout_marginRight="25dp"
+        android:onClick="onConfirmationClick" />
 
     <ImageButton
         android:layout_width="wrap_content"
