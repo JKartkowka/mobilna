@@ -13,4 +13,11 @@ public class LecturerAuthenticationWireframe extends JKWireframe {
         intent.putExtra("groupName", groupName);
         activity.startActivity(intent);
     }
+
+    public void navigateToCustomConfirmation(int groupId, int popQuizId) {
+        Intent intent = new Intent(activity, LecturerCustomAuthenticationActivity.class);
+        intent.putExtra("popQuizId", popQuizId);
+        intent.putExtra("groupId", groupId);
+        activity.startActivity(intent);
+    }
 }

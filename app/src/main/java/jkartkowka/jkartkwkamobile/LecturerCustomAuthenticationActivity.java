@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 
-public class LecturerCustomAuthenticationActivity extends JKListActivity {
+public class LecturerCustomAuthenticationActivity extends JKActivity {
 
     private LecturerCustomAuthenticationInteractor interactor;
     private LecturerCustomAuthenticationWireframe wireframe;

@@ -53,4 +53,8 @@ public class LecturerAuthenticationActivity extends JKActivity {
             }
         });
     }
+
+    public void onDisproveClick(View v) {
+        wireframe.navigateToCustomConfirmation(interactor.groupId, interactor.popQuizId);
+    }
 }
