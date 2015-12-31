@@ -1,10 +1,10 @@
 package jkartkowka.jkartkwkamobile;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import jkartkowka.jkartkwkamobile.model.Question;
@@ -15,7 +15,8 @@ import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 /**
  * Created by maciej on 29.12.15.
  */
-public class MultipleAnswerPopQuizActivity extends JKListActivity {
+public class MultipleAnswerPopQuizActivity extends JKActivity {
+    private ListView listView;
     private MultipleAnswerPopQuizWireframe wireframe;
     private MultipleAnswerPopQuizInteractor interactor;
     protected TextView titleLabel;
@@ -29,8 +30,10 @@ public class MultipleAnswerPopQuizActivity extends JKListActivity {
         super.onCreate(savedInstanceState);
         interactor = new MultipleAnswerPopQuizInteractor(new RequestSender(getApplicationContext()));
         setContentView(R.layout.activity_popquiz_multiple_answer);
-        adapter = new ImageTextArrayAdapter(this, new String[] {"3","3","3","15"}, marked);
+        adapter = new ImageTextArrayAdapter(this, new String[]{"0", "0", "0", "0"}, marked);
+        listView = (ListView)findViewById(R.id.MultipleAnswerQuestionListView);
         listView.setAdapter(adapter);
+        listView.setClickable(true);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
