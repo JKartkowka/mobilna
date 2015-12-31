@@ -4,7 +4,7 @@ package jkartkowka.jkartkwkamobile.model;
  * Created by marian on 31.12.2015.
  */
 public class Student {
-    private final int id;
+    public final int id;
     private final String name;
 
     public Student(int id, String name) {

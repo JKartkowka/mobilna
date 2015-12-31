@@ -1,6 +1,8 @@
 package jkartkowka.jkartkwkamobile;
 
 import android.os.Bundle;
+import android.util.Pair;
+import android.view.View;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -46,5 +48,19 @@ public class LecturerCustomAuthenticationActivity extends JKActivity {
     private void reloadData(ArrayList<StudentListItem> students) {
         StudentListAdapter adapter = new StudentListAdapter(this, R.layout.layout_student_list_row, students);
         listView.setAdapter(adapter);
+    }
+
+    public void onConfiramtionClick(View v) {
+        interactor.activatePopQuiz(new StandardGenericResponseHandler<Pair<String, String>>() {
+            @Override
+            public void onSuccess(Pair<String, String> responseObject) {
+                wireframe.navigateToPopQuiz(responseObject.first, responseObject.second);
+            }
+
+            @Override
+            public void onFailure(ErrorHandler error) {
+                super.onFailure(error);
+            }
+        });
     }
 }

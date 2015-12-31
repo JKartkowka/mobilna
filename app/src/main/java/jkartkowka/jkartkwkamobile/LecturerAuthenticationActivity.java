@@ -12,7 +12,7 @@ import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 public class LecturerAuthenticationActivity extends JKActivity {
 
     private LecturerAuthenticationInteractor interactor;
-    private LecturerAuthenticationWireframe wireframe;
+    private LecturerStandardAuthenticationWireframe wireframe;
     private ImageView imageView;
 
     @Override
@@ -20,7 +20,7 @@ public class LecturerAuthenticationActivity extends JKActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authentication);
         interactor = new LecturerAuthenticationInteractor(new RequestSender(getApplicationContext()), getIntent(), this);
-        wireframe = new LecturerAuthenticationWireframe(this);
+        wireframe = new LecturerStandardAuthenticationWireframe(this);
         imageView = (ImageView) findViewById(R.id.imageView);
     }
 
