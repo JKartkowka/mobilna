@@ -26,6 +26,7 @@ public class LecturerCustomAuthenticationActivity extends JKActivity {
         listView = (ListView) findViewById(R.id.listView2);
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();

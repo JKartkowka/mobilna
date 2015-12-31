@@ -47,12 +47,34 @@ public class StudentListAdapter extends ArrayAdapter<StudentListItem> {
             holder = (StudentRowHolder) row.getTag();
         }
 
-        StudentListItem object = data.get(position);
+        final StudentListItem object = data.get(position);
+        final StudentRowHolder finalHolder = holder;
         holder.txtTitle.setText(object.toString());
-        holder.checkBox.setChecked(false);
+        holder.checkBox.setChecked(object.selected);
+
+        holder.checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                didSelectRow(object, finalHolder);
+            }
+        });
+
+        row.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                didSelectRow(object, finalHolder);
+
+            }
+        });
 
         return row;
     }
+
+    private void didSelectRow(StudentListItem object, StudentRowHolder finalHolder) {
+        object.selected = !object.selected;
+        finalHolder.checkBox.setChecked(object.selected);
+    }
+
 
     static class StudentRowHolder {
         CheckBox checkBox;
