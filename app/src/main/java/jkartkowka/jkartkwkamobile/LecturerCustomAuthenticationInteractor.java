@@ -5,6 +5,7 @@ import android.content.Intent;
 import java.util.ArrayList;
 
 import jkartkowka.jkartkwkamobile.model.Student;
+import jkartkowka.jkartkwkamobile.model.StudentListItem;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 import jkartkowka.jkartkwkamobile.network.requests.GroupMembersRequest;
@@ -22,8 +23,22 @@ public class LecturerCustomAuthenticationInteractor extends JKInteractor {
         popQuizId = intent.getIntExtra("popQuizId", -1);
     }
 
-    public void getStudents(StandardGenericResponseHandler<ArrayList<Student>> standardGenericResponseHandler) {
-        GroupMembersRequest request = new GroupMembersRequest(groupId, standardGenericResponseHandler);
+    public void getStudents(final StandardGenericResponseHandler<ArrayList<StudentListItem>> standardGenericResponseHandler) {
+        GroupMembersRequest request = new GroupMembersRequest(groupId, new StandardGenericResponseHandler<ArrayList<Student>>() {
+            @Override
+            public void onSuccess(ArrayList<Student> responseObject) {
+                standardGenericResponseHandler.onSuccess(mapStudents(responseObject));
+            }
+        });
         requestSender.sendRequest(request);
+    }
+
+    private ArrayList<StudentListItem> mapStudents(ArrayList<Student> responseObject) {
+        ArrayList<StudentListItem> studentListItems = new ArrayList<>();
+        for (Student student : responseObject) {
+            studentListItems.add(new StudentListItem(student));
+        }
+
+        return studentListItems;
     }
 }
