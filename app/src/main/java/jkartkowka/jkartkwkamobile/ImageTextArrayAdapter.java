@@ -1,6 +1,7 @@
 package jkartkowka.jkartkwkamobile;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,7 @@ public class ImageTextArrayAdapter extends ArrayAdapter<String> { //TODO image f
             imageView.setImageResource(R.drawable.abc_btn_check_material);
         else
             imageView.setImageResource(R.drawable.abc_btn_radio_material);
+        Log.e("ImageTextArrayAdapter","Created Row");
         return rowView;
     }
 }

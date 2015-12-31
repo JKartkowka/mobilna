@@ -59,6 +59,7 @@
             android:value="4f873f6ee95ad4d7d3ae9e3704481e62cd04ed76" />
 
         <activity android:name=".LecturerAuthenticationActivity"></activity>
+        <activity android:name=".MultipleAnswerPopQuizActivity"></activity>
     </application>
 
 

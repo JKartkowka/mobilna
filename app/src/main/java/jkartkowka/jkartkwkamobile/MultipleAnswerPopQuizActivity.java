@@ -1,15 +1,15 @@
 package jkartkowka.jkartkwkamobile;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import jkartkowka.jkartkwkamobile.model.Question;
 import jkartkowka.jkartkwkamobile.network.ErrorHandler;
+import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 
 /**
@@ -18,8 +18,6 @@ import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 public class MultipleAnswerPopQuizActivity extends JKListActivity {
     private MultipleAnswerPopQuizWireframe wireframe;
     private MultipleAnswerPopQuizInteractor interactor;
-    private ImageView indicator;
-    protected ListView listView;
     protected TextView titleLabel;
     ImageTextArrayAdapter adapter;
     private boolean[] marked = new boolean[4];
@@ -29,7 +27,10 @@ public class MultipleAnswerPopQuizActivity extends JKListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        interactor = new MultipleAnswerPopQuizInteractor(new RequestSender(getApplicationContext()));
         setContentView(R.layout.activity_popquiz_multiple_answer);
+        adapter = new ImageTextArrayAdapter(this, new String[] {"3","3","3","15"}, marked);
+        listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -57,6 +58,7 @@ public class MultipleAnswerPopQuizActivity extends JKListActivity {
     }
 
     private void reloadData(Question question) {
+        titleLabel = (TextView) findViewById(R.id.PopQuizMultipleAnswerQuestion);
         titleLabel.setText(question.toString());
         String[] answers = question.answersList();
         adapter = new ImageTextArrayAdapter(this, answers, marked);

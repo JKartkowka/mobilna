@@ -40,8 +40,7 @@ public class QuestionRequest implements StandardRequest {
     @Override
     public void mockedResponse() {
         String[] answers = {"2","3","4","5"};
-        boolean[] correct = {false,false,true,false};
-        Question question = new Question(0,"2+2",answers,correct, false);
+        Question question = new Question(0,"2+2",answers,false);
         responseHandler.onSuccess(question);
     }
 }
