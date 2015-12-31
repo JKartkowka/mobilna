@@ -6,4 +6,7 @@
     <string name="title_activity_group_details_list">GroupDetailsList</string>
     <string name="title_activity_grades_list">GradesList</string>
     <string name="title_activity_lecturer_pop_quiz">LecturerPopQuizActivity</string>
+    <string name="title_activity_lecturer_custom_authentication">
+        LecturerCustomAuthenticationActivity
+    </string>
 </resources>
