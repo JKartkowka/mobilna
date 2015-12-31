@@ -9,9 +9,16 @@ import jkartkowka.jkartkwkamobile.network.StandardRequest;
 
 public class GroupMembersRequest implements StandardRequest {
     private final StandardGenericResponseHandler<ArrayList<Student>> responseHandler;
+    private final int groupId;
 
     public GroupMembersRequest(StandardGenericResponseHandler<ArrayList<Student>> responseHandler) {
         this.responseHandler = responseHandler;
+        groupId = 0; // TODO: skąd wiziął się ten konstruktor?
+    }
+
+    public GroupMembersRequest(int groupId, StandardGenericResponseHandler<ArrayList<Student>> standardGenericResponseHandler) {
+        this.groupId = groupId;
+        this.responseHandler = standardGenericResponseHandler;
     }
 
     @Override
@@ -26,7 +33,9 @@ public class GroupMembersRequest implements StandardRequest {
 
     @Override
     public HashMap<String, Object> params() {
-        return new HashMap<>();
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("groupId", groupId);
+        return params;
     }
 
     @Override
