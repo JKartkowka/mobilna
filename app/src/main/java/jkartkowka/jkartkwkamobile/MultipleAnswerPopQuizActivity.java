@@ -3,13 +3,10 @@ package jkartkowka.jkartkwkamobile;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 
 import jkartkowka.jkartkwkamobile.model.Question;
 import jkartkowka.jkartkwkamobile.network.ErrorHandler;
@@ -20,7 +17,6 @@ import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
  */
 public class MultipleAnswerPopQuizActivity extends JKListActivity {
     private MultipleAnswerPopQuizWireframe wireframe;
-    private int questionID;
     private MultipleAnswerPopQuizInteractor interactor;
     private ImageView indicator;
     protected ListView listView;
@@ -32,12 +28,10 @@ public class MultipleAnswerPopQuizActivity extends JKListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        indicator = (ImageView) findViewById(R.id.PopQuizRowIndicator);
         setContentView(R.layout.activity_popquiz_multiple_answer);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String answer = (String) listView.getItemAtPosition(position);
                 marked[position] = !marked[position];
             }
         });
@@ -61,10 +55,9 @@ public class MultipleAnswerPopQuizActivity extends JKListActivity {
     }
 
     private void reloadData(Question question) {
-        //TODO resetting marked image
         titleLabel.setText(question.toString());
-        ArrayList<String> answers = new ArrayList(question.answersList());
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.layout_row_image_text, answers);
+        String[] answers = question.answersList();
+        ImageTextArrayAdapter adapter = new ImageTextArrayAdapter(this, answers, marked);
         listView.setAdapter(adapter);
     }
 

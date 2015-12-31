@@ -26,8 +26,8 @@ public class Question {
         return content;
     }
 
-    public List<String> answersList() {
-        return Arrays.asList(answers);
+    public String[] answersList() {
+        return answers;
     }
 
 }
