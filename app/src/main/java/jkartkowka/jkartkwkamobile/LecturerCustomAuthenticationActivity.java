@@ -13,7 +13,7 @@ public class LecturerCustomAuthenticationActivity extends JKActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lecturer_custom_authentication);
-        interactor = new LecturerCustomAuthenticationInteractor(new RequestSender(getApplicationContext()));
+        interactor = new LecturerCustomAuthenticationInteractor(new RequestSender(getApplicationContext()), getIntent());
         wireframe = new LecturerCustomAuthenticationWireframe(this);
     }
 
