@@ -1,8 +1,5 @@
 package jkartkowka.jkartkwkamobile.model;
 
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * Created by maciej on 30.12.15.
  */

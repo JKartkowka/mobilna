@@ -21,6 +21,7 @@ public class MultipleAnswerPopQuizActivity extends JKListActivity {
     private ImageView indicator;
     protected ListView listView;
     protected TextView titleLabel;
+    ImageTextArrayAdapter adapter;
     private boolean[] marked = new boolean[4];
     private Button back; //TODO implement buttons
     private Button next;
@@ -33,6 +34,7 @@ public class MultipleAnswerPopQuizActivity extends JKListActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 marked[position] = !marked[position];
+                adapter.notifyDataSetChanged();
             }
         });
 
@@ -57,7 +59,7 @@ public class MultipleAnswerPopQuizActivity extends JKListActivity {
     private void reloadData(Question question) {
         titleLabel.setText(question.toString());
         String[] answers = question.answersList();
-        ImageTextArrayAdapter adapter = new ImageTextArrayAdapter(this, answers, marked);
+        adapter = new ImageTextArrayAdapter(this, answers, marked);
         listView.setAdapter(adapter);
     }
 
