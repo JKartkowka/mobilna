@@ -8,10 +8,10 @@ import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 
-import jkartkowka.jkartkwkamobile.model.Group;
 import jkartkowka.jkartkwkamobile.network.ErrorHandler;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
+import jkartkowka.jkartkwkamobile.model.Student;
 
 public class GroupMembersListActivity extends JKListActivity {
     private GroupMembersListWireframe wireframe;
@@ -24,8 +24,8 @@ public class GroupMembersListActivity extends JKListActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Group group = (Group) listView.getItemAtPosition(position);
-                makeToast(group.toString());
+                Student student = (Student) listView.getItemAtPosition(position);
+                makeToast(student.toString());
             }
         });
         titleLabel.setText("Lista osób w grupie zajęciowej");
@@ -38,9 +38,9 @@ public class GroupMembersListActivity extends JKListActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        interactor.groupMembers(new StandardGenericResponseHandler<ArrayList<Group>>() {
+        interactor.groupMembers(new StandardGenericResponseHandler<ArrayList<Student>>() {
             @Override
-            public void onSuccess(ArrayList<Group> responseObject) {
+            public void onSuccess(ArrayList<Student> responseObject) {
                 reloadData(responseObject);
             }
 
@@ -51,8 +51,8 @@ public class GroupMembersListActivity extends JKListActivity {
         });
     }
 
-    private void reloadData(ArrayList<Group> groupsList) {
-        ArrayAdapter<Group> adapter = new ArrayAdapter<Group>(this, R.layout.layout_row, groupsList);
+    private void reloadData(ArrayList<Student> groupsList) {
+        ArrayAdapter<Student> adapter = new ArrayAdapter<Student>(this, R.layout.layout_row, groupsList);
         listView.setAdapter(adapter);
     }
 }

@@ -63,7 +63,11 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".LecturerPopQuizActivity"
-            android:label="@string/title_activity_lecturer_pop_quiz"></activity>
+            android:label="@string/title_activity_lecturer_pop_quiz" />
+        <activity
+            android:name=".LecturerCustomAuthenticationActivity"
+            android:label="@string/title_activity_lecturer_custom_authentication"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

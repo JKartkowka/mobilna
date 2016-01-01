@@ -2,6 +2,9 @@ package jkartkowka.jkartkwkamobile;
 
 import android.content.Intent;
 
+/**
+ * Created by marian on 31.12.2015.
+ */
 public class LecturerAuthenticationWireframe extends JKWireframe {
     public LecturerAuthenticationWireframe(JKActivity activity) {
         super(activity);
