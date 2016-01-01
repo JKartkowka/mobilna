@@ -4,9 +4,6 @@ import android.content.Intent;
 
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 
-/**
- * Created by marian on 29.12.2015.
- */
 public class LecturerPopQuizInteractor extends JKInteractor {
 
     public final String groupName;

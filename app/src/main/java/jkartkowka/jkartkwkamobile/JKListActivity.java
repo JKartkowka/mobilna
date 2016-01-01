@@ -15,6 +15,6 @@ public class JKListActivity extends JKActivity {
         setContentView(R.layout.activity_list);
         listView = (ListView) findViewById(R.id.listView);
         listView.setClickable(true);
-        titleLabel = (TextView) findViewById(R.id.textView);
+        titleLabel = (TextView) findViewById(R.id.listTitleTextView);
     }
 }

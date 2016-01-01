@@ -51,6 +51,12 @@
             android:name=".GroupMembersListActivity"
             android:label="@string/title_activity_group_details_list" />
         <activity
+            android:name=".StudentPopQuizInfoActivity"
+            android:label="title_activity_student_pop_quiz_info" />
+        <activity
+            android:name=".StudentAuthenticationActivity"
+            android:label="@string/title_activity_student_authentication" />
+        <activity
             android:name=".GradesListActivity"
             android:label="@string/title_activity_grades_list" />
 
@@ -63,7 +69,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".LecturerPopQuizActivity"
-            android:label="@string/title_activity_lecturer_pop_quiz"></activity>
+            android:label="@string/title_activity_lecturer_pop_quiz" />
     </application>
 
 </manifest>

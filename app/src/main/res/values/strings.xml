@@ -4,6 +4,11 @@
     <string name="title_activity_groups_list">GroupsListActivity</string>
     <string name="title_activity_check_groups_list">CheckGroupsList</string>
     <string name="title_activity_group_details_list">GroupDetailsList</string>
+    <string name="title_activity_student_pop_quiz_info">StudentPopQuizInfo</string>
+    <string name="title_activity_student_authentication">StudentAuthentication</string>
     <string name="title_activity_grades_list">GradesList</string>
     <string name="title_activity_lecturer_pop_quiz">LecturerPopQuizActivity</string>
+    <string name="lecturer_auth_info">Porównaj, czy wszyscy studenci w grupie mają ten sam symbol.</string>
+    <string name="student_auth_info">Do rozpoczęcia kartkówki potrzebne jest potwerdzenie tożsamości.</string>
+    <string name="student_popquiz_info">Przerwanie pisania testu skutkuje jego niezaliczeniem.</string>
 </resources>
