@@ -12,8 +12,8 @@ import jkartkowka.jkartkwkamobile.network.requests.LecturerSecretRequest;
 
 public class LecturerAuthenticationInteractor extends JKInteractor {
 
-    private final int groupId;
-    private final int popQuizId;
+    public final int groupId;
+    public final int popQuizId;
     private final Activity currentActivity;
 
     public LecturerAuthenticationInteractor(RequestSender requestSender, Intent intent, Activity activity) {

@@ -3,15 +3,22 @@ package jkartkowka.jkartkwkamobile.network.requests;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import jkartkowka.jkartkwkamobile.model.Group;
+import jkartkowka.jkartkwkamobile.model.Student;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 import jkartkowka.jkartkwkamobile.network.StandardRequest;
 
 public class GroupMembersRequest implements StandardRequest {
-    private final StandardGenericResponseHandler<ArrayList<Group>> responseHandler;
+    private final StandardGenericResponseHandler<ArrayList<Student>> responseHandler;
+    private final int groupId;
 
-    public GroupMembersRequest(StandardGenericResponseHandler<ArrayList<Group>> responseHandler) {
+    public GroupMembersRequest(StandardGenericResponseHandler<ArrayList<Student>> responseHandler) {
         this.responseHandler = responseHandler;
+        groupId = 0; // TODO: skąd wiziął się ten konstruktor?
+    }
+
+    public GroupMembersRequest(int groupId, StandardGenericResponseHandler<ArrayList<Student>> standardGenericResponseHandler) {
+        this.groupId = groupId;
+        this.responseHandler = standardGenericResponseHandler;
     }
 
     @Override
@@ -26,7 +33,9 @@ public class GroupMembersRequest implements StandardRequest {
 
     @Override
     public HashMap<String, Object> params() {
-        return new HashMap<>();
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("groupId", groupId);
+        return params;
     }
 
     @Override
@@ -36,10 +45,10 @@ public class GroupMembersRequest implements StandardRequest {
 
     @Override
     public void mockedResponse() {
-        ArrayList<Group> membersList = new ArrayList<>();
+        ArrayList<Student> membersList = new ArrayList<>();
         for (int i = 1; i <= 20; i++) {
-            Group group = new Group(i, "Osoba  " + i);
-            membersList.add(group);
+            Student student = new Student(i, "Osoba  " + i);
+            membersList.add(student);
         }
 
         responseHandler.onSuccess(membersList);
