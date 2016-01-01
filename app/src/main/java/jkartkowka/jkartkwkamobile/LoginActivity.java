@@ -23,7 +23,7 @@ public class LoginActivity extends JKActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Fabric.with(this, new Crashlytics());
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_login);
         buttonLogin = (ImageButton) findViewById(R.id.buttonLogIn);
         inputLogin = (EditText) findViewById(R.id.inputLogin);

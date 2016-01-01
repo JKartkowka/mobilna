@@ -40,24 +40,31 @@
         </activity>
         <activity
             android:name=".PopQuizListActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_popQuiz_list" />
         <activity
             android:name=".GroupsListActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_groups_list" />
         <activity
             android:name=".CheckGroupsListActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_check_groups_list" />
         <activity
             android:name=".GroupMembersListActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_group_details_list" />
         <activity
             android:name=".StudentPopQuizInfoActivity"
+            android:screenOrientation="portrait"
             android:label="title_activity_student_pop_quiz_info" />
         <activity
             android:name=".StudentAuthenticationActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_student_authentication" />
         <activity
             android:name=".GradesListActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_grades_list" />
 
         <meta-data
@@ -69,6 +76,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".LecturerPopQuizActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_lecturer_pop_quiz" />
         <activity
             android:name=".LecturerCustomAuthenticationActivity"

@@ -32,7 +32,7 @@ public class StudentListAdapter extends ArrayAdapter<StudentListItem> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
-        StudentRowHolder holder = null;
+        StudentRowHolder holder;
 
         if (row == null) {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();

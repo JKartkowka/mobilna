@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Wskaż studentów, którzy znajdują się na sali"
+        android:text="@string/lecturer_custom_auth_info"
         android:id="@+id/textView8"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -39,13 +39,13 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:onClick="onConfiramtionClick" />
+        android:onClick="onConfirmationClick" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Kartkówkę napiszą tylko zaznaczeni studenci"
+        android:text="@string/lecturer_custom_auth_info2"
         android:id="@+id/textView9"
         android:layout_below="@+id/textView8"
         android:layout_alignParentLeft="true"
