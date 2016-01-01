@@ -50,7 +50,7 @@ public class LecturerCustomAuthenticationActivity extends JKActivity {
         listView.setAdapter(adapter);
     }
 
-    public void onConfiramtionClick(View v) {
+    public void onConfirmationClick(View v) {
         interactor.activatePopQuiz(new StandardGenericResponseHandler<Pair<String, String>>() {
             @Override
             public void onSuccess(Pair<String, String> responseObject) {

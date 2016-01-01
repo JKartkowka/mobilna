@@ -7,13 +7,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="jkartkowka.jkartkwkamobile.LoginActivity"
+    tools:context="jkartkowka.jkartkwkamobile.LecturerMenuActivity"
     android:background="@drawable/background">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="120dp"
-        android:id="@+id/logop"
+        android:id="@+id/logos"
         android:src="@drawable/logop"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"

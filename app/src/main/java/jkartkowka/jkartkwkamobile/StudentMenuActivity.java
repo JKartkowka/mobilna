@@ -21,9 +21,7 @@ public class StudentMenuActivity extends JKActivity {
         wireframe = new StudentMenuWireframe(this);
     }
 
-    public void onPopQuizClick(View v) {
-        Toast.makeText(this, "Proceed to student authentication", Toast.LENGTH_SHORT).show();
-    }
+    public void onPopQuizClick(View v) { wireframe.navigateToPopQuizInfo(); }
 
     public void onGradesClick(View v) {
         wireframe.navigateToGradesList();

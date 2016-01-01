@@ -13,15 +13,15 @@ public class LecturerAuthenticationActivity extends JKActivity {
 
     private LecturerAuthenticationInteractor interactor;
     private LecturerStandardAuthenticationWireframe wireframe;
-    private ImageView imageView;
+    private ImageView authSymbolImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_authentication);
+        setContentView(R.layout.activity_lecturerauthentication);
         interactor = new LecturerAuthenticationInteractor(new RequestSender(getApplicationContext()), getIntent(), this);
         wireframe = new LecturerStandardAuthenticationWireframe(this);
-        imageView = (ImageView) findViewById(R.id.imageView);
+        authSymbolImageView = (ImageView) findViewById(R.id.authSymbol);
     }
 
     @Override
@@ -30,7 +30,7 @@ public class LecturerAuthenticationActivity extends JKActivity {
         interactor.getSecret(new StandardGenericResponseHandler<Integer>() {
             @Override
             public void onSuccess(Integer drawableId) {
-                imageView.setImageResource(drawableId);
+                authSymbolImageView.setImageResource(drawableId);
             }
 
             @Override

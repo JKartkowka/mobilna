@@ -47,7 +47,7 @@ public class LoginRequest implements AuthenticationRequest {
         String refreshToken = "refreshToken";
         Date accessTokenExpirationDate = new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000);
         UserType type;
-        if (login.matches("L.*"))
+        if (login.matches("l.*"))
             type = UserType.UTLecturer;
         else
             type = UserType.UTStudent;
