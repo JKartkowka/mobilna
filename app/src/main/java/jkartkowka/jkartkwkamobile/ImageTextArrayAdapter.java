@@ -33,9 +33,9 @@ public class ImageTextArrayAdapter extends ArrayAdapter<String> { //TODO image f
         ImageView imageView = (ImageView) rowView.findViewById(R.id.PopQuizRowIndicator);
         popQuizRowQuestion.setText(answers[position]);
         if (marked[position])  //TODO change images
-            imageView.setImageResource(R.drawable.abc_btn_check_material);
+            imageView.setImageResource(R.drawable.tick);
         else
-            imageView.setImageResource(R.drawable.abc_btn_radio_material);
+            imageView.setImageResource(R.drawable.untick);
         Log.e("ImageTextArrayAdapter","Created Row");
         return rowView;
     }
