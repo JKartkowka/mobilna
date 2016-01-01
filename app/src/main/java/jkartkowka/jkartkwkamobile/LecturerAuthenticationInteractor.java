@@ -10,19 +10,17 @@ import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 import jkartkowka.jkartkwkamobile.network.requests.ChangePopQuizStateRequest;
 import jkartkowka.jkartkwkamobile.network.requests.LecturerSecretRequest;
 
-public class LecturerAuthenticationInteractor extends JKInteractor {
+public class LecturerAuthenticationInteractor extends UserAuthenticationInteractor {
 
     public final int groupId;
     public final int popQuizId;
-    private final Activity currentActivity;
 
     public LecturerAuthenticationInteractor(RequestSender requestSender, Intent intent, Activity activity) {
-        super(requestSender);
+        super(requestSender, activity);
         groupId = intent.getIntExtra("groupID", -1);
         popQuizId = intent.getIntExtra("popQuizID", -1);
-        currentActivity = activity;
     }
-
+    @Override
     public void getSecret(final StandardGenericResponseHandler<Integer> responseHandler) {
         LecturerSecretRequest request = new LecturerSecretRequest(groupId, popQuizId, new StandardGenericResponseHandler<Integer>() {
             @Override
@@ -38,10 +36,6 @@ public class LecturerAuthenticationInteractor extends JKInteractor {
         });
 
         requestSender.sendRequest(request);
-    }
-
-    private Integer getDrawableId(Integer secretId) {
-        return currentActivity.getResources().getIdentifier("symbol" + secretId, "drawable", currentActivity.getPackageName());
     }
 
     public void activatePopQuiz(StandardGenericResponseHandler<Pair<String, String>> responseHandler) {
