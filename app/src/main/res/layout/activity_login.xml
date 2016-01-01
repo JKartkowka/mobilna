@@ -71,4 +71,14 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PopQuizMutipleAnswer"
+        android:id="@+id/button5"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/buttonLogIn"
+        android:layout_alignEnd="@+id/buttonLogIn"
+        android:onClick="gotoQuizActivity"/>
+
 </RelativeLayout>

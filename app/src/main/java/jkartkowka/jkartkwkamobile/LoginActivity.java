@@ -1,11 +1,13 @@
 package jkartkowka.jkartkwkamobile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.crashlytics.android.Crashlytics;
+
 import io.fabric.sdk.android.Fabric;
 import jkartkowka.jkartkwkamobile.model.UserType;
 import jkartkowka.jkartkwkamobile.network.ErrorHandler;
@@ -51,6 +53,11 @@ public class LoginActivity extends JKActivity {
                 }
             });
         }
+    }
+
+    public void gotoQuizActivity(View v) {
+        Intent intent = new Intent(this, MultipleAnswerPopQuizActivity.class);
+        this.startActivity(intent);
     }
 
 
