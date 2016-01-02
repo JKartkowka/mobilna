@@ -7,19 +7,20 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:gravity="center_vertical"
     tools:context="jkartkowka.jkartkwkamobile.StudentAuthenticationActivity"
     android:background="@drawable/background">
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="220dp"
+        android:layout_height="300dp"
         android:id="@+id/authSymbol"
         android:src="@drawable/symbol11"
-        android:paddingTop="30dp"
-        android:layout_marginBottom="74dp"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="20dp"
         android:layout_above="@+id/buttonStartPopQuiz"
-        android:layout_alignLeft="@+id/buttonStartPopQuiz"
-        android:layout_alignStart="@+id/buttonStartPopQuiz" />
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"/>
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -31,7 +32,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="44dp"
         android:clickable="true"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"

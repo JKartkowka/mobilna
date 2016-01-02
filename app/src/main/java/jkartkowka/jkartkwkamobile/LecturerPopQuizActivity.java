@@ -18,8 +18,8 @@ public class LecturerPopQuizActivity extends JKActivity {
         setContentView(R.layout.activity_lecturer_pop_quiz);
         wireframe = new LecturerPopQuizWireframe(this);
         interactor = new LecturerPopQuizInteractor(new RequestSender(getApplicationContext()), getIntent());
-        popQuizNameLabel = (TextView) findViewById(R.id.textView5);
-        groupNameLabel = (TextView) findViewById(R.id.textView7);
+        popQuizNameLabel = (TextView) findViewById(R.id.popQuizName);
+        groupNameLabel = (TextView) findViewById(R.id.groupName);
     }
 
     @Override

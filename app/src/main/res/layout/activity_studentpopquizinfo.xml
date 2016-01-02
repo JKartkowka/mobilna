@@ -7,21 +7,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:gravity="center_vertical"
     tools:context="jkartkowka.jkartkwkamobile.jkartkwka.jkarStudentPopQuizInfoActivity"
     android:background="@drawable/background">
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="120dp"
-        android:id="@+id/logos"
-        android:src="@drawable/logos"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -30,10 +18,8 @@
         android:src="@drawable/uwierzytelnienie"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="44dp"
         android:clickable="true"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
@@ -42,11 +28,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/student_auth_info"
         android:id="@+id/authInfoTextView"
-        android:layout_below="@+id/logos"
-        android:layout_marginTop="54dp"
+        android:layout_above="@+id/popQuizInfoTextView"
+        android:layout_marginBottom="20dp"
         android:layout_alignLeft="@+id/popQuizInfoTextView"
         android:layout_alignStart="@+id/popQuizInfoTextView"
         android:layout_alignRight="@+id/popQuizInfoTextView"
@@ -56,7 +42,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/student_popquiz_info"
         android:id="@+id/popQuizInfoTextView"
         android:layout_above="@+id/buttonAuthenticate"
