@@ -9,9 +9,9 @@
     <string name="title_activity_student_pop_quiz_info">StudentPopQuizInfo</string>
     <string name="title_activity_student_authentication">StudentAuthentication</string>
     <string name="title_activity_grades_list">GradesList</string>
-    <string name="lecturer_auth_info">Porównaj, czy wszyscy studenci w grupie mają ten sam symbol.</string>
-    <string name="lecturer_custom_auth_info">Wskaż studentów, którzy znajdują się na sali</string>
-    <string name="lecturer_custom_auth_info2">Wskaż studentów, którzy znajdują się na sali</string>
+    <string name="lecturer_auth_info">Porównaj, czy wszyscy studenci w grupie mają ten sam symbol:</string>
+    <string name="lecturer_custom_auth_info">Wskaż studentów, którzy znajdują się na sali:</string>
+    <string name="lecturer_pop_quiz_info">Test został rozpoczęty.\nKliknij poniżej, żeby zakończyć \ntrwającą kartkówkę.</string>
     <string name="student_auth_info">Do rozpoczęcia kartkówki potrzebne jest potwerdzenie tożsamości.</string>
     <string name="student_popquiz_info">Przerwanie pisania testu skutkuje jego niezaliczeniem.</string>
 </resources>
