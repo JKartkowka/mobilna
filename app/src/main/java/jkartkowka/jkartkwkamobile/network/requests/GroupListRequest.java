@@ -1,5 +1,7 @@
 package jkartkowka.jkartkwkamobile.network.requests;
 
+import com.android.volley.Request;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -26,7 +28,9 @@ public class GroupListRequest implements StandardRequest {
 
     @Override
     public HashMap<String, Object> params() {
-        return new HashMap<>();
+        HashMap<String, Object> params = new HashMap<>();
+
+        return params;
     }
 
     @Override
@@ -43,5 +47,15 @@ public class GroupListRequest implements StandardRequest {
         }
 
         responseHandler.onSuccess(popQuizList);
+    }
+
+    @Override
+    public int restMethod() {
+        return Request.Method.POST;
+    }
+
+    @Override
+    public String endpoint() {
+        return "groups";
     }
 }

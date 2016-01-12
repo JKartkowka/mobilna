@@ -46,4 +46,5 @@ public class LecturerSecretRequest extends SecretRequest implements StandardRequ
     public void parseErrorResponse(HashMap<String, Object> params) {
 
     }
+
 }

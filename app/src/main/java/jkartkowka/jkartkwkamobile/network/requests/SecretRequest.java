@@ -1,5 +1,7 @@
 package jkartkowka.jkartkwkamobile.network.requests;
 
+import com.android.volley.Request;
+
 import java.util.HashMap;
 import java.util.Random;
 
@@ -37,5 +39,15 @@ public class SecretRequest implements StandardRequest {
 
     @Override
     public void parseErrorResponse(HashMap<String, Object> params) {
+    }
+
+    @Override
+    public int restMethod() {
+        return Request.Method.POST;
+    }
+
+    @Override
+    public String endpoint() {
+        return "tests";
     }
 }

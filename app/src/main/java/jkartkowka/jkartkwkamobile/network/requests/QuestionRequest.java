@@ -1,5 +1,7 @@
 package jkartkowka.jkartkwkamobile.network.requests;
 
+import com.android.volley.Request;
+
 import java.util.HashMap;
 
 import jkartkowka.jkartkwkamobile.model.Question;
@@ -39,8 +41,18 @@ public class QuestionRequest implements StandardRequest {
 
     @Override
     public void mockedResponse() {
-        String[] answers = {"2","3","4","5"};
-        Question question = new Question(0,"2+2",answers,false);
+        String[] answers = {"2", "3", "4", "5"};
+        Question question = new Question(0, "2+2", answers, false);
         responseHandler.onSuccess(question);
+    }
+
+    @Override
+    public int restMethod() {
+        return Request.Method.POST;
+    }
+
+    @Override
+    public String endpoint() {
+        return null;
     }
 }

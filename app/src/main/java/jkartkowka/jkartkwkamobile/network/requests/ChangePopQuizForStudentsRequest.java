@@ -2,6 +2,8 @@ package jkartkowka.jkartkwkamobile.network.requests;
 
 import android.util.Pair;
 
+import com.android.volley.Request;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -49,5 +51,15 @@ public class ChangePopQuizForStudentsRequest implements StandardRequest {
     @Override
     public void parseErrorResponse(HashMap<String, Object> params) {
 
+    }
+
+    @Override
+    public int restMethod() {
+        return Request.Method.POST;
+    }
+
+    @Override
+    public String endpoint() {
+        return "change_state";
     }
 }
