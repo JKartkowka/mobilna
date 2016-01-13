@@ -4,6 +4,8 @@ import android.util.Pair;
 
 import com.android.volley.Request;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -25,7 +27,7 @@ public class ChangePopQuizForStudentsRequest implements StandardRequest {
     }
 
     @Override
-    public void parseSuccessResponse(HashMap<String, Object> params) {
+    public void parseSuccessResponse(JSONArray params) {
     }
 
     @Override

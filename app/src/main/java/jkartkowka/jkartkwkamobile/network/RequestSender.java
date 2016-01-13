@@ -11,16 +11,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 import jkartkowka.jkartkwkamobile.model.User;
 import jkartkowka.jkartkwkamobile.network.requests.AuthenticationRequest;
@@ -37,9 +32,6 @@ public class RequestSender {
     }
 
     public void sendRequest(JKRequest request) {
-        System.out.println("Params: " + request.params().toString());
-        System.out.println("Method: " + request.apiMethod());
-
         if (request instanceof AuthenticationRequest) {
             sendAuthenticationRequest((AuthenticationRequest) request);
         } else if (request instanceof StandardRequest) {
@@ -51,13 +43,14 @@ public class RequestSender {
         JsonArrayRequest jsonRequest = new JsonArrayRequest(request.restMethod(), API_URL + ":" + API_PORT + "/" + request.endpoint(), new Gson().toJson(generateRequestParams(request)), new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                System.out.println("To jest standard response " + response.toString());
+                System.out.println("Request: " + request.getClass().toString() + "\n" + "Method: " + request.apiMethod() + "\n" + "Params: " + request.params().toString() + "\n" + "Response: " + response.toString());
+                request.parseSuccessResponse(response);
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                System.out.println("To jest error " + error.toString());
+                System.out.println("Request: " + request.getClass().toString() + "\n" + "Method: " + request.apiMethod() + "\n" + "Params: " + request.params().toString() + "\n" + "Error response: " + error.toString());
                 request.mockedResponse();
 
             }

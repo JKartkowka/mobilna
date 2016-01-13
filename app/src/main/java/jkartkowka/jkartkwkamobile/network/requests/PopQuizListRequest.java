@@ -2,6 +2,8 @@ package jkartkowka.jkartkwkamobile.network.requests;
 
 import com.android.volley.Request;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -33,7 +35,7 @@ public class PopQuizListRequest implements StandardRequest {
     }
 
     @Override
-    public void parseSuccessResponse(HashMap<String, Object> params) {
+    public void parseSuccessResponse(JSONArray params) {
 
     }
 

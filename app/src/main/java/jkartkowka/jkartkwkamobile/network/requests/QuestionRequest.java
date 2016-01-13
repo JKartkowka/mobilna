@@ -2,6 +2,8 @@ package jkartkowka.jkartkwkamobile.network.requests;
 
 import com.android.volley.Request;
 
+import org.json.JSONArray;
+
 import java.util.HashMap;
 
 import jkartkowka.jkartkwkamobile.model.Question;
@@ -20,7 +22,7 @@ public class QuestionRequest implements StandardRequest {
     }
 
     @Override
-    public void parseSuccessResponse(HashMap<String, Object> params) {
+    public void parseSuccessResponse(JSONArray params) {
 
     }
 

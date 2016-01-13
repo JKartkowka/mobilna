@@ -1,12 +1,12 @@
 package jkartkowka.jkartkwkamobile.network;
 
-import java.util.HashMap;
+import org.json.JSONArray;
 
 import jkartkowka.jkartkwkamobile.network.requests.JKRequest;
 
 public interface StandardRequest extends JKRequest {
 
-    void parseSuccessResponse(HashMap<String, Object> params);
+    void parseSuccessResponse(JSONArray params);
 
     void mockedResponse();
 
