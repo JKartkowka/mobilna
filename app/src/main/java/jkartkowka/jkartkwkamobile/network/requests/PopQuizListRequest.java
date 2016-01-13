@@ -3,6 +3,8 @@ package jkartkowka.jkartkwkamobile.network.requests;
 import com.android.volley.Request;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,8 +37,28 @@ public class PopQuizListRequest implements StandardRequest {
     }
 
     @Override
-    public void parseSuccessResponse(JSONArray params) {
+    public void parseSuccessResponse(JSONArray response) {
+        Random randomGenerator = new Random();
+        ArrayList<PopQuiz> popQuizList = new ArrayList<>();
+        for (int i = 0; i < response.length(); i++) {
+            try {
+                JSONObject jsonQuiz = (JSONObject) response.get(i);
+                String quizName = jsonQuiz.getString("name");
+                int identifier = jsonQuiz.getInt("id");
+                JSONArray jsonQuestionList = jsonQuiz.getJSONArray("questions");
+                int questionCount = jsonQuestionList.length();
+//                TODO how to get from server number of correct answers?
+                int correctAnswers = randomGenerator.nextInt(questionCount);
+//                TODO how to get from server grade?
+                PopQuiz popQuiz = new PopQuiz(identifier, quizName, questionCount, correctAnswers, 2.0f);
+                popQuizList.add(popQuiz);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
+        }
+
+        responseHandler.onSuccess(popQuizList);
     }
 
     @Override
