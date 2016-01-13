@@ -23,7 +23,7 @@ public class GroupListRequest implements StandardRequest {
 
     @Override
     public String apiMethod() {
-        return "groups/list";
+        return "list";
     }
 
     @Override

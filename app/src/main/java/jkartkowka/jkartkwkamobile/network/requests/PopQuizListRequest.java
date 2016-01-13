@@ -19,7 +19,7 @@ public class PopQuizListRequest implements StandardRequest {
 
     @Override
     public String apiMethod() {
-        return "tests/list";
+        return "list";
     }
 
     @Override

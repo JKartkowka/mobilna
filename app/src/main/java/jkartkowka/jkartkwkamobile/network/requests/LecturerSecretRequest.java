@@ -30,7 +30,7 @@ public class LecturerSecretRequest extends SecretRequest implements StandardRequ
 
     @Override
     public String apiMethod() {
-        return "tests/get_key";
+        return "get_key";
     }
 
     @Override

@@ -35,7 +35,7 @@ public class ChangePopQuizStateRequest implements StandardRequest {
 
     @Override
     public String apiMethod() {
-        return "change_state/tests";
+        return "tests";
     }
 
     @Override

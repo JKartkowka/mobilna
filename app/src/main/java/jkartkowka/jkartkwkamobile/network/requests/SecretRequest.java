@@ -29,7 +29,7 @@ public class SecretRequest implements StandardRequest {
 
     @Override
     public String apiMethod() {
-        return "tests/get_key";
+        return "get_key";
     }
 
     @Override

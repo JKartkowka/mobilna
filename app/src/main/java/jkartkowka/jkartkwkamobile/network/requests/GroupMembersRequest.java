@@ -30,7 +30,7 @@ public class GroupMembersRequest implements StandardRequest {
 
     @Override
     public String apiMethod() {
-        return "groups/members";
+        return "members";
     }
 
     @Override
