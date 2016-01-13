@@ -24,6 +24,7 @@ import jkartkowka.jkartkwkamobile.network.requests.JKRequest;
 public class RequestSender {
     private static final String API_URL = "http://192.168.1.2";
     private static final String API_PORT = "8002";
+    private static final boolean API_WORKS = true;
     private final RequestQueue queue;
     private static String auth;
 
@@ -40,28 +41,32 @@ public class RequestSender {
     }
 
     private void sendStandardRequest(final StandardRequest request) {
-        JsonArrayRequest jsonRequest = new JsonArrayRequest(request.restMethod(), API_URL + ":" + API_PORT + "/" + request.endpoint(), new Gson().toJson(generateRequestParams(request)), new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                System.out.println("Request: " + request.getClass().toString() + "\n" + "Method: " + request.apiMethod() + "\n" + "Params: " + request.params().toString() + "\n" + "Response: " + response.toString());
-                request.parseSuccessResponse(response);
-            }
+        if (API_WORKS) {
+            JsonArrayRequest jsonRequest = new JsonArrayRequest(request.restMethod(), API_URL + ":" + API_PORT + "/" + request.endpoint(), new Gson().toJson(generateRequestParams(request)), new Response.Listener<JSONArray>() {
+                @Override
+                public void onResponse(JSONArray response) {
+                    System.out.println("Request: " + request.getClass().toString() + "\n" + "Method: " + request.apiMethod() + "\n" + "Params: " + request.params().toString() + "\n" + "Response: " + response.toString());
+                    request.parseSuccessResponse(response);
+                }
 
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                System.out.println("Request: " + request.getClass().toString() + "\n" + "Method: " + request.apiMethod() + "\n" + "Params: " + request.params().toString() + "\n" + "Error response: " + error.toString());
-                request.mockedResponse();
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    System.out.println("Request: " + request.getClass().toString() + "\n" + "Method: " + request.apiMethod() + "\n" + "Params: " + request.params().toString() + "\n" + "Error response: " + error.toString());
+                    request.mockedResponse();
 
-            }
-        }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                return generateRequestHeader();
-            }
-        };
+                }
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    return generateRequestHeader();
+                }
+            };
 
-        queue.add(jsonRequest);
+            queue.add(jsonRequest);
+        } else {
+            request.mockedResponse();
+        }
     }
 
     private HashMap<String, Object> generateRequestParams(StandardRequest request) {
