@@ -24,9 +24,7 @@ public class PopQuizListRequest implements StandardRequest {
 
     @Override
     public HashMap<String, Object> params() {
-        HashMap<String, Object> params = new HashMap<>();
-        params.put("method", "list");
-        return params;
+        return new HashMap<>();
     }
 
     @Override

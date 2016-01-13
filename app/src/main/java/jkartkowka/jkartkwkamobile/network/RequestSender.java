@@ -48,7 +48,7 @@ public class RequestSender {
     }
 
     private void sendStandardRequest(final StandardRequest request) {
-        JsonArrayRequest jsonRequest = new JsonArrayRequest(request.restMethod(), API_URL + ":" + API_PORT + "/" + request.endpoint(), new Gson().toJson(request.params()), new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonRequest = new JsonArrayRequest(request.restMethod(), API_URL + ":" + API_PORT + "/" + request.endpoint(), new Gson().toJson(generateRequestParams(request)), new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 System.out.println("To jest standard response " + response.toString());
@@ -69,6 +69,13 @@ public class RequestSender {
         };
 
         queue.add(jsonRequest);
+    }
+
+    private HashMap<String, Object> generateRequestParams(StandardRequest request) {
+        HashMap<String, Object> params = (HashMap<String, Object>) request.params().clone();
+        params.put("method", request.apiMethod());
+
+        return params;
     }
 
     @NonNull
