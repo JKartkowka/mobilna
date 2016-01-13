@@ -9,7 +9,10 @@ import android.widget.ImageButton;
 import com.crashlytics.android.Crashlytics;
 
 import io.fabric.sdk.android.Fabric;
+import jkartkowka.jkartkwkamobile.model.UserType;
+import jkartkowka.jkartkwkamobile.network.ErrorHandler;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
+import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 
 public class LoginActivity extends JKActivity {
 
@@ -31,27 +34,25 @@ public class LoginActivity extends JKActivity {
         wireframe = new LoginWireframe(this);
         RequestSender requestSender = new RequestSender(getApplicationContext());
         loginInteractor = new LoginInteractor(requestSender);
-        RequestSender.setCredentials("marian", "dupadupa");
     }
 
     public void onLogInClick(View v) {
-//        if (inputLogin.getText().toString().length() == 0 || inputPassword.getText().toString().length() == 0) {
-//            makeToast("Wprowadź dane logowania");
-//        } else {
-//            loginInteractor.login(inputLogin.getText().toString(), inputPassword.getText().toString(), new StandardGenericResponseHandler<UserType>() {
-//                @Override
-//                public void onSuccess(UserType receivedUserType) {
-//                    makeToast("Logged in as: " + receivedUserType.toString());
-//                    wireframe.navigateToMenu(receivedUserType);
-//                }
-//
-//                @Override
-//                public void onFailure(ErrorHandler error) {
-//                    super.onFailure(error);
-//                }
-//            });
-//        }
-        loginInteractor.tempRequest();
+        if (inputLogin.getText().toString().length() == 0 || inputPassword.getText().toString().length() == 0) {
+            makeToast("Wprowadź dane logowania");
+        } else {
+            loginInteractor.login(inputLogin.getText().toString(), inputPassword.getText().toString(), new StandardGenericResponseHandler<UserType>() {
+                @Override
+                public void onSuccess(UserType receivedUserType) {
+                    makeToast("Logged in as: " + receivedUserType.toString());
+                    wireframe.navigateToMenu(receivedUserType);
+                }
+
+                @Override
+                public void onFailure(ErrorHandler error) {
+                    super.onFailure(error);
+                }
+            });
+        }
     }
 
     public void gotoQuizActivity(View v) {

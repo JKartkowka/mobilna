@@ -11,11 +11,16 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import jkartkowka.jkartkwkamobile.model.User;
 import jkartkowka.jkartkwkamobile.network.requests.AuthenticationRequest;
@@ -42,7 +47,7 @@ public class RequestSender {
         }
     }
 
-    private void sendStandardRequest(StandardRequest request) {
+    private void sendStandardRequest(final StandardRequest request) {
         JsonArrayRequest jsonRequest = new JsonArrayRequest(request.restMethod(), API_URL + ":" + API_PORT + "/" + request.endpoint(), new Gson().toJson(request.params()), new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -53,6 +58,7 @@ public class RequestSender {
             @Override
             public void onErrorResponse(VolleyError error) {
                 System.out.println("To jest error " + error.toString());
+                request.mockedResponse();
 
             }
         }) {

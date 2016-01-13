@@ -1,15 +1,11 @@
 package jkartkowka.jkartkwkamobile;
 
-import java.util.ArrayList;
-
-import jkartkowka.jkartkwkamobile.model.PopQuiz;
 import jkartkowka.jkartkwkamobile.model.User;
 import jkartkowka.jkartkwkamobile.model.UserType;
 import jkartkowka.jkartkwkamobile.network.ErrorHandler;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 import jkartkowka.jkartkwkamobile.network.requests.LoginRequest;
-import jkartkowka.jkartkwkamobile.network.requests.PopQuizListRequest;
 
 public class LoginInteractor extends JKInteractor {
 
@@ -18,6 +14,8 @@ public class LoginInteractor extends JKInteractor {
     }
 
     public void login(String login, String password, final StandardGenericResponseHandler<UserType> standardResponseHandler) {
+        RequestSender.setCredentials(login, password);
+//        TODO login flow will change
         LoginRequest request = new LoginRequest(login, password, new StandardGenericResponseHandler<User>() {
             @Override
             public void onSuccess(User responseObject) {
@@ -32,17 +30,4 @@ public class LoginInteractor extends JKInteractor {
         requestSender.sendRequest(request);
     }
 
-    public void tempRequest() {
-        PopQuizListRequest request = new PopQuizListRequest(new StandardGenericResponseHandler<ArrayList<PopQuiz>>() {
-            @Override
-            public void onSuccess(ArrayList<PopQuiz> responseObject) {
-            }
-
-            @Override
-            public void onFailure(ErrorHandler error) {
-            }
-        });
-
-        requestSender.sendRequest(request);
-    }
 }
