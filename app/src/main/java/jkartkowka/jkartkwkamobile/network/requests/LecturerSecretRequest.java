@@ -1,5 +1,7 @@
 package jkartkowka.jkartkwkamobile.network.requests;
 
+import org.json.JSONArray;
+
 import java.util.HashMap;
 import java.util.Random;
 
@@ -17,7 +19,7 @@ public class LecturerSecretRequest extends SecretRequest implements StandardRequ
     }
 
     @Override
-    public void parseSuccessResponse(HashMap<String, Object> params) {
+    public void parseSuccessResponse(JSONArray params) {
 
     }
 
@@ -30,7 +32,7 @@ public class LecturerSecretRequest extends SecretRequest implements StandardRequ
 
     @Override
     public String apiMethod() {
-        return "tests/get_key";
+        return "get_key";
     }
 
     @Override
@@ -46,4 +48,5 @@ public class LecturerSecretRequest extends SecretRequest implements StandardRequ
     public void parseErrorResponse(HashMap<String, Object> params) {
 
     }
+
 }

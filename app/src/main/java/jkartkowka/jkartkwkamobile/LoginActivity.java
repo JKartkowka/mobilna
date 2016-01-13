@@ -32,14 +32,14 @@ public class LoginActivity extends JKActivity {
         inputPassword = (EditText) findViewById(R.id.inputPassword);
         setupAutodismissingKeyboard(findViewById(R.id.ALparentview));
         wireframe = new LoginWireframe(this);
+        RequestSender requestSender = new RequestSender(getApplicationContext());
+        loginInteractor = new LoginInteractor(requestSender);
     }
 
     public void onLogInClick(View v) {
         if (inputLogin.getText().toString().length() == 0 || inputPassword.getText().toString().length() == 0) {
             makeToast("Wprowadź dane logowania");
         } else {
-            RequestSender requestSender = new RequestSender(getApplicationContext());
-            loginInteractor = new LoginInteractor(requestSender);
             loginInteractor.login(inputLogin.getText().toString(), inputPassword.getText().toString(), new StandardGenericResponseHandler<UserType>() {
                 @Override
                 public void onSuccess(UserType receivedUserType) {

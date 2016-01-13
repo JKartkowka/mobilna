@@ -14,6 +14,8 @@ public class LoginInteractor extends JKInteractor {
     }
 
     public void login(String login, String password, final StandardGenericResponseHandler<UserType> standardResponseHandler) {
+        RequestSender.setCredentials(login, password);
+//        TODO login flow will change
         LoginRequest request = new LoginRequest(login, password, new StandardGenericResponseHandler<User>() {
             @Override
             public void onSuccess(User responseObject) {
@@ -27,4 +29,5 @@ public class LoginInteractor extends JKInteractor {
         });
         requestSender.sendRequest(request);
     }
+
 }
