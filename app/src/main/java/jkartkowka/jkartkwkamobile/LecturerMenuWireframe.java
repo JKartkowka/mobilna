@@ -10,5 +10,8 @@ public class LecturerMenuWireframe extends JKWireframe {
         makeIntent(PopQuizListActivity.class);
     }
 
-    public void navigateToCheckGroupsList() { makeIntent(CheckGroupsListActivity.class);}
+    public void navigateToCheckGroupsList() {
+        makeIntent(CheckGroupsListActivity.class);
+    }
+
 }

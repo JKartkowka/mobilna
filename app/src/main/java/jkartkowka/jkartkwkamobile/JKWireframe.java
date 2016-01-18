@@ -14,4 +14,8 @@ public class JKWireframe {
         Intent intent = new Intent(activity, listActivityClass);
         activity.startActivity(intent);
     }
+
+    public void back() {
+        activity.finish();
+    }
 }
