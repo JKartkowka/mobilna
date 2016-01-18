@@ -22,7 +22,7 @@ import jkartkowka.jkartkwkamobile.network.requests.AuthenticationRequest;
 import jkartkowka.jkartkwkamobile.network.requests.JKRequest;
 
 public class RequestSender {
-    private static final String API_URL = "http://192.168.1.2";
+    private static final String API_URL = "http://192.168.1.5";
     private static final String API_PORT = "8002";
     private static final boolean API_WORKS = true;
     private final RequestQueue queue;
@@ -91,5 +91,9 @@ public class RequestSender {
     private void sendAuthenticationRequest(AuthenticationRequest request) {
         User user = request.mockedResponse();
         request.onSuccess(user);
+    }
+
+    public void clearCredentials() {
+        auth = null;
     }
 }

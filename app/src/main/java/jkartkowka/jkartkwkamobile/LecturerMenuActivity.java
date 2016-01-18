@@ -3,13 +3,15 @@ package jkartkowka.jkartkwkamobile;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
+
+import jkartkowka.jkartkwkamobile.network.RequestSender;
 
 public class LecturerMenuActivity extends JKActivity {
     private ImageButton buttonPopQuiz;
     private ImageButton buttonGroups;
     private ImageButton buttonLogOut;
     private LecturerMenuWireframe wireframe;
+    private MenuInteractor interactor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,7 @@ public class LecturerMenuActivity extends JKActivity {
         buttonGroups = (ImageButton) findViewById(R.id.buttonGroups);
         buttonLogOut = (ImageButton) findViewById(R.id.buttonLogOut);
         wireframe = new LecturerMenuWireframe(this);
+        interactor = new MenuInteractor(new RequestSender(getApplicationContext()));
     }
 
     public void onPopQuizClick(View v) {
@@ -30,7 +33,8 @@ public class LecturerMenuActivity extends JKActivity {
     }
 
     public void onLogOutClick(View v) {
-        Toast.makeText(this, "Log out", Toast.LENGTH_SHORT).show();
+        interactor.logout();
+        wireframe.back();
     }
 
 }
