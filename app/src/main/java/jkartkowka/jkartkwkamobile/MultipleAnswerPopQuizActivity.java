@@ -15,7 +15,7 @@ import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 /**
  * Created by maciej on 29.12.15.
  */
-public class MultipleAnswerPopQuizActivity extends JKActivity {
+public class MultipleAnswerPopQuizActivity extends StudentActivity {
     private ListView listView;
     private MultipleAnswerPopQuizWireframe wireframe;
     private MultipleAnswerPopQuizInteractor interactor;
@@ -28,10 +28,10 @@ public class MultipleAnswerPopQuizActivity extends JKActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        interactor = new MultipleAnswerPopQuizInteractor(new RequestSender(getApplicationContext()));
+        interactor = new MultipleAnswerPopQuizInteractor(new RequestSender(getApplicationContext()), getApplicationContext());
         setContentView(R.layout.activity_popquiz_multiple_answer);
         adapter = new ImageTextArrayAdapter(this, new String[]{"0", "0", "0", "0"}, marked);
-        listView = (ListView)findViewById(R.id.MultipleAnswerQuestionListView);
+        listView = (ListView) findViewById(R.id.MultipleAnswerQuestionListView);
         listView.setAdapter(adapter);
         listView.setClickable(true);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -41,12 +41,18 @@ public class MultipleAnswerPopQuizActivity extends JKActivity {
                 adapter.notifyDataSetChanged();
             }
         });
+        wireframe = new MultipleAnswerPopQuizWireframe(this);
 
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        if (!interactor.isAirplaneModeOn()) {
+            makeAirplaneModeToast();
+            wireframe.back();
+            return;
+        }
         interactor.question(new StandardGenericResponseHandler<Question>() {
             @Override
             public void onSuccess(Question responseObject) {

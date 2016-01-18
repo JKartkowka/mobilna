@@ -6,12 +6,12 @@ import android.widget.ImageButton;
 
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 
-public class StudentMenuActivity extends JKActivity {
+public class StudentMenuActivity extends StudentActivity {
     private ImageButton buttonPopQuiz;
     private ImageButton buttonGrades;
     private ImageButton buttonLogOut;
     private StudentMenuWireframe wireframe;
-    private MenuInteractor interactor;
+    private StudentMenuInteractor interactor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,11 +21,15 @@ public class StudentMenuActivity extends JKActivity {
         buttonGrades = (ImageButton) findViewById(R.id.buttonGrades);
         buttonLogOut = (ImageButton) findViewById(R.id.buttonLogOut);
         wireframe = new StudentMenuWireframe(this);
-        interactor = new MenuInteractor(new RequestSender(getApplicationContext()));
+        interactor = new StudentMenuInteractor(new RequestSender(getApplicationContext()), getApplicationContext());
     }
 
     public void onPopQuizClick(View v) {
-        wireframe.navigateToPopQuizInfo();
+        if (!interactor.isAirplaneModeOn()) {
+            makeAirplaneModeToast();
+        } else {
+            wireframe.navigateToPopQuizInfo();
+        }
     }
 
     public void onGradesClick(View v) {

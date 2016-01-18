@@ -8,7 +8,7 @@ import jkartkowka.jkartkwkamobile.network.ErrorHandler;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 
-public class StudentAuthenticationActivity extends JKActivity {
+public class StudentAuthenticationActivity extends StudentActivity {
 
     private StudentAuthenticationWireframe wireframe;
     private StudentAuthenticationInteractor interactor;
@@ -19,7 +19,7 @@ public class StudentAuthenticationActivity extends JKActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_studentauthentication);
         wireframe = new StudentAuthenticationWireframe(this);
-        interactor = new StudentAuthenticationInteractor(new RequestSender(getApplicationContext()), this);
+        interactor = new StudentAuthenticationInteractor(new RequestSender(getApplicationContext()), this, getApplicationContext());
         authSymbolImageView = (ImageView) findViewById(R.id.authSymbol);
         interactor.getSecret(new StandardGenericResponseHandler<Integer>() {
             @Override
@@ -35,6 +35,10 @@ public class StudentAuthenticationActivity extends JKActivity {
     }
 
     public void onStartPopQuizClick(View v) {
+        if (!interactor.isAirplaneModeOn()) {
+            makeAirplaneModeToast();
+            return;
+        }
         makeToast("INITIATE POPQUIZ PHASE 1");
     }
 }
