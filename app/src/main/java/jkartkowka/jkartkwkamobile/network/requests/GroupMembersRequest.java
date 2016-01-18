@@ -3,6 +3,8 @@ package jkartkowka.jkartkwkamobile.network.requests;
 import com.android.volley.Request;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,7 +24,28 @@ public class GroupMembersRequest implements StandardRequest {
 
     @Override
     public void parseSuccessResponse(JSONArray response) {
+        ArrayList<Student> membersList = new ArrayList<>();
+        for (int i = 0; i < response.length(); i++) {
+            try {
+                JSONObject groupObject = response.getJSONObject(i);
+                int groupIndex = groupObject.getInt("id");
+                if (groupIndex == groupId) {
+                    JSONArray studentsArray = groupObject.getJSONArray("students");
+                    for (int j = 0; j < studentsArray.length(); j++) {
+                        JSONObject studentObject = studentsArray.getJSONObject(j);
+                        JSONObject userObject = studentObject.getJSONObject("user");
+                        int userId = userObject.getInt("id");
+                        String username = userObject.getString("username");
+                        Student student = new Student(userId, username);
+                        membersList.add(student);
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
+        responseHandler.onSuccess(membersList);
     }
 
     @Override
