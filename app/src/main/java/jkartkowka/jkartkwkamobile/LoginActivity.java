@@ -36,6 +36,12 @@ public class LoginActivity extends JKActivity {
         loginInteractor = new LoginInteractor(requestSender);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        inputPassword.setText("");
+    }
+
     public void onLogInClick(View v) {
         if (inputLogin.getText().toString().length() == 0 || inputPassword.getText().toString().length() == 0) {
             makeToast("Wprowadź dane logowania");
