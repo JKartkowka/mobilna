@@ -3,6 +3,8 @@ package jkartkowka.jkartkwkamobile.network.requests;
 import com.android.volley.Request;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,8 +21,21 @@ public class GroupListRequest implements StandardRequest {
     }
 
     @Override
-    public void parseSuccessResponse(JSONArray params) {
+    public void parseSuccessResponse(JSONArray response) {
+        ArrayList<Group> groupArrayList = new ArrayList<>();
+        for (int i = 0; i < response.length(); i++) {
+            try {
+                JSONObject groupObject = (JSONObject) response.get(i);
+                String groupName = groupObject.getString("name");
+                int groupId = groupObject.getInt("id");
+                Group group = new Group(groupId, groupName);
+                groupArrayList.add(group);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
+        responseHandler.onSuccess(groupArrayList);
     }
 
     @Override
@@ -34,8 +49,7 @@ public class GroupListRequest implements StandardRequest {
     }
 
     @Override
-    public void parseErrorResponse(HashMap<String, Object> params) {
-
+    public void parseErrorResponse(HashMap<String, Object> response) {
     }
 
     @Override
