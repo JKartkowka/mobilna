@@ -1,25 +1,22 @@
 package jkartkowka.jkartkwkamobile;
 
 import android.content.Context;
-import android.provider.Settings;
 
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 
 /**
  * Created by marian on 18.01.2016.
  */
-public class StudentMenuInteractor extends MenuInteractor {
-    private final Context context;
+public class StudentMenuInteractor extends MenuInteractor implements AirplaneModeInteractorInterface {
+
+    private final AirplaneModeInteractor airplaneModeInteractor;
 
     public StudentMenuInteractor(RequestSender requestSender, Context applicationContext) {
         super(requestSender);
-        this.context = applicationContext;
+        airplaneModeInteractor = new AirplaneModeInteractor(requestSender, applicationContext);
     }
 
     public boolean isAirplaneModeOn() {
-
-        return Settings.System.getInt(context.getContentResolver(),
-                Settings.System.AIRPLANE_MODE_ON, 0) != 0;
-
+        return airplaneModeInteractor.isAirplaneModeOn();
     }
 }
