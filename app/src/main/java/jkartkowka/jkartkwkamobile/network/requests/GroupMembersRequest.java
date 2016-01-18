@@ -30,15 +30,7 @@ public class GroupMembersRequest implements StandardRequest {
                 JSONObject groupObject = response.getJSONObject(i);
                 int groupIndex = groupObject.getInt("id");
                 if (groupIndex == groupId) {
-                    JSONArray studentsArray = groupObject.getJSONArray("students");
-                    for (int j = 0; j < studentsArray.length(); j++) {
-                        JSONObject studentObject = studentsArray.getJSONObject(j);
-                        JSONObject userObject = studentObject.getJSONObject("user");
-                        int userId = userObject.getInt("id");
-                        String username = userObject.getString("username");
-                        Student student = new Student(userId, username);
-                        membersList.add(student);
-                    }
+                    parseCurrentGroup(membersList, groupObject);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -46,6 +38,22 @@ public class GroupMembersRequest implements StandardRequest {
         }
 
         responseHandler.onSuccess(membersList);
+    }
+
+    private void parseCurrentGroup(ArrayList<Student> membersList, JSONObject groupObject) throws JSONException {
+        JSONArray studentsArray = groupObject.getJSONArray("students");
+        for (int j = 0; j < studentsArray.length(); j++) {
+            parseStudentAt(membersList, studentsArray, j);
+        }
+    }
+
+    private void parseStudentAt(ArrayList<Student> membersList, JSONArray studentsArray, int j) throws JSONException {
+        JSONObject studentObject = studentsArray.getJSONObject(j);
+        JSONObject userObject = studentObject.getJSONObject("user");
+        int userId = userObject.getInt("id");
+        String username = userObject.getString("username");
+        Student student = new Student(userId, username);
+        membersList.add(student);
     }
 
     @Override
