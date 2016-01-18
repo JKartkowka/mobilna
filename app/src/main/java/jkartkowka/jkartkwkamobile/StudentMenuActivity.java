@@ -6,7 +6,7 @@ import android.widget.ImageButton;
 
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 
-public class StudentMenuActivity extends JKActivity {
+public class StudentMenuActivity extends StudentActivity {
     private ImageButton buttonPopQuiz;
     private ImageButton buttonGrades;
     private ImageButton buttonLogOut;
@@ -26,7 +26,7 @@ public class StudentMenuActivity extends JKActivity {
 
     public void onPopQuizClick(View v) {
         if (!interactor.isAirplaneModeOn()) {
-            makeToast("Aplikacja wymaga przejścia w tryb samolotowy. Włącz tryb samolotowy a następnie połącz się z siecią JKartkowka.");
+            makeAirplaneModeToast();
         } else {
             wireframe.navigateToPopQuizInfo();
         }
