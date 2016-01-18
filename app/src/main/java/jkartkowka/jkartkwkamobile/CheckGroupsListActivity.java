@@ -27,7 +27,6 @@ public class CheckGroupsListActivity extends JKListActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Group group = (Group) listView.getItemAtPosition(position);
                 wireframe.navigateToGroupMembersList(group);
-                makeToast(group.toString());
             }
         });
         titleLabel.setText("Wybierz grupę zajęciową, którą chcesz przejrzeć:");

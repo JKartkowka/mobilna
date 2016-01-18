@@ -14,7 +14,6 @@ import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 
 public class GroupMembersListActivity extends JKListActivity {
     private GroupMembersListWireframe wireframe;
-    private int groupID;
     private GroupMembersListInteractor interactor;
 
     @Override
@@ -23,8 +22,6 @@ public class GroupMembersListActivity extends JKListActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Student student = (Student) listView.getItemAtPosition(position);
-                makeToast(student.toString());
             }
         });
         titleLabel.setText("Lista osób w grupie zajęciowej");
