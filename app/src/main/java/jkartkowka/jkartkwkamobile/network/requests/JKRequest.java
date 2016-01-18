@@ -1,5 +1,7 @@
 package jkartkowka.jkartkwkamobile.network.requests;
 
+import com.android.volley.VolleyError;
+
 import java.util.HashMap;
 
 public interface JKRequest {
@@ -8,6 +10,6 @@ public interface JKRequest {
 
     HashMap<String, Object> params();
 
-    void parseErrorResponse(HashMap<String, Object> params);
+    void parseErrorResponse(VolleyError params);
 
 }

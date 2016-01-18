@@ -55,7 +55,7 @@ public class LoginActivity extends JKActivity {
 
                 @Override
                 public void onFailure(ErrorHandler error) {
-                    super.onFailure(error);
+                    makeToast("Błędny login lub hasło");
                 }
             });
         }
