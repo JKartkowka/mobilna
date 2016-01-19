@@ -6,6 +6,7 @@ import com.android.volley.Request;
 import com.android.volley.VolleyError;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +30,13 @@ public class ChangePopQuizForStudentsRequest implements StandardRequest {
 
     @Override
     public void parseSuccessResponse(JSONArray params) {
-
+        try {
+            String test_name = params.getString(0);
+            String group_name = params.getString(1);
+            responseHandler.onSuccess(new Pair<>(test_name, group_name));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 
