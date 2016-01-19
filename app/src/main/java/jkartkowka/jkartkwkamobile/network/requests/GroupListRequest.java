@@ -1,6 +1,7 @@
 package jkartkowka.jkartkwkamobile.network.requests;
 
 import com.android.volley.Request;
+import com.android.volley.VolleyError;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -49,7 +50,7 @@ public class GroupListRequest implements StandardRequest {
     }
 
     @Override
-    public void parseErrorResponse(HashMap<String, Object> response) {
+    public void parseErrorResponse(VolleyError response) {
     }
 
     @Override

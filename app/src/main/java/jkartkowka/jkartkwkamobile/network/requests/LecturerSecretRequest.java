@@ -1,5 +1,7 @@
 package jkartkowka.jkartkwkamobile.network.requests;
 
+import com.android.volley.VolleyError;
+
 import org.json.JSONArray;
 
 import java.util.HashMap;
@@ -45,7 +47,7 @@ public class LecturerSecretRequest extends SecretRequest implements StandardRequ
     }
 
     @Override
-    public void parseErrorResponse(HashMap<String, Object> params) {
+    public void parseErrorResponse(VolleyError params) {
 
     }
 

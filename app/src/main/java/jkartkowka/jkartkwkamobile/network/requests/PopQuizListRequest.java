@@ -1,6 +1,7 @@
 package jkartkowka.jkartkwkamobile.network.requests;
 
 import com.android.volley.Request;
+import com.android.volley.VolleyError;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,7 +33,7 @@ public class PopQuizListRequest implements StandardRequest {
     }
 
     @Override
-    public void parseErrorResponse(HashMap<String, Object> params) {
+    public void parseErrorResponse(VolleyError params) {
 
     }
 

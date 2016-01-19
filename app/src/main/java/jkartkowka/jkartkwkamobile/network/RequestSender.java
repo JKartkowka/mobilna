@@ -9,16 +9,17 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import jkartkowka.jkartkwkamobile.model.User;
-import jkartkowka.jkartkwkamobile.network.requests.AuthenticationRequest;
+import jkartkowka.jkartkwkamobile.network.requests.AboutUserRequest;
 import jkartkowka.jkartkwkamobile.network.requests.JKRequest;
 
 public class RequestSender {
@@ -33,8 +34,8 @@ public class RequestSender {
     }
 
     public void sendRequest(JKRequest request) {
-        if (request instanceof AuthenticationRequest) {
-            sendAuthenticationRequest((AuthenticationRequest) request);
+        if (request instanceof AboutUserRequest) {
+            sendAuthenticationRequest((AboutUserRequest) request);
         } else if (request instanceof StandardRequest) {
             sendStandardRequest((StandardRequest) request);
         }
@@ -88,9 +89,33 @@ public class RequestSender {
         auth = "Basic " + Base64.encodeToString(creds.getBytes(), Base64.DEFAULT);
     }
 
-    private void sendAuthenticationRequest(AuthenticationRequest request) {
-        User user = request.mockedResponse();
-        request.onSuccess(user);
+    private void sendAuthenticationRequest(final AboutUserRequest request) {
+        if (API_WORKS) {
+            JsonObjectRequest jsonRequest = new JsonObjectRequest(request.restMethod(), API_URL + ":" + API_PORT + "/" + request.endpoint(), new Gson().toJson(generateRequestParams(request)), new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    System.out.println("Request: " + request.getClass().toString() + "\n" + "Method: " + request.apiMethod() + "\n" + "Params: " + request.params().toString() + "\n" + "Response: " + response.toString());
+                    request.parseSuccessResponseJSONObject(response);
+                }
+
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    System.out.println("Request: " + request.getClass().toString() + "\n" + "Method: " + request.apiMethod() + "\n" + "Params: " + request.params().toString() + "\n" + "Error response: " + error.toString());
+                    request.parseErrorResponse(error);
+
+                }
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    return generateRequestHeader();
+                }
+            };
+
+            queue.add(jsonRequest);
+        } else {
+            request.mockedResponse();
+        }
     }
 
     public void clearCredentials() {

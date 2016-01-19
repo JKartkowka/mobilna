@@ -3,6 +3,7 @@ package jkartkowka.jkartkwkamobile.network.requests;
 import android.util.Pair;
 
 import com.android.volley.Request;
+import com.android.volley.VolleyError;
 
 import org.json.JSONArray;
 
@@ -51,7 +52,7 @@ public class ChangePopQuizStateRequest implements StandardRequest {
     }
 
     @Override
-    public void parseErrorResponse(HashMap<String, Object> params) {
+    public void parseErrorResponse(VolleyError params) {
 
     }
 
