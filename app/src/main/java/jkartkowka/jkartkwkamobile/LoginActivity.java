@@ -1,5 +1,6 @@
 package jkartkowka.jkartkwkamobile;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -46,15 +47,17 @@ public class LoginActivity extends JKActivity {
         if (inputLogin.getText().toString().length() == 0 || inputPassword.getText().toString().length() == 0) {
             makeToast("Wprowadź dane logowania");
         } else {
+            final ProgressDialog dialog = ProgressDialog.show(LoginActivity.this, "", "Ładowanie", true);
             loginInteractor.login(inputLogin.getText().toString(), inputPassword.getText().toString(), new StandardGenericResponseHandler<UserType>() {
                 @Override
                 public void onSuccess(UserType receivedUserType) {
-                    makeToast("Logged in as: " + receivedUserType.toString());
+                    dialog.dismiss();
                     wireframe.navigateToMenu(receivedUserType);
                 }
 
                 @Override
                 public void onFailure(ErrorHandler error) {
+                    dialog.dismiss();
                     makeToast("Błędny login lub hasło");
                 }
             });
