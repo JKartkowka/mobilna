@@ -23,8 +23,8 @@ import jkartkowka.jkartkwkamobile.network.requests.AboutUserRequest;
 import jkartkowka.jkartkwkamobile.network.requests.JKRequest;
 
 public class RequestSender {
-    private static final String API_URL = "http://192.168.43.236";
-    private static final String API_PORT = "8080";
+    private static final String API_URL = "http://192.168.0.5";
+    private static final String API_PORT = "8002";
     private static final boolean API_WORKS = true;
     private final RequestQueue queue;
     private static String auth;
