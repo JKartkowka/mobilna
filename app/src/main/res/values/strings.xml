@@ -7,8 +7,10 @@
     <string name="title_activity_lecturer_custom_authentication">LecturerCustomAuthenticationActivity</string>
     <string name="title_activity_lecturer_pop_quiz">LecturerPopQuizActivity</string>
     <string name="title_activity_student_pop_quiz_info">StudentPopQuizInfo</string>
+    <string name="title_activity_student_pop_quiz">StudentPopQuizActivity</string>
     <string name="title_activity_student_authentication">StudentAuthentication</string>
     <string name="title_activity_grades_list">GradesList</string>
+    <string name="title_activity_text_answer_pop_quiz">TextAnswerPopQuiz</string>
     <string name="lecturer_auth_info">Porównaj, czy wszyscy studenci w grupie mają ten sam symbol:</string>
     <string name="lecturer_custom_auth_info">Wskaż studentów, którzy znajdują się na sali:</string>
     <string name="lecturer_pop_quiz_info">Test został rozpoczęty.\nKliknij poniżej, żeby zakończyć \ntrwającą kartkówkę.</string>
