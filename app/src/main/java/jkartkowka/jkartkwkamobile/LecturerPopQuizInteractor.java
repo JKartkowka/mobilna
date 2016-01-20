@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.util.Pair;
 import android.view.View;
 
+import jkartkowka.jkartkwkamobile.model.PopQuizState;
 import jkartkowka.jkartkwkamobile.network.ErrorHandler;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
@@ -80,7 +81,7 @@ public class LecturerPopQuizInteractor extends JKInteractor {
     }
 
     private void sendStopRequest(final ProgressDialog progressBar, final StandardGenericResponseHandler<Boolean> standardGenericResponseHandler) {
-        ChangePopQuizStateRequest request = new ChangePopQuizStateRequest(groupId, popQuizId, new StandardGenericResponseHandler<Pair<String, String>>() {
+        ChangePopQuizStateRequest request = new ChangePopQuizStateRequest(groupId, popQuizId, PopQuizState.PQSClosed, new StandardGenericResponseHandler<Pair<String, String>>() {
             @Override
             public void onSuccess(Pair<String, String> responseObject) {
                 progressBar.dismiss();

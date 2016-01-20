@@ -7,10 +7,10 @@ import com.android.volley.VolleyError;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.HashMap;
 
+import jkartkowka.jkartkwkamobile.model.PopQuizState;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 import jkartkowka.jkartkwkamobile.network.StandardRequest;
 
@@ -21,11 +21,13 @@ public class ChangePopQuizStateRequest implements StandardRequest {
     private final int popQuizId;
     private final int groupId;
     private final StandardGenericResponseHandler<Pair<String, String>> responseHandler;
+    private final PopQuizState popQuizState;
 
-    public ChangePopQuizStateRequest(int groupId, int popQuizId, StandardGenericResponseHandler<Pair<String, String>> responseHandler) {
+    public ChangePopQuizStateRequest(int groupId, int popQuizId, PopQuizState popQuizState, StandardGenericResponseHandler<Pair<String, String>> responseHandler) {
         this.popQuizId = popQuizId;
         this.groupId = groupId;
         this.responseHandler = responseHandler;
+        this.popQuizState = popQuizState;
     }
 
     @Override
@@ -54,7 +56,11 @@ public class ChangePopQuizStateRequest implements StandardRequest {
         HashMap<String, Object> params = new HashMap<>();
         params.put("test_id", popQuizId);
         params.put("group_id", groupId);
-        params.put("state", 1);
+        if (popQuizState == PopQuizState.PQSOpened) {
+            params.put("state", 1);
+        } else {
+            params.put("state", 0);
+        }
 
         return params;
     }
