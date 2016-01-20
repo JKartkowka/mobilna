@@ -63,11 +63,4 @@ public class LoginActivity extends JKActivity {
             });
         }
     }
-
-    public void gotoQuizActivity(View v) {
-        Intent intent = new Intent(this, MultipleAnswerPopQuizActivity.class);
-        this.startActivity(intent);
-    }
-
-
 }

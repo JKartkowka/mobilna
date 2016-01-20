@@ -8,10 +8,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 import jkartkowka.jkartkwkamobile.model.PopQuiz;
+import jkartkowka.jkartkwkamobile.model.Question;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 import jkartkowka.jkartkwkamobile.network.StandardRequest;
 
@@ -37,6 +40,7 @@ public class PopQuizListRequest implements StandardRequest {
 
     }
 
+
     @Override
     public void parseSuccessResponse(JSONArray response) {
         Random randomGenerator = new Random();
@@ -51,12 +55,25 @@ public class PopQuizListRequest implements StandardRequest {
 //                TODO how to get from server number of correct answers?
                 int correctAnswers = randomGenerator.nextInt(questionCount);
 //                TODO how to get from server grade?
-                PopQuiz popQuiz = new PopQuiz(identifier, quizName, questionCount, correctAnswers, 2.0f);
+
+                List<Question> parsedQuestions = new ArrayList<>();
+                for (int j = 0; i<questionCount; j++) {
+                    JSONObject jsonQuestion = (JSONObject) jsonQuestionList.get(j);
+                    int questionId = jsonQuestion.getInt("id");
+                    String questionContent = jsonQuestion.getString("name");
+
+                    JSONArray jsonAnswers = jsonQuestion.getJSONArray("answers");
+                    String[] parsedAnswers = new String[jsonAnswers.length()];
+                    for (int k = 0; k < jsonAnswers.length(); k++) {
+                        parsedAnswers[k] = jsonAnswers.get(k).toString();
+                    }
+                    parsedQuestions.add(new Question(questionId, questionContent, parsedAnswers));
+                }
+                PopQuiz popQuiz = new PopQuiz(identifier, quizName, questionCount, correctAnswers, 2.0f, parsedQuestions);
                 popQuizList.add(popQuiz);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
         }
 
         responseHandler.onSuccess(popQuizList);
@@ -66,10 +83,15 @@ public class PopQuizListRequest implements StandardRequest {
     public void mockedResponse() {
         ArrayList<PopQuiz> popQuizList = new ArrayList<>();
         Random randomGenerator = new Random();
+
+        Question[] questions = new Question[]{  new Question(1, "6+2?", new String[]{"6", "7", "8", "9"}),
+                new Question(2, "12-5?", new String[]{"5", "7", "9", "11"}),
+                new Question(3, "2+8?", new String[]{"9", "10", "11", "1337"})};
+
         for (int i = 1; i <= 10; i++) {
-            int questionCount = randomGenerator.nextInt(20) + 10;
+            int questionCount = 3;
             int correctAnswers = randomGenerator.nextInt(questionCount);
-            PopQuiz popQuiz = new PopQuiz(i, "Kartkówka " + i, questionCount, correctAnswers, 2.0f);
+            PopQuiz popQuiz = new PopQuiz(i, "Kartkówka " + i, questionCount, correctAnswers, 2.0f, Arrays.asList(questions));
             popQuizList.add(popQuiz);
         }
 

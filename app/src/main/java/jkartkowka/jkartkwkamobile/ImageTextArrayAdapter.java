@@ -12,7 +12,7 @@ import android.widget.TextView;
 /**
  * Created by maciej on 31.12.15.
  */
-public class ImageTextArrayAdapter extends ArrayAdapter<String> { //TODO image for marked and unmarked question
+public class ImageTextArrayAdapter extends ArrayAdapter<String> {
     private final Activity context;
     private final String[] answers;
     private final boolean[] marked;
@@ -32,7 +32,7 @@ public class ImageTextArrayAdapter extends ArrayAdapter<String> { //TODO image f
         TextView popQuizRowQuestion = (TextView) rowView.findViewById(R.id.popQuizRowQuestion);
         ImageView imageView = (ImageView) rowView.findViewById(R.id.PopQuizRowIndicator);
         popQuizRowQuestion.setText(answers[position]);
-        if (marked[position])  //TODO change images
+        if (marked[position])
             imageView.setImageResource(R.drawable.tick);
         else
             imageView.setImageResource(R.drawable.untick);
