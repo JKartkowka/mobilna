@@ -39,6 +39,6 @@ public class StudentAuthenticationActivity extends StudentActivity {
             makeAirplaneModeToast();
             return;
         }
-        wireframe.startPopQuiz();
+        makeToast("INITIATE POPQUIZ PHASE 1");
     }
 }

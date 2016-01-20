@@ -40,52 +40,48 @@
         </activity>
         <activity
             android:name=".PopQuizListActivity"
-            android:label="@string/title_activity_popQuiz_list"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_popQuiz_list" />
         <activity
             android:name=".GroupsListActivity"
-            android:label="@string/title_activity_groups_list"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_groups_list" />
         <activity
             android:name=".CheckGroupsListActivity"
-            android:label="@string/title_activity_check_groups_list"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_check_groups_list" />
         <activity
             android:name=".GroupMembersListActivity"
-            android:label="@string/title_activity_group_details_list"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_group_details_list" />
         <activity
             android:name=".StudentPopQuizInfoActivity"
-            android:label="title_activity_student_pop_quiz_info"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:label="title_activity_student_pop_quiz_info" />
         <activity
             android:name=".StudentAuthenticationActivity"
-            android:label="@string/title_activity_student_authentication"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".StudentPopQuizActivity"
-            android:label="@string/title_activity_student_pop_quiz"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_student_authentication" />
         <activity
             android:name=".GradesListActivity"
-            android:label="@string/title_activity_grades_list"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_grades_list" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="4f873f6ee95ad4d7d3ae9e3704481e62cd04ed76" />
-
         <activity
             android:name=".LecturerAuthenticationActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".LecturerPopQuizActivity"
-            android:label="@string/title_activity_lecturer_pop_quiz"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_lecturer_pop_quiz" />
         <activity
             android:name=".LecturerCustomAuthenticationActivity"
             android:label="@string/title_activity_lecturer_custom_authentication"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MultipleAnswerPopQuizActivity"/>
     </application>
 
 </manifest>
