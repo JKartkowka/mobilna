@@ -10,10 +10,12 @@ public class LecturerAuthenticationWireframe extends JKWireframe {
         super(activity);
     }
 
-    public void navigateToPopQuiz(String popQuizName, String groupName) {
+    public void navigateToPopQuiz(String popQuizName, String groupName, int popQuizId, int groupId) {
         Intent intent = new Intent(activity, LecturerPopQuizActivity.class);
         intent.putExtra("popQuizName", popQuizName);
         intent.putExtra("groupName", groupName);
+        intent.putExtra("popQuizID", popQuizId);
+        intent.putExtra("groupID", groupId);
         activity.startActivity(intent);
     }
 }

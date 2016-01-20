@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.util.Pair;
 
+import jkartkowka.jkartkwkamobile.model.PopQuizState;
 import jkartkowka.jkartkwkamobile.network.ErrorHandler;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
@@ -20,6 +21,7 @@ public class LecturerAuthenticationInteractor extends UserAuthenticationInteract
         groupId = intent.getIntExtra("groupID", -1);
         popQuizId = intent.getIntExtra("popQuizID", -1);
     }
+
     @Override
     public void getSecret(final StandardGenericResponseHandler<Integer> responseHandler) {
         LecturerSecretRequest request = new LecturerSecretRequest(groupId, popQuizId, new StandardGenericResponseHandler<Integer>() {
@@ -39,7 +41,7 @@ public class LecturerAuthenticationInteractor extends UserAuthenticationInteract
     }
 
     public void activatePopQuiz(StandardGenericResponseHandler<Pair<String, String>> responseHandler) {
-        ChangePopQuizStateRequest request = new ChangePopQuizStateRequest(groupId, popQuizId, responseHandler);
+        ChangePopQuizStateRequest request = new ChangePopQuizStateRequest(groupId, popQuizId, PopQuizState.PQSOpened, responseHandler);
 
         requestSender.sendRequest(request);
     }
