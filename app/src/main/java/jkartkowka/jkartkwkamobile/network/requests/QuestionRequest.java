@@ -28,7 +28,7 @@ public class QuestionRequest implements StandardRequest {
     }
 
     @Override
-    public String apiMethod() {
+    public String apiMethod(){
         return "";
     } //TODO add declaration to api
 
