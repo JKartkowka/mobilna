@@ -44,7 +44,7 @@ public class LecturerAuthenticationActivity extends JKActivity {
         interactor.activatePopQuiz(new StandardGenericResponseHandler<Pair<String, String>>() {
             @Override
             public void onSuccess(Pair<String, String> responseObject) {
-                wireframe.navigateToPopQuiz(responseObject.first, responseObject.second);
+                wireframe.navigateToPopQuiz(responseObject.first, responseObject.second, interactor.popQuizId, interactor.groupId);
             }
 
             @Override
