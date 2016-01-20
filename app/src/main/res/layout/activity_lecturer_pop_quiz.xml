@@ -90,6 +90,8 @@
         android:clickable="true"
         android:layout_below="@+id/textView5"
         android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"/>
+        android:layout_marginRight="25dp"
+        android:onClick="onStopPopQuiz" />
 
 </RelativeLayout>
+
