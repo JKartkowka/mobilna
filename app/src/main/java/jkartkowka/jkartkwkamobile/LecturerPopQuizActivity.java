@@ -42,12 +42,13 @@ public class LecturerPopQuizActivity extends JKActivity {
         interactor.stopPopQuiz(v, new StandardGenericResponseHandler<Boolean>() {
             @Override
             public void onSuccess(Boolean responseObject) {
-                super.onSuccess(responseObject);
+                makeToast("Kartkówka została zakończona");
+                wireframe.backToMenu();
             }
 
             @Override
             public void onFailure(ErrorHandler error) {
-                super.onFailure(error);
+                makeToast(error.toString());
             }
         });
     }
