@@ -12,12 +12,9 @@ import jkartkowka.jkartkwkamobile.network.requests.ChangePopQuizStateRequest;
 public class LecturerAuthenticationInteractor extends UserAuthenticationInteractor {
 
     public final int groupId;
-    public final int popQuizId;
-
     public LecturerAuthenticationInteractor(RequestSender requestSender, Intent intent, Activity activity) {
-        super(requestSender, activity);
+        super(requestSender, activity, intent);
         groupId = intent.getIntExtra("groupID", -1);
-        popQuizId = intent.getIntExtra("popQuizID", -1);
     }
 
     public void activatePopQuiz(StandardGenericResponseHandler<Pair<String, String>> responseHandler) {

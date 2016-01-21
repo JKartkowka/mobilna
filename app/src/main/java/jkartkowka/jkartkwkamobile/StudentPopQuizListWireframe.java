@@ -15,7 +15,7 @@ public class StudentPopQuizListWireframe extends JKWireframe {
 
     public void navigateToAuthentication(PopQuiz popQuiz) {
         Intent intent = new Intent(activity, StudentPopQuizInfoActivity.class);
-        intent.putExtra("popQuizId", popQuiz.id);
+        intent.putExtra("popQuizID", popQuiz.id);
 
         activity.startActivity(intent);
     }

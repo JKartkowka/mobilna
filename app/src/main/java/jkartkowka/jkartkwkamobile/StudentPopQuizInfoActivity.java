@@ -8,14 +8,14 @@ import jkartkowka.jkartkwkamobile.network.RequestSender;
 public class StudentPopQuizInfoActivity extends StudentActivity {
 
     private StudentPopQuizInfoWireframe wireframe;
-    private AirplaneModeInteractor interactor;
+    private StudentPopQuizInfo interactor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_studentpopquizinfo);
         wireframe = new StudentPopQuizInfoWireframe(this);
-        interactor = new AirplaneModeInteractor(new RequestSender(getApplicationContext()), getApplicationContext());
+        interactor = new StudentPopQuizInfo(new RequestSender(getApplicationContext()), getApplicationContext(), getIntent());
     }
 
     public void onAuthenticateClick(View v) {
@@ -23,6 +23,6 @@ public class StudentPopQuizInfoActivity extends StudentActivity {
             makeAirplaneModeToast();
             return;
         }
-        wireframe.navigateToStudentAuthentication();
+        wireframe.navigateToStudentAuthentication(interactor.popQuizId);
     }
 }
