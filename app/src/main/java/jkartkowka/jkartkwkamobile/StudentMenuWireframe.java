@@ -6,8 +6,11 @@ public class StudentMenuWireframe extends JKWireframe {
         super(studentMenuActivity);
     }
 
-    public void navigateToPopQuizInfo() { makeIntent(StudentPopQuizInfoActivity.class);}
+    public void navigateToGradesList() {
+        makeIntent(GradesListActivity.class);
+    }
 
-    public void navigateToGradesList() { makeIntent(GradesListActivity.class);}
+    public void navigateToPopQuizList() {
 
+    }
 }
