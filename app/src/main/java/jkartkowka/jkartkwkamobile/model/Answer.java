@@ -15,4 +15,6 @@ public class Answer {
     public String toString() {
         return content;
     }
+
+    public int getId() {return id;}
 }
