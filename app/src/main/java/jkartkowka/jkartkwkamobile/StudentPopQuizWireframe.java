@@ -8,9 +8,9 @@ public class StudentPopQuizWireframe extends JKWireframe {
         super(activity);
     }
 
-    public void finishPopQuiz() {
+    public void navigateToMenu() {
         // because of StudentMenuActivity intent flag, this will go back to the specified,
         // already running activity, while finishing every other active activity
-        makeIntent(StudentMenuActivity.class);
+        makeLauncherIntent(StudentMenuActivity.class);
     }
 }

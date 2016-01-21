@@ -7,7 +7,6 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:gravity="center_vertical"
     tools:context="jkartkowka.jkartkwkamobile.jkartkwka.jkarStudentPopQuizInfoActivity"
     android:background="@drawable/background">
 
@@ -18,9 +17,10 @@
         android:src="@drawable/uwierzytelnienie"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:clickable="true"
+        android:layout_marginBottom="44dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:onClick="onAuthenticateClick"/>
@@ -31,13 +31,14 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/student_auth_info"
         android:id="@+id/authInfoTextView"
+        android:gravity="center"
         android:layout_above="@+id/popQuizInfoTextView"
-        android:layout_marginBottom="20dp"
-        android:layout_alignLeft="@+id/popQuizInfoTextView"
-        android:layout_alignStart="@+id/popQuizInfoTextView"
+        android:layout_centerVertical="true"
         android:layout_alignRight="@+id/popQuizInfoTextView"
         android:layout_alignEnd="@+id/popQuizInfoTextView"
-        android:gravity="center" />
+        android:layout_alignLeft="@+id/popQuizInfoTextView"
+        android:layout_alignStart="@+id/popQuizInfoTextView"
+        android:layout_marginBottom="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -45,12 +46,11 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/student_popquiz_info"
         android:id="@+id/popQuizInfoTextView"
-        android:layout_above="@+id/buttonAuthenticate"
-        android:layout_marginBottom="51dp"
+        android:gravity="center"
         android:layout_alignLeft="@+id/buttonAuthenticate"
         android:layout_alignStart="@+id/buttonAuthenticate"
+        android:layout_centerVertical="true"
         android:layout_alignRight="@+id/buttonAuthenticate"
-        android:layout_alignEnd="@+id/buttonAuthenticate"
-        android:gravity="center" />
+        android:layout_alignEnd="@+id/buttonAuthenticate" />
 
 </RelativeLayout>
