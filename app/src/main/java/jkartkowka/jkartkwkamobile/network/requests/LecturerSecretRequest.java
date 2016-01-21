@@ -12,12 +12,10 @@ import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 import jkartkowka.jkartkwkamobile.network.StandardRequest;
 
 public class LecturerSecretRequest extends SecretRequest implements StandardRequest {
-    private final int groupId;
     private final int popQuizId;
 
-    public LecturerSecretRequest(int groupId, int popQuizId, StandardGenericResponseHandler<Integer> responseHandler) {
+    public LecturerSecretRequest(int popQuizId, StandardGenericResponseHandler<Integer> responseHandler) {
         super(responseHandler);
-        this.groupId = groupId;
         this.popQuizId = popQuizId;
     }
 
@@ -26,7 +24,7 @@ public class LecturerSecretRequest extends SecretRequest implements StandardRequ
         try {
             int key = params.getInt(0);
             responseHandler.onSuccess(key);
-        }catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
     }
@@ -52,7 +50,6 @@ public class LecturerSecretRequest extends SecretRequest implements StandardRequ
     public HashMap<String, Object> params() {
         HashMap<String, Object> params = new HashMap<>();
         params.put("test_id", popQuizId);
-        params.put("group_id", groupId);
 
         return params;
     }

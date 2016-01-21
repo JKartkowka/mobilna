@@ -24,7 +24,7 @@ public class LecturerAuthenticationInteractor extends UserAuthenticationInteract
 
     @Override
     public void getSecret(final StandardGenericResponseHandler<Integer> responseHandler) {
-        LecturerSecretRequest request = new LecturerSecretRequest(groupId, popQuizId, new StandardGenericResponseHandler<Integer>() {
+        LecturerSecretRequest request = new LecturerSecretRequest(popQuizId, new StandardGenericResponseHandler<Integer>() {
             @Override
             public void onSuccess(Integer secretId) {
                 Integer drawableId = getDrawableId(secretId);
