@@ -7,6 +7,7 @@ import com.android.volley.VolleyError;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 
@@ -33,8 +34,9 @@ public class ChangePopQuizStateRequest implements StandardRequest {
     @Override
     public void parseSuccessResponse(JSONArray params) {
         try {
-            String test_name = params.getString(0);
-            String group_name = params.getString(1);
+            JSONObject object = params.getJSONObject(0);
+            String test_name = object.getString("test_name");
+            String group_name = "";
             responseHandler.onSuccess(new Pair<>(test_name, group_name));
         } catch (JSONException e) {
             e.printStackTrace();
@@ -48,7 +50,7 @@ public class ChangePopQuizStateRequest implements StandardRequest {
 
     @Override
     public String apiMethod() {
-        return "tests";
+        return "change_state";
     }
 
     @Override
@@ -77,6 +79,6 @@ public class ChangePopQuizStateRequest implements StandardRequest {
 
     @Override
     public String endpoint() {
-        return "change_state";
+        return "tests";
     }
 }
