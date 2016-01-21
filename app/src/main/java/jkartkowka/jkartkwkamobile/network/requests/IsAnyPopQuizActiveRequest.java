@@ -30,6 +30,10 @@ public class IsAnyPopQuizActiveRequest implements StandardRequest{
         responseHandler.onSuccess(true);
     }
 
+    public String apiMethod(){
+        return "";
+    } //TODO add declaration to api
+
     @Override
     public int restMethod() {
         return Request.Method.POST;
@@ -41,13 +45,8 @@ public class IsAnyPopQuizActiveRequest implements StandardRequest{
     }
 
     @Override
-    public String apiMethod() {
-        return "list";
-    }
-
-    @Override
     public HashMap<String, Object> params() {
-        return null;
+        return new HashMap<>();
     }
 
     @Override

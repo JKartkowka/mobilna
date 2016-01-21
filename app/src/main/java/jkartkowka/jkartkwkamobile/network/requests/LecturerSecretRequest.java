@@ -3,6 +3,7 @@ package jkartkowka.jkartkwkamobile.network.requests;
 import com.android.volley.VolleyError;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -22,7 +23,12 @@ public class LecturerSecretRequest extends SecretRequest implements StandardRequ
 
     @Override
     public void parseSuccessResponse(JSONArray params) {
-
+        try {
+            int key = params.getInt(0);
+            responseHandler.onSuccess(key);
+        }catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -35,6 +41,11 @@ public class LecturerSecretRequest extends SecretRequest implements StandardRequ
     @Override
     public String apiMethod() {
         return "get_key";
+    }
+
+    @Override
+    public String endpoint() {
+        return "tests";
     }
 
     @Override
