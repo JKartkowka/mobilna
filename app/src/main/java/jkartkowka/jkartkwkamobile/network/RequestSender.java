@@ -24,7 +24,7 @@ import jkartkowka.jkartkwkamobile.network.requests.JKRequest;
 
 public class RequestSender {
 
-    private static final String API_URL = "http://192.168.1.6";
+    private static final String API_URL = "http://192.168.0.5";
     private static final String API_PORT = "8002";
     private static final boolean API_WORKS = false;
     private final RequestQueue queue;
