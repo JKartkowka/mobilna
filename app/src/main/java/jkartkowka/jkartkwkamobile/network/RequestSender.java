@@ -41,7 +41,6 @@ public class RequestSender {
             sendStandardRequest((StandardRequest) request);
         }
     }
-
     private void sendStandardRequest(final StandardRequest request) {
         if (API_WORKS) {
             JsonArrayRequest jsonRequest = new JsonArrayRequest(request.restMethod(), API_URL + ":" + API_PORT + "/" + request.endpoint(), new Gson().toJson(generateRequestParams(request)), new Response.Listener<JSONArray>() {

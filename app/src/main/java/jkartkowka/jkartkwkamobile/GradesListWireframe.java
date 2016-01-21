@@ -14,7 +14,7 @@ public class GradesListWireframe extends JKWireframe {
     public void showPopQuizResult(PopQuiz chosenPopQuiz, Context applicationContext) {
         AlertDialog.Builder alert = new AlertDialog.Builder(applicationContext);
         alert.setTitle("Wyniki kartkówki\n" + "(" + chosenPopQuiz.getName() + ")");
-        alert.setMessage("Zdobyłeś " + chosenPopQuiz.getResult() + " punktów.\nTwoja ocena to: " + chosenPopQuiz.getGrade());
+        alert.setMessage("Zdobyłeś " + chosenPopQuiz.getResult() + " punktów.");
         alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {}
         });
