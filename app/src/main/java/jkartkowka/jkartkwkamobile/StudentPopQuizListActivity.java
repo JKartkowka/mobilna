@@ -19,7 +19,7 @@ public class StudentPopQuizListActivity extends PopQuizListActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 PopQuiz popQuiz = (PopQuiz) listView.getItemAtPosition(position);
-//                wireframe.navigateToGroupsWithPopQuiz(popQuiz);
+                wireframe.navigateToAuthentication(popQuiz);
             }
         });
         titleLabel.setText("Wybierz kartkówkę, którą chcesz napisać:");

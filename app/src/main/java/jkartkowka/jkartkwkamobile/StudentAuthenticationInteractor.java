@@ -2,6 +2,7 @@ package jkartkowka.jkartkwkamobile;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 
@@ -9,8 +10,8 @@ public class StudentAuthenticationInteractor extends UserAuthenticationInteracto
 
     private final AirplaneModeInteractor airplaneModeInteractor;
 
-    public StudentAuthenticationInteractor(RequestSender requestSender, Activity activity, Context applicationContext) {
-        super(requestSender, activity);
+    public StudentAuthenticationInteractor(RequestSender requestSender, Activity activity, Context applicationContext, Intent intent) {
+        super(requestSender, activity, intent);
         airplaneModeInteractor = new AirplaneModeInteractor(requestSender, applicationContext);
     }
 

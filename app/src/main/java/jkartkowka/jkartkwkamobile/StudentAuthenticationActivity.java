@@ -19,7 +19,7 @@ public class StudentAuthenticationActivity extends StudentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_studentauthentication);
         wireframe = new StudentAuthenticationWireframe(this);
-        interactor = new StudentAuthenticationInteractor(new RequestSender(getApplicationContext()), this, getApplicationContext());
+        interactor = new StudentAuthenticationInteractor(new RequestSender(getApplicationContext()), this, getApplicationContext(), getIntent());
         authSymbolImageView = (ImageView) findViewById(R.id.authSymbol);
         interactor.getSecret(new StandardGenericResponseHandler<Integer>() {
             @Override
