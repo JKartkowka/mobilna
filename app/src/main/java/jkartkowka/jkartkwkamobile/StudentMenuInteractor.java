@@ -3,8 +3,6 @@ package jkartkowka.jkartkwkamobile;
 import android.content.Context;
 
 import jkartkowka.jkartkwkamobile.network.RequestSender;
-import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
-import jkartkowka.jkartkwkamobile.network.requests.IsAnyPopQuizActiveRequest;
 
 /**
  * Created by marian on 18.01.2016.
@@ -22,8 +20,4 @@ public class StudentMenuInteractor extends MenuInteractor implements AirplaneMod
         return airplaneModeInteractor.isAirplaneModeOn();
     }
 
-    public void isAnyPopQuizActive(StandardGenericResponseHandler<Boolean> standardGenericResponsHandler) {
-        IsAnyPopQuizActiveRequest request = new IsAnyPopQuizActiveRequest(standardGenericResponsHandler);
-        requestSender.sendRequest(request);
-    }
 }
