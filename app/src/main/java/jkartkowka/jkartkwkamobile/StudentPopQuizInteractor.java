@@ -7,10 +7,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import jkartkowka.jkartkwkamobile.model.Answer;
 import jkartkowka.jkartkwkamobile.model.PopQuiz;
+import jkartkowka.jkartkwkamobile.network.ErrorHandler;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 import jkartkowka.jkartkwkamobile.network.requests.PopQuizRequest;
@@ -63,25 +65,33 @@ public class StudentPopQuizInteractor extends AirplaneModeInteractor {
     }
 
     public void sendAnswers() {
-        JSONObject jsonAnswer = new JSONObject();
-        JSONArray jsonAnswers = new JSONArray();
-        JSONObject answersParcel = new JSONObject();
+        HashMap<String, Object> answer = new HashMap<>();
+        ArrayList<HashMap<String, Object>> answers = new ArrayList<>();
+        HashMap<String, Object> answersParcel = new HashMap<>();
         int questionCount = popQuiz.getQuestionCount();
 
-        try {
-            for (int i = 0; i < questionCount; i++) {
-                jsonAnswer.put("question_id", popQuiz.getQuestionId(i));
-                jsonAnswer.put("answer_id", userAnswers.get(i));
-                jsonAnswers.put(jsonAnswer);
+        for (int i = 0; i < questionCount; i++) {
+            answer.put("question_id", popQuiz.getQuestionId(i));
+            answer.put("answer_id", userAnswers.get(i));
+            answers.add(answer);
+        }
+
+        answersParcel.put("test_id", popQuiz.id);
+        answersParcel.put("answers", answers);
+
+        SendAnswersRequest request = new SendAnswersRequest(popQuiz.id, answers, new StandardGenericResponseHandler<Object>() {
+            @Override
+            public void onSuccess(Object responseObject) {
+                super.onSuccess(responseObject);
             }
 
-            answersParcel.put("test_id", popQuiz.id);
-            answersParcel.put("answers", jsonAnswers);
+            @Override
+            public void onFailure(ErrorHandler error) {
+                super.onFailure(error);
+            }
+        });
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        //TODO send it
+        requestSender.sendRequest(request);
     }
 
     public boolean[] getSavedAnswers() {
