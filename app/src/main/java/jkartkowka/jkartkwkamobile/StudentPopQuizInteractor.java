@@ -5,6 +5,7 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
+import jkartkowka.jkartkwkamobile.model.Answer;
 import jkartkowka.jkartkwkamobile.model.PopQuiz;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
@@ -40,7 +41,7 @@ public class StudentPopQuizInteractor extends AirplaneModeInteractor {
         userAnswers.set(currentQuestionIndex, marked);
     }
 
-    public String[] getSuggestedAnswers() {
+    public Answer[] getSuggestedAnswers() {
         return popQuiz.getAnswers(currentQuestionIndex);
     }
 
