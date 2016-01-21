@@ -26,12 +26,18 @@ public class StudentPopQuizActivity extends StudentActivity {
     private StudentPopQuizWireframe wireframe;
     private StudentPopQuizInteractor interactor;
     ImageTextArrayAdapter adapter;
-    private boolean[] marked = new boolean[4];
-    private int currentQuestionIndex = 0;
+    private boolean[] marked;
+    private int currentQuestionIndex;
+    private int correctAnswerCount;
+    private int answerCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        marked = new boolean[4];
+        currentQuestionIndex = 0;
+        answerCount = 0;
 
         setContentView(R.layout.activity_popquiz_multiple_answer);
         interactor = new StudentPopQuizInteractor(new RequestSender(getApplicationContext()), getApplicationContext());
@@ -51,7 +57,17 @@ public class StudentPopQuizActivity extends StudentActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                marked[position] = !marked[position];
+                if(!marked[position]) {
+                    if(answerCount < correctAnswerCount) {
+                        marked[position] = true;
+                        answerCount++;
+                    }
+                    else return;
+                }
+                else {
+                    marked[position] = false;
+                    answerCount--;
+                }
                 adapter.notifyDataSetChanged();
             }
         });
@@ -60,6 +76,7 @@ public class StudentPopQuizActivity extends StudentActivity {
             @Override
             public void onSuccess(PopQuiz responseObject) {
                 interactor.initialize(responseObject);
+                correctAnswerCount = interactor.getCorrectAnswerCount();
                 reloadData();
             }
 
@@ -84,6 +101,7 @@ public class StudentPopQuizActivity extends StudentActivity {
     private void reloadData() {
         currentQuestionIndex = interactor.getCurrentQuestionIndex();
         marked = interactor.getSavedAnswers();
+        answerCount = interactor.getSavedAnswerCount();
         questionNumberLabel.setText(String.valueOf(currentQuestionIndex + 1));
         titleLabel.setText(interactor.getQuestion());
         Answer[] answers = interactor.getSuggestedAnswers();
@@ -118,9 +136,12 @@ public class StudentPopQuizActivity extends StudentActivity {
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int source) {
-                if(source == DialogInterface.BUTTON_POSITIVE)
+                if(source == DialogInterface.BUTTON_POSITIVE) {
+                    interactor.saveAnswer(marked);
+                    interactor.sendAnswers();
                     finish();
                     wireframe.navigateToMenu();
+                }
             }
         };
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

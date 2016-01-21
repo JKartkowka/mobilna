@@ -31,7 +31,11 @@ public class PopQuiz {
 
     public String getQuestionContent(int index) {return questions.get(index).toString();}
 
+    public int getQuestionId(int index) {return questions.get(index).getId();}
+
     public Answer[] getAnswers(int index) {return questions.get(index).getAnswers();}
 
     public int getQuestionCount() {return questions.size();}
+
+    public int getCorrectAnswerCount() { return correctAnswers; }
 }

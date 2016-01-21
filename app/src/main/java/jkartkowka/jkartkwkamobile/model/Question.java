@@ -20,4 +20,6 @@ public class Question {
     }
 
     public Answer[] getAnswers() {return answers;}
+
+    public int getId() {return id;}
 }
