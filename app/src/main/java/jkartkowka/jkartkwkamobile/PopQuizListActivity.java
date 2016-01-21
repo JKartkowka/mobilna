@@ -15,11 +15,18 @@ import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 public class PopQuizListActivity extends JKListActivity {
 
     private PopQuizListWireframe wireframe;
-    private PopQuizListInteractor interactor;
+    protected PopQuizListInteractor interactor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        RequestSender requestSender = new RequestSender(getApplicationContext());
+        interactor = new PopQuizListInteractor(requestSender);
+        configure();
+    }
+
+    protected void configure() {
+        wireframe = new PopQuizListWireframe(this);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -28,9 +35,6 @@ public class PopQuizListActivity extends JKListActivity {
             }
         });
         titleLabel.setText("Wybierz kartkówkę, którą chcesz przeprowadzić:");
-        wireframe = new PopQuizListWireframe(this);
-        RequestSender requestSender = new RequestSender(getApplicationContext());
-        interactor = new PopQuizListInteractor(requestSender);
     }
 
     @Override
