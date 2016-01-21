@@ -6,9 +6,9 @@ package jkartkowka.jkartkwkamobile.model;
 public class Question {
     public final int id;
     private final String content;
-    private final String[] answers;
+    private final Answer[] answers;
 
-    public Question(int id, String content, String[] answers) {
+    public Question(int id, String content, Answer[] answers) {
         this.id = id;
         this.content = content;
         this.answers = answers;
@@ -19,5 +19,5 @@ public class Question {
         return content;
     }
 
-    public String[] getAnswers() {return answers;}
+    public Answer[] getAnswers() {return answers;}
 }
