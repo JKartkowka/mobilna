@@ -43,6 +43,7 @@ public class PopQuizListRequest implements StandardRequest {
 
     @Override
     public void parseSuccessResponse(JSONArray response) {
+
         Random randomGenerator = new Random();
         ArrayList<PopQuiz> popQuizList = new ArrayList<>();
         for (int i = 0; i < response.length(); i++) {
@@ -58,7 +59,7 @@ public class PopQuizListRequest implements StandardRequest {
 //                TODO how to get from server grade?
 
                 List<Question> parsedQuestions = new ArrayList<>();
-                for (int j = 0; i < questionCount; j++) {
+                for (int j = 0; j < questionCount; j++) {
                     JSONObject jsonQuestion = (JSONObject) jsonQuestionList.get(j);
                     int questionId = jsonQuestion.getInt("id");
                     String questionContent = jsonQuestion.getString("content");
