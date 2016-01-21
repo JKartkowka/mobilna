@@ -13,7 +13,6 @@ public class LecturerPopQuizActivity extends JKActivity {
     private LecturerPopQuizWireframe wireframe;
     private LecturerPopQuizInteractor interactor;
     private TextView popQuizNameLabel;
-    private TextView groupNameLabel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,14 +21,12 @@ public class LecturerPopQuizActivity extends JKActivity {
         wireframe = new LecturerPopQuizWireframe(this);
         interactor = new LecturerPopQuizInteractor(new RequestSender(getApplicationContext()), getIntent());
         popQuizNameLabel = (TextView) findViewById(R.id.popQuizName);
-        groupNameLabel = (TextView) findViewById(R.id.groupName);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         popQuizNameLabel.setText(interactor.popQuizName);
-        groupNameLabel.setText(interactor.groupName);
     }
 
     @Override
