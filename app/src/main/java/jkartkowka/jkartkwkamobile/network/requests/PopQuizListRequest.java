@@ -48,8 +48,9 @@ public class PopQuizListRequest implements StandardRequest {
         for (int i = 0; i < response.length(); i++) {
             try {
                 JSONObject jsonQuiz = (JSONObject) response.get(i);
-                String quizName = jsonQuiz.getString("name");
+                //int key = jsonQuiz.getInt("key") //for later
                 int identifier = jsonQuiz.getInt("id");
+                String quizName = jsonQuiz.getString("name");
                 JSONArray jsonQuestionList = jsonQuiz.getJSONArray("questions");
                 int questionCount = jsonQuestionList.length();
 //                TODO how to get from server number of correct answers?
@@ -57,10 +58,10 @@ public class PopQuizListRequest implements StandardRequest {
 //                TODO how to get from server grade?
 
                 List<Question> parsedQuestions = new ArrayList<>();
-                for (int j = 0; i<questionCount; j++) {
+                for (int j = 0; i < questionCount; j++) {
                     JSONObject jsonQuestion = (JSONObject) jsonQuestionList.get(j);
                     int questionId = jsonQuestion.getInt("id");
-                    String questionContent = jsonQuestion.getString("name");
+                    String questionContent = jsonQuestion.getString("content");
 
                     JSONArray jsonAnswers = jsonQuestion.getJSONArray("answers");
                     String[] parsedAnswers = new String[jsonAnswers.length()];
@@ -84,7 +85,7 @@ public class PopQuizListRequest implements StandardRequest {
         ArrayList<PopQuiz> popQuizList = new ArrayList<>();
         Random randomGenerator = new Random();
 
-        Question[] questions = new Question[]{  new Question(1, "6+2?", new String[]{"6", "7", "8", "9"}),
+        Question[] questions = new Question[]{new Question(1, "6+2?", new String[]{"6", "7", "8", "9"}),
                 new Question(2, "12-5?", new String[]{"5", "7", "9", "11"}),
                 new Question(3, "2+8?", new String[]{"9", "10", "11", "1337"})};
 
