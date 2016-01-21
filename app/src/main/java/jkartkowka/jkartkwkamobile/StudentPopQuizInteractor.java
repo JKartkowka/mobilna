@@ -58,26 +58,22 @@ public class StudentPopQuizInteractor extends AirplaneModeInteractor {
         }
         if (answerIndex == NO_ANSWER) return;
         else  {
-            int answerId = popQuiz.getAnswers(getCurrentQuestionIndex())[answerIndex].getId();
+            int answerId = popQuiz.getAnswers(currentQuestionIndex)[answerIndex].getId();
             userAnswers.set(currentQuestionIndex, answerId);
             answerIndices.set(currentQuestionIndex, answerIndex);
         }
     }
 
     public void sendAnswers() {
-        HashMap<String, Object> answer = new HashMap<>();
         ArrayList<HashMap<String, Object>> answers = new ArrayList<>();
-        HashMap<String, Object> answersParcel = new HashMap<>();
         int questionCount = popQuiz.getQuestionCount();
 
         for (int i = 0; i < questionCount; i++) {
+            HashMap<String, Object> answer = new HashMap<>();
             answer.put("question_id", popQuiz.getQuestionId(i));
             answer.put("answer_id", userAnswers.get(i));
             answers.add(answer);
         }
-
-        answersParcel.put("test_id", popQuiz.id);
-        answersParcel.put("answers", answers);
 
         SendAnswersRequest request = new SendAnswersRequest(popQuiz.id, answers, new StandardGenericResponseHandler<Object>() {
             @Override
@@ -96,11 +92,7 @@ public class StudentPopQuizInteractor extends AirplaneModeInteractor {
 
     public boolean[] getSavedAnswers() {
         int index;
-        if (currentQuestionIndex < answerIndices.size()) {
-            index = answerIndices.get(currentQuestionIndex);
-        } else {
-            index = NO_ANSWER;
-        }
+        index = answerIndices.get(currentQuestionIndex);
         boolean[] answers = new boolean[4];
         if (index != NO_ANSWER) answers[index] = true;
         return answers;
