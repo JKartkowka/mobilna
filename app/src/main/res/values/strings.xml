@@ -8,6 +8,7 @@
     <string name="title_activity_lecturer_pop_quiz">LecturerPopQuizActivity</string>
     <string name="title_activity_student_pop_quiz_info">StudentPopQuizInfo</string>
     <string name="title_activity_student_pop_quiz">StudentPopQuizActivity</string>
+    <string name="title_activity_student_pop_quiz_list">StudentPopQuizListActivity</string>
     <string name="title_activity_student_authentication">StudentAuthentication</string>
     <string name="title_activity_grades_list">GradesList</string>
     <string name="title_activity_text_answer_pop_quiz">TextAnswerPopQuiz</string>

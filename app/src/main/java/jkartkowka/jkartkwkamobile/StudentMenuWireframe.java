@@ -11,6 +11,6 @@ public class StudentMenuWireframe extends JKWireframe {
     }
 
     public void navigateToPopQuizList() {
-
+        makeIntent(StudentPopQuizListActivity.class);
     }
 }
