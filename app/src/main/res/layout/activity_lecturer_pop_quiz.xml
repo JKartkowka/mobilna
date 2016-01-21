@@ -39,46 +39,17 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/linear2"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/linear1"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Grupa:"
-            android:id="@+id/textView3" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="pon 15:15 TP"
-            android:id="@+id/groupName"
-            android:paddingLeft="15dp"/>
-
-    </LinearLayout>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/lecturer_pop_quiz_info"
         android:id="@+id/textView5"
-        android:layout_below="@+id/linear2"
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:paddingTop="15dp"
-        android:paddingBottom="40dp"/>
+        android:paddingBottom="40dp"
+        android:layout_below="@+id/linear1" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -90,6 +61,8 @@
         android:clickable="true"
         android:layout_below="@+id/textView5"
         android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"/>
+        android:layout_marginRight="25dp"
+        android:onClick="onStopPopQuiz" />
 
 </RelativeLayout>
+

@@ -16,8 +16,8 @@ import jkartkowka.jkartkwkamobile.network.requests.GroupMembersRequest;
  * Created by marian on 31.12.2015.
  */
 public class LecturerCustomAuthenticationInteractor extends JKInteractor {
-    private final int groupId;
-    private final int popQuizId;
+    public final int groupId;
+    public final int popQuizId;
     private ArrayList<StudentListItem> fetchedStudenListItems;
 
     public LecturerCustomAuthenticationInteractor(RequestSender requestSender, Intent intent) {

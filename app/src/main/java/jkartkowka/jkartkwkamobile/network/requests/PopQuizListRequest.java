@@ -49,8 +49,9 @@ public class PopQuizListRequest implements StandardRequest {
         for (int i = 0; i < response.length(); i++) {
             try {
                 JSONObject jsonQuiz = (JSONObject) response.get(i);
-                String quizName = jsonQuiz.getString("name");
+                //int key = jsonQuiz.getInt("key") //for later
                 int identifier = jsonQuiz.getInt("id");
+                String quizName = jsonQuiz.getString("name");
                 JSONArray jsonQuestionList = jsonQuiz.getJSONArray("questions");
                 int questionCount = jsonQuestionList.length();
 //                TODO how to get from server number of correct answers?

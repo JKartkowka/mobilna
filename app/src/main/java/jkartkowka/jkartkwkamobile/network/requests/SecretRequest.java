@@ -4,6 +4,7 @@ import com.android.volley.Request;
 import com.android.volley.VolleyError;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -20,6 +21,12 @@ public class SecretRequest implements StandardRequest {
 
     @Override
     public void parseSuccessResponse(JSONArray params) {
+        try {
+            int key = params.getInt(0);
+            responseHandler.onSuccess(key);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 
