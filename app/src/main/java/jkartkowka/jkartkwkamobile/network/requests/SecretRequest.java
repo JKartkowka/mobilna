@@ -13,9 +13,11 @@ import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 import jkartkowka.jkartkwkamobile.network.StandardRequest;
 
 public class SecretRequest implements StandardRequest {
-    protected final StandardGenericResponseHandler<Integer> responseHandler;
+    private final int popQuizId;
+    private final StandardGenericResponseHandler<Integer> responseHandler;
 
-    public SecretRequest(StandardGenericResponseHandler<Integer> responseHandler) {
+    public SecretRequest(int popQuizId, StandardGenericResponseHandler<Integer> responseHandler) {
+        this.popQuizId = popQuizId;
         this.responseHandler = responseHandler;
     }
 
@@ -27,7 +29,6 @@ public class SecretRequest implements StandardRequest {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -38,26 +39,31 @@ public class SecretRequest implements StandardRequest {
     }
 
     @Override
-    public String apiMethod() {
-        return "get_key";
-    }
-
-    @Override
-    public HashMap<String, Object> params() {
-        return new HashMap<String, Object>();
-    }
-
-    @Override
-    public void parseErrorResponse(VolleyError params) {
-    }
-
-    @Override
     public int restMethod() {
         return Request.Method.POST;
+    }
+
+    @Override
+    public String apiMethod() {
+        return "get_key";
     }
 
     @Override
     public String endpoint() {
         return "tests";
     }
+
+    @Override
+    public HashMap<String, Object> params() {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("test_id", popQuizId);
+
+        return params;
+    }
+
+    @Override
+    public void parseErrorResponse(VolleyError params) {
+
+    }
+
 }

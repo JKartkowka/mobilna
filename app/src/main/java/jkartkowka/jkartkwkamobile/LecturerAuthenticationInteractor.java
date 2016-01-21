@@ -9,7 +9,7 @@ import jkartkowka.jkartkwkamobile.network.ErrorHandler;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
 import jkartkowka.jkartkwkamobile.network.StandardGenericResponseHandler;
 import jkartkowka.jkartkwkamobile.network.requests.ChangePopQuizStateRequest;
-import jkartkowka.jkartkwkamobile.network.requests.LecturerSecretRequest;
+import jkartkowka.jkartkwkamobile.network.requests.SecretRequest;
 
 public class LecturerAuthenticationInteractor extends UserAuthenticationInteractor {
 
@@ -24,7 +24,7 @@ public class LecturerAuthenticationInteractor extends UserAuthenticationInteract
 
     @Override
     public void getSecret(final StandardGenericResponseHandler<Integer> responseHandler) {
-        LecturerSecretRequest request = new LecturerSecretRequest(popQuizId, new StandardGenericResponseHandler<Integer>() {
+        SecretRequest request = new SecretRequest(popQuizId, new StandardGenericResponseHandler<Integer>() {
             @Override
             public void onSuccess(Integer secretId) {
                 Integer drawableId = getDrawableId(secretId);

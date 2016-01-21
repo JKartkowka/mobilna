@@ -17,7 +17,7 @@ public class UserAuthenticationInteractor extends JKInteractor {
     }
 
     public void getSecret(final StandardGenericResponseHandler<Integer> responseHandler) {
-        SecretRequest request = new SecretRequest(new StandardGenericResponseHandler<Integer>() {
+        SecretRequest request = new SecretRequest(0, new StandardGenericResponseHandler<Integer>() {
             @Override
             public void onSuccess(Integer secretId) {
                 Integer drawableId = getDrawableId(secretId);
