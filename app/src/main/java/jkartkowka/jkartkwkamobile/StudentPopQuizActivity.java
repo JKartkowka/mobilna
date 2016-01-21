@@ -95,7 +95,7 @@ public class StudentPopQuizActivity extends StudentActivity {
             wireframe.back();
             return;
         }
-        reloadData();
+//        reloadData();
     }
 
     private void reloadData() {

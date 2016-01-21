@@ -39,7 +39,7 @@ public class PopQuizRequest implements StandardRequest {
     @Override
     public HashMap<String, Object> params() {
         HashMap<String, Object> params = new HashMap<>();
-        params.put("id", popQuizId);
+        params.put("test_id", popQuizId);
 
         return params;
     }
@@ -72,7 +72,7 @@ public class PopQuizRequest implements StandardRequest {
                 Answer[] parsedAnswers = new Answer[jsonAnswers.length()];
                 for (int j = 0; j < jsonAnswers.length(); j++) {
                     JSONObject currentJsonAnswer = (JSONObject) jsonAnswers.get(j);
-                    parsedAnswers[j] = new Answer(currentJsonAnswer.getInt("id"), currentJsonAnswer.toString());
+                    parsedAnswers[j] = new Answer(currentJsonAnswer.getInt("id"), currentJsonAnswer.getString("content"));
                 }
                 parsedQuestions.add(new Question(questionId, questionContent, parsedAnswers));
             }
@@ -98,7 +98,7 @@ public class PopQuizRequest implements StandardRequest {
 
     @Override
     public int restMethod() {
-        return Request.Method.GET;
+        return Request.Method.POST;
     }
 
     @Override

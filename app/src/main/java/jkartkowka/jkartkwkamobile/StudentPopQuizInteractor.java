@@ -85,7 +85,12 @@ public class StudentPopQuizInteractor extends AirplaneModeInteractor {
     }
 
     public boolean[] getSavedAnswers() {
-        int index = answerIndices.get(currentQuestionIndex);
+        int index;
+        if (currentQuestionIndex < answerIndices.size()) {
+            index = answerIndices.get(currentQuestionIndex);
+        } else {
+            index = NO_ANSWER;
+        }
         boolean[] answers = new boolean[4];
         if (index != NO_ANSWER) answers[index] = true;
         return answers;
