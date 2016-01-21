@@ -12,8 +12,12 @@ public class JKWireframe {
 
     protected void makeIntent(Class<?> listActivityClass) {
         Intent intent = new Intent(activity, listActivityClass);
-        if(listActivityClass.equals(StudentMenuActivity.class))
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        activity.startActivity(intent);
+    }
+
+    protected void makeLauncherIntent(Class<?> listActivityClass) {
+        Intent intent = new Intent(activity, listActivityClass);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         activity.startActivity(intent);
     }
 

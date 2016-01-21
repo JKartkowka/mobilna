@@ -16,7 +16,7 @@
         android:layout_below="@+id/PopQuizMultipleAnswerQuestion"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/button3" />
+        android:layout_above="@+id/linearLayout" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -58,27 +58,45 @@
         android:layout_alignParentEnd="true"
         android:paddingBottom="15dp" />
 
-    <ImageButton
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/poprzednie"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:id="@+id/button3"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="onPreviousQuestionClick" />
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout"
+        android:weightSum="3">
 
-    <ImageButton
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/nastepne"
-        android:background="@android:color/transparent"
-        android:scaleType="fitCenter"
-        android:id="@+id/button4"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="onNextQuestionClick" />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:src="@drawable/poprzednie"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:id="@+id/buttonPrevious"
+            android:visibility="invisible"
+            android:onClick="onPreviousQuestionClick" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:src="@drawable/zakoncz"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:id="@+id/buttonFinish"
+            android:visibility="invisible"
+            android:onClick="onFinishPopQuizClick" />
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:src="@drawable/nastepne"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:id="@+id/buttonNext"
+            android:onClick="onNextQuestionClick" />
+    </LinearLayout>
 </RelativeLayout>

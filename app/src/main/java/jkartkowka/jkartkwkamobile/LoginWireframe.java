@@ -9,8 +9,8 @@ public class LoginWireframe extends JKWireframe {
 
     public void navigateToMenu(UserType userType) {
         if(userType == UserType.UTStudent)
-            makeIntent(StudentMenuActivity.class);
+            makeLauncherIntent(StudentMenuActivity.class);
         else if(userType == UserType.UTLecturer)
-            makeIntent(LecturerMenuActivity.class);
+            makeLauncherIntent(LecturerMenuActivity.class);
     }
 }

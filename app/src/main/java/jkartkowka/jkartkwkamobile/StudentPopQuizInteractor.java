@@ -64,4 +64,6 @@ public class StudentPopQuizInteractor extends AirplaneModeInteractor {
     public int getCurrentQuestionIndex() {
         return currentQuestionIndex;
     }
+
+    public int getPopQuizQuestionCount() { return popQuiz.getQuestionCount(); }
 }
