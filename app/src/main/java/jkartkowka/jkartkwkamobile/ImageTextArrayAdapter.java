@@ -9,16 +9,18 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import jkartkowka.jkartkwkamobile.model.Answer;
+
 /**
  * Created by maciej on 31.12.15.
  */
-public class ImageTextArrayAdapter extends ArrayAdapter<String> {
+public class ImageTextArrayAdapter extends ArrayAdapter<Answer> {
     private final Activity context;
-    private final String[] answers;
+    private final Answer[] answers;
     private final boolean[] marked;
 
     public ImageTextArrayAdapter(Activity context,
-                                 String[] answers, boolean[] marked) {
+                                 Answer[] answers, boolean[] marked) {
         super(context, R.layout.layout_row_image_text, answers);
         this.context = context;
         this.answers = answers;
@@ -31,7 +33,7 @@ public class ImageTextArrayAdapter extends ArrayAdapter<String> {
         View rowView = inflater.inflate(R.layout.layout_row_image_text, null, true);
         TextView popQuizRowQuestion = (TextView) rowView.findViewById(R.id.popQuizRowQuestion);
         ImageView imageView = (ImageView) rowView.findViewById(R.id.PopQuizRowIndicator);
-        popQuizRowQuestion.setText(answers[position]);
+        popQuizRowQuestion.setText(answers[position].toString());
         if (marked[position])
             imageView.setImageResource(R.drawable.tick);
         else

@@ -31,7 +31,7 @@ public class PopQuiz {
 
     public String getQuestionContent(int index) {return questions.get(index).toString();}
 
-    public String[] getAnswers(int index) {return questions.get(index).getAnswers();}
+    public Answer[] getAnswers(int index) {return questions.get(index).getAnswers();}
 
     public int getQuestionCount() {return questions.size();}
 }

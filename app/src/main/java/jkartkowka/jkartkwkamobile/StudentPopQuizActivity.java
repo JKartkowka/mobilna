@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import jkartkowka.jkartkwkamobile.model.Answer;
 import jkartkowka.jkartkwkamobile.model.PopQuiz;
 import jkartkowka.jkartkwkamobile.network.ErrorHandler;
 import jkartkowka.jkartkwkamobile.network.RequestSender;
@@ -35,7 +36,8 @@ public class StudentPopQuizActivity extends StudentActivity {
         setContentView(R.layout.activity_popquiz_multiple_answer);
         interactor = new StudentPopQuizInteractor(new RequestSender(getApplicationContext()), getApplicationContext());
         wireframe = new StudentPopQuizWireframe(this);
-        adapter = new ImageTextArrayAdapter(this, new String[]{"0", "0", "0", "0"}, marked);
+        Answer initialAnswer = new Answer(0, "0");
+        adapter = new ImageTextArrayAdapter(this, new Answer[]{initialAnswer, initialAnswer, initialAnswer, initialAnswer}, marked);
 
         buttonPrevious = (ImageButton) findViewById(R.id.buttonPrevious);
         buttonNext = (ImageButton) findViewById(R.id.buttonNext);
@@ -84,7 +86,7 @@ public class StudentPopQuizActivity extends StudentActivity {
         marked = interactor.getSavedAnswers();
         questionNumberLabel.setText(String.valueOf(currentQuestionIndex + 1));
         titleLabel.setText(interactor.getQuestion());
-        String[] answers = interactor.getSuggestedAnswers();
+        Answer[] answers = interactor.getSuggestedAnswers();
         adapter = new ImageTextArrayAdapter(this, answers, marked);
         listView.setAdapter(adapter);
     }
