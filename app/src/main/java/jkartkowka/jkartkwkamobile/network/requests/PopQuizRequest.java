@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
 
 import jkartkowka.jkartkwkamobile.model.Answer;
 import jkartkowka.jkartkwkamobile.model.PopQuiz;
@@ -25,9 +24,11 @@ import jkartkowka.jkartkwkamobile.network.StandardRequest;
 public class PopQuizRequest implements StandardRequest {
 
     private final StandardGenericResponseHandler<PopQuiz> responseHandler;
+    private final int popQuizId;
 
-    public PopQuizRequest(StandardGenericResponseHandler<PopQuiz> responseHandler) {
+    public PopQuizRequest(int popQuizId, StandardGenericResponseHandler<PopQuiz> responseHandler) {
         this.responseHandler = responseHandler;
+        this.popQuizId = popQuizId;
     }
 
     @Override
@@ -37,7 +38,10 @@ public class PopQuizRequest implements StandardRequest {
 
     @Override
     public HashMap<String, Object> params() {
-        return new HashMap<>();
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("id", popQuizId);
+
+        return params;
     }
 
     @Override
@@ -59,7 +63,7 @@ public class PopQuizRequest implements StandardRequest {
             int correctAnswers = 1;
 
             List<Question> parsedQuestions = new ArrayList<>();
-            for (int i = 0; i<questionCount; i++) {
+            for (int i = 0; i < questionCount; i++) {
                 JSONObject jsonQuestion = (JSONObject) jsonQuestionList.get(i);
                 int questionId = jsonQuestion.getInt("id");
                 String questionContent = jsonQuestion.getString("content");
@@ -84,9 +88,9 @@ public class PopQuizRequest implements StandardRequest {
         int questionCount = 3;
         int correctAnswers = 1;
 
-        Question[] questions = new Question[]{  new Question(1, "6+2?", new Answer[]{new Answer(1, "6"), new Answer(2, "7"), new Answer(3, "8"), new Answer(4, "9")}),
-                                                new Question(2, "12-5?", new Answer[]{new Answer(5,"5"), new Answer(6, "7"), new Answer(7, "9"), new Answer(8, "11")}),
-                                                new Question(3, "2+8?", new Answer[]{new Answer(9, "9"), new Answer(10, "10"), new Answer(11, "11"), new Answer(12, "1337")})};
+        Question[] questions = new Question[]{new Question(1, "6+2?", new Answer[]{new Answer(1, "6"), new Answer(2, "7"), new Answer(3, "8"), new Answer(4, "9")}),
+                new Question(2, "12-5?", new Answer[]{new Answer(5, "5"), new Answer(6, "7"), new Answer(7, "9"), new Answer(8, "11")}),
+                new Question(3, "2+8?", new Answer[]{new Answer(9, "9"), new Answer(10, "10"), new Answer(11, "11"), new Answer(12, "1337")})};
 
         PopQuiz popQuiz = new PopQuiz(1, "Kartkówka " + 1, questionCount, correctAnswers, 2.0f, Arrays.asList(questions));
         responseHandler.onSuccess(popQuiz);

@@ -1,5 +1,6 @@
 package jkartkowka.jkartkwkamobile;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -39,6 +40,23 @@ public class StudentAuthenticationActivity extends StudentActivity {
             makeAirplaneModeToast();
             return;
         }
-        wireframe.startPopQuiz();
+        final ProgressDialog dialog = ProgressDialog.show(StudentAuthenticationActivity.this, "", "Ładowanie", true);
+        interactor.isActivePopQuiz(new StandardGenericResponseHandler<Boolean>() {
+            @Override
+            public void onSuccess(Boolean responseObject) {
+                dialog.dismiss();
+                if (responseObject) {
+                    wireframe.startPopQuiz();
+                } else {
+                    makeToast("Zaczekaj aż prowadzący zweryfikuje wszystkich studentów");
+                }
+            }
+
+            @Override
+            public void onFailure(ErrorHandler error) {
+                dialog.dismiss();
+                makeToast(error.toString());
+            }
+        });
     }
 }

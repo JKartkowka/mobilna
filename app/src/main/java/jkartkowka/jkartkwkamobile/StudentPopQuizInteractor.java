@@ -26,13 +26,15 @@ public class StudentPopQuizInteractor extends AirplaneModeInteractor {
     }
 
     public void getPopQuiz(StandardGenericResponseHandler<PopQuiz> standardGenericResponseHandler) {
-        PopQuizRequest request = new PopQuizRequest(standardGenericResponseHandler);
+//        TODO Adam change it
+        PopQuizRequest request = new PopQuizRequest(1, standardGenericResponseHandler);
         requestSender.sendRequest(request);
     }
+
     public void initialize(PopQuiz popQuiz) {
         this.popQuiz = popQuiz;
         userAnswers = new ArrayList<>();
-        for(int i=0; i<popQuiz.getQuestionCount(); i++) {
+        for (int i = 0; i < popQuiz.getQuestionCount(); i++) {
             userAnswers.add(new boolean[4]);
         }
     }
@@ -50,11 +52,12 @@ public class StudentPopQuizInteractor extends AirplaneModeInteractor {
     }
 
     public void previousQuestion() {
-        if(currentQuestionIndex > 0)
+        if (currentQuestionIndex > 0)
             currentQuestionIndex -= 1;
     }
+
     public void nextQuestion() {
-        if(currentQuestionIndex < popQuiz.getQuestionCount() - 1)
+        if (currentQuestionIndex < popQuiz.getQuestionCount() - 1)
             currentQuestionIndex += 1;
     }
 
@@ -66,5 +69,7 @@ public class StudentPopQuizInteractor extends AirplaneModeInteractor {
         return currentQuestionIndex;
     }
 
-    public int getPopQuizQuestionCount() { return popQuiz.getQuestionCount(); }
+    public int getPopQuizQuestionCount() {
+        return popQuiz.getQuestionCount();
+    }
 }
