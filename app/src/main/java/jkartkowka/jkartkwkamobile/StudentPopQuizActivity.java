@@ -88,14 +88,6 @@ public class StudentPopQuizActivity extends StudentActivity {
     }
 
     @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (!hasFocus) {
-            closeTest();
-        }
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
         if (!interactor.isAirplaneModeOn()) {
@@ -145,20 +137,16 @@ public class StudentPopQuizActivity extends StudentActivity {
             @Override
             public void onClick(DialogInterface dialog, int source) {
                 if(source == DialogInterface.BUTTON_POSITIVE) {
-                    closeTest();
+                    interactor.saveAnswer(marked);
+                    interactor.sendAnswers();
+                    finish();
+                    wireframe.navigateToMenu();
                 }
             }
         };
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Czy na pewno chcesz zakończyć kartkówkę?").setPositiveButton("Tak", dialogClickListener)
                 .setNegativeButton("Nie", dialogClickListener).show();
-    }
-
-    private void closeTest() {
-        interactor.saveAnswer(marked);
-        interactor.sendAnswers();
-        finish();
-        wireframe.navigateToMenu();
     }
 
 }
